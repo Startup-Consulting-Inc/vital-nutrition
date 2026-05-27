@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VITAL — Nutrition Intelligence · Score any food label, find better alternatives</title>
+    <meta name="description" content="VITAL turns any nutrition label into a Health Index score in seconds. Personalized RDAs, side-by-side food comparison, daily meal logger, and a research-backed nutrient encyclopedia (WHO, NIH, Harvard, AHA)." />
+    <meta name="keywords" content="nutrition label analyzer, health score, food comparison, RDA calculator, nutrient encyclopedia, BCAA calculator, meal logger, vitamins, minerals, amino acids, fiber, omega-3" />
+    <meta name="theme-color" content="#202a26" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="generator" content="VITAL Nutrition Intelligence" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="VITAL — Nutrition Intelligence" />
+    <meta property="og:title" content="VITAL — Score any food label, get better alternatives" />
+    <meta property="og:description" content="Personalized nutrition intelligence: label analyzer, encyclopedia, meal logger, BCAA calculator. Backed by WHO, NIH, Harvard, AHA." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta property="og:image" content="/icon-512.svg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VITAL — Score any food label" />
+    <meta name="twitter:description" content="Health Index scoring + nutrient encyclopedia + daily meal logger. Privacy-first (everything runs in your browser)." />
+    <meta name="twitter:image" content="/icon-512.svg" />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/icon-192.svg" />
+    <link rel="apple-touch-icon" href="/icon-192.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Baseline JSON-LD: WebSite + Organization (per-route SEOHead replaces this with richer payloads). -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "VITAL — Nutrition Intelligence",
+            "url": "https://vital.nutrition",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://vital.nutrition/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "Organization",
+            "name": "VITAL",
+            "url": "https://vital.nutrition",
+            "logo": "https://vital.nutrition/icon-512.svg",
+            "description": "Personalized nutrition intelligence: label analyzer, encyclopedia, meal logger."
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

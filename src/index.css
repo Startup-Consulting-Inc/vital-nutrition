@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 96%;
+    --foreground: 160 20% 15%;
+    --card: 40 15% 90%;
+    --card-foreground: 160 20% 15%;
+    --popover: 40 20% 96%;
+    --popover-foreground: 160 20% 15%;
+    --primary: 160 14% 25%;
+    --primary-foreground: 40 20% 96%;
+    --secondary: 150 10% 37%;
+    --secondary-foreground: 40 20% 96%;
+    --muted: 150 8% 48%;
+    --muted-foreground: 150 8% 48%;
+    --accent: 14 68% 54%;
+    --accent-foreground: 40 20% 96%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 14 68% 54%;
+    --radius: 0.5rem;
+
+    --bg-base: #f6f5f1;
+    --bg-surface: #e6e4dc;
+    --bg-deep: #202a26;
+    --bg-accent: #374640;
+    --text-primary: #202a26;
+    --text-inverse: #f6f5f1;
+    --text-muted: #6b7d76;
+    --accent-terracotta: #d95c39;
+    --accent-cream: #ffe8b2;
+  }
+
+  body {
+    @apply bg-[#f6f5f1] text-[#202a26] antialiased;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 8rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .text-caption {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .bg-base { background-color: #f6f5f1; }
+  .bg-surface { background-color: #e6e4dc; }
+  .bg-deep { background-color: #202a26; }
+  .bg-accent-green { background-color: #374640; }
+  .text-deep { color: #202a26; }
+  .text-inverse { color: #f6f5f1; }
+  .text-muted-sage { color: #6b7d76; }
+  .text-terracotta { color: #d95c39; }
+  .bg-terracotta { background-color: #d95c39; }
+}

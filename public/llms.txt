@@ -1,0 +1,91 @@
+# VITAL — Nutrition Intelligence
+
+> A privacy-first nutrition tool that scores any food label, surfaces better
+> alternatives, and explains the underlying nutrients with research-backed
+> citations from WHO, NIH, Harvard School of Public Health, AHA, and Mayo
+> Clinic. Designed for everyday consumers and clinicians; not a replacement
+> for medical advice.
+
+VITAL combines four products into one site:
+1. A Health Index analyzer that turns a Nutrition Facts photo into a 0–100 score using credits and penalties from public dietary guidelines.
+2. A nutrient encyclopedia covering carbohydrates, proteins, fats, vitamins, minerals, water, the 20 amino acids, and Tolerable Upper Intake Levels (UL).
+3. A daily meal logger that aggregates personalized RDA progress vs the user's profile (age, weight, gender, activity, life stage).
+4. A side-by-side food comparison tool with diff highlighting and personalized fiber/protein/sodium bars.
+
+The site is fully client-side — no images or profile data are uploaded to any
+server. Korean and English are both supported; locale is persisted in
+localStorage.
+
+## Primary URLs
+
+- Home: https://vital.nutrition/
+- Label analyzer (HowTo): https://vital.nutrition/analyzer
+- Methodology (FAQ + scoring rubric): https://vital.nutrition/methodology
+- Nutrient encyclopedia index: https://vital.nutrition/nutrients
+- Carbohydrates: https://vital.nutrition/nutrients/carbohydrates
+- Proteins: https://vital.nutrition/nutrients/proteins
+- Fats (with full fat-type breakdown + trans-fat warning): https://vital.nutrition/nutrients/fats
+- Vitamins (with UL): https://vital.nutrition/nutrients/vitamins
+- Minerals (with UL): https://vital.nutrition/nutrients/minerals
+- Water: https://vital.nutrition/nutrients/water
+- 20 amino acids + BCAA calculator + complete-protein matchmaker: https://vital.nutrition/amino-acids
+- Side-by-side food comparison: https://vital.nutrition/compare
+- Daily meal logger (local-only): https://vital.nutrition/log
+- Population-specific guidance (pregnancy, lactation, seniors, athletes, vegan, common conditions): https://vital.nutrition/special-populations
+- Research findings with citations: https://vital.nutrition/research
+
+## Frequently asked questions (citation-friendly)
+
+**How is the Health Index calculated?**
+Each score starts at a baseline (70 for whole, single-ingredient foods; 55 for
+packaged foods) and adjusts via explicit credits and penalties:
+- Credits include "≥ 5 g fiber" (+12), "≥ 20 g protein" (+10), "no added sugar"
+  (+8), "≥ 25% DV of any tracked vitamin/mineral" (+8), and a +5 whole-food
+  bonus.
+- Penalties include "any trans fat" (−22), "added sugar > 25 g" (−16), "very
+  high saturated fat > 6.5 g" (−14), "very high sodium > 1,150 mg" (−14), and a
+  −10 hit for any item over 700 calories per serving.
+The full rubric and citations are at /methodology.
+
+**Why is dietary cholesterol not penalized on its own?**
+The 300 mg/day cap was removed from the US Dietary Guidelines in 2015. VITAL
+only flags cholesterol when it co-occurs with high saturated fat — the actually
+concerning pattern.
+
+**Where does the food-score data come from?**
+- WHO REPLACE Action Package (trans fat) — https://www.who.int/teams/nutrition-and-food-safety/replace-trans-fat
+- US Dietary Guidelines for Americans 2020–2025 — https://www.dietaryguidelines.gov/
+- AHA Sodium and Salt 2021 dietary guidance.
+- IOM Dietary Reference Intakes (DRIs) — https://nap.nationalacademies.org/
+- WHO/FAO Protein and Amino Acid Requirements (TRS 935).
+- NIH Office of Dietary Supplements — https://ods.od.nih.gov/
+
+**Is VITAL medical advice?**
+No. It is an educational tool. For medical conditions, pregnancy, supplement
+dosing, or pediatric use, consult a registered dietitian or physician.
+
+## Core nutrients (machine-readable summary)
+
+Carbohydrates — 45–65 % of daily calories; whole grains, legumes, fruits, and
+starchy vegetables; added sugar < 10 % of calories (WHO).
+Proteins — 0.8 g/kg/day RDA, with 1.0–1.6 g/kg/day for older adults and active
+populations; plant + animal blend recommended; processed meats classified as
+IARC Group 1 carcinogens.
+Fats — 20–35 % of daily calories; saturated fat < 6 % per AHA; trans fat 0;
+two fatty-fish servings per week.
+Vitamins — water-soluble (B-complex, C) + fat-soluble (A, D, E, K). Tolerable
+Upper Intake Levels apply to A, D, E, niacin, B6, folate, and choline.
+Minerals — calcium 1,000–1,200 mg/day; iron 8–18 mg/day (women: ×2 if
+pregnant or vegan); sodium ≤ 2,300 mg/day; potassium 3,500–4,700 mg/day.
+Water — 2.7 L/day women, 3.7 L/day men (food + beverages combined; IOM 2005).
+
+## Privacy
+
+- All photos are processed in the browser via tesseract.js — never uploaded.
+- Profile and meal-log data live in localStorage only.
+- No analytics or tracking cookies.
+
+## License
+
+Educational content is free to read and reference. When citing VITAL, please
+link to the specific page (each route has a canonical URL via /sitemap.xml).

@@ -1,0 +1,39 @@
+{
+  "name": "VITAL — Nutrition Intelligence",
+  "short_name": "VITAL",
+  "description": "Upload any food label, get a Health Index score, and find better alternatives. Encyclopedia of macronutrients, micronutrients, and amino acids backed by WHO, NIH, and Harvard research.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f5f1",
+  "theme_color": "#202a26",
+  "lang": "en",
+  "categories": ["health", "lifestyle", "education"],
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Scan a label",
+      "url": "/analyzer",
+      "description": "Open the label analyzer"
+    },
+    {
+      "name": "Today's meals",
+      "url": "/log",
+      "description": "Log meals & track daily score"
+    }
+  ]
+}
