@@ -2,69 +2,69 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://vital.nutrition/</loc>
+    <loc>https://nutrition.ai-biz.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vital.nutrition/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://vital.nutrition/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vital.nutrition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nutrition.ai-biz.app/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://nutrition.ai-biz.app/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nutrition.ai-biz.app/" />
   </url>
   <url>
-    <loc>https://vital.nutrition/analyzer</loc>
+    <loc>https://nutrition.ai-biz.app/analyzer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/nutrients</loc>
+    <loc>https://nutrition.ai-biz.app/nutrients</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/nutrients/carbohydrates</loc>
+    <loc>https://nutrition.ai-biz.app/nutrients/carbohydrates</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/nutrients/proteins</loc>
+    <loc>https://nutrition.ai-biz.app/nutrients/proteins</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/nutrients/fats</loc>
+    <loc>https://nutrition.ai-biz.app/nutrients/fats</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/nutrients/vitamins</loc>
+    <loc>https://nutrition.ai-biz.app/nutrients/vitamins</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/nutrients/minerals</loc>
+    <loc>https://nutrition.ai-biz.app/nutrients/minerals</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/nutrients/water</loc>
+    <loc>https://nutrition.ai-biz.app/nutrients/water</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/amino-acids</loc>
+    <loc>https://nutrition.ai-biz.app/amino-acids</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/compare</loc>
+    <loc>https://nutrition.ai-biz.app/compare</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/log</loc>
+    <loc>https://nutrition.ai-biz.app/log</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/methodology</loc>
+    <loc>https://nutrition.ai-biz.app/methodology</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/research</loc>
+    <loc>https://nutrition.ai-biz.app/research</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vital.nutrition/special-populations</loc>
+    <loc>https://nutrition.ai-biz.app/special-populations</loc>
     <priority>0.7</priority>
   </url>
 </urlset>

@@ -1,7 +1,7 @@
 # robots.txt — VITAL Nutrition Intelligence
-# https://vital.nutrition/robots.txt
+# https://nutrition-help.web.app/robots.txt
 #
-# AI-readable site summary: https://vital.nutrition/llms.txt
+# AI-readable site summary: https://nutrition-help.web.app/llms.txt
 #
 # Default: allow all well-behaved crawlers, including AI search engines.
 
@@ -34,4 +34,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://vital.nutrition/sitemap.xml
+Sitemap: https://nutrition-help.web.app/sitemap.xml
