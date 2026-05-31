@@ -6,6 +6,9 @@
 > Clinic. Designed for everyday consumers and clinicians; not a replacement
 > for medical advice.
 
+Last updated: 2026-05-30
+Sitemap: https://vital.nutrition/sitemap.xml
+
 VITAL combines four products into one site:
 1. A Health Index analyzer that turns a Nutrition Facts photo into a 0–100 score using credits and penalties from public dietary guidelines.
 2. A nutrient encyclopedia covering carbohydrates, proteins, fats, vitamins, minerals, water, the 20 amino acids, and Tolerable Upper Intake Levels (UL).

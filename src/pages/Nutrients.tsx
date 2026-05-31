@@ -7,6 +7,7 @@ import { useMemo } from 'react';
 
 export default function Nutrients() {
   const [locale] = useLocale();
+  const isKo = locale === 'ko';
   const t = useT();
 
   const localized = useMemo(
@@ -39,6 +40,8 @@ export default function Nutrients() {
             about: n.subtitle,
           })),
         }}
+        dateModified="2026-05-30"
+        breadcrumb={[{ name: 'Home', path: '/' }, { name: isKo ? '영양소' : 'Nutrients', path: '/nutrients' }]}
       />
       <section className="w-full py-24 px-6" style={{ backgroundColor: '#f6f5f1' }}>
         <div className="max-w-[1100px] mx-auto">
@@ -104,6 +107,10 @@ export default function Nutrients() {
             </p>
           </aside>
         </div>
+
+        <p className="text-[10px] text-deep/40 mt-8 text-center">
+          {isKo ? '최종 업데이트: 2026년 5월 30일' : 'Last updated: May 30, 2026'}
+        </p>
       </section>
     </>
   );

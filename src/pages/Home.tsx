@@ -62,6 +62,7 @@ export default function Home() {
       <SEOHead
         path="/"
         type="website"
+        dateModified="2026-05-30"
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'WebApplication',

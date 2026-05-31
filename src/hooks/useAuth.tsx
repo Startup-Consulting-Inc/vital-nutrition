@@ -49,6 +49,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // If no user at all, sign in anonymously
       if (!firebaseUser) {
         signInAnonymously(auth).catch((err) => {
+          if (err.code === 'auth/admin-restricted-operation') {
+            // Anonymous auth is disabled in Firebase console; continue without it
+            console.warn('Anonymous auth is disabled in Firebase console. Guest features unavailable.');
+            return;
+          }
           console.error('Anonymous sign-in failed:', err);
           setError('Failed to initialize guest session. Please refresh.');
         });

@@ -101,7 +101,7 @@ export default function Compare() {
 
   return (
     <section className="w-full py-20 px-6" style={{ backgroundColor: '#f6f5f1' }}>
-      <SEOHead titleKey="cp.h1" descriptionKey="cp.subtitle" path="/compare" type="article" />
+      <SEOHead titleKey="cp.h1" descriptionKey="cp.subtitle" path="/compare" type="article" dateModified="2026-05-30" breadcrumb={[{ name: 'Home', path: '/' }, { name: 'Compare', path: '/compare' }]} />
       <div className="max-w-[1100px] mx-auto">
         <header className="text-center mb-10">
           <p className="text-caption text-terracotta mb-3">{t('cp.eyebrow')}</p>
@@ -201,6 +201,10 @@ export default function Compare() {
             ]).map(s => <FiberStat key={s.label} {...s} />)}
           </div>
         </div>
+
+        <p className="text-[10px] text-deep/40 mt-4">
+          {locale === 'ko' ? '최종 업데이트: 2026년 5월 30일' : 'Last updated: May 30, 2026'}
+        </p>
       </div>
     </section>
   );

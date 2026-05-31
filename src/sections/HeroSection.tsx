@@ -99,12 +99,12 @@ export default function HeroSection() {
         blobs.push(mesh);
       }
 
-      const clock = new THREE.Clock();
+      const startTime = performance.now();
 
       const animate = () => {
         if (disposed) return;
         animId = requestAnimationFrame(animate);
-        const time = clock.getElapsedTime();
+        const time = (performance.now() - startTime) / 1000;
 
         for (let i = 0; i < blobCount; i++) {
           const basePos = basePositions[i];

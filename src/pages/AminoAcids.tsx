@@ -121,7 +121,7 @@ export default function AminoAcids() {
 
   return (
     <section className="w-full py-24 px-6" style={{ backgroundColor: '#f6f5f1' }}>
-      <SEOHead titleKey="aa.h1" descriptionKey="aa.subtitle" path="/amino-acids" type="article" />
+      <SEOHead titleKey="aa.h1" descriptionKey="aa.subtitle" path="/amino-acids" type="article" dateModified="2026-05-30" breadcrumb={[{ name: 'Home', path: '/' }, { name: 'Amino Acids', path: '/amino-acids' }]} />
       <div className="max-w-[1100px] mx-auto">
         {/* Header */}
         <header className="text-center mb-14">
@@ -236,6 +236,10 @@ export default function AminoAcids() {
 
         {/* Acid Detail Dialog */}
         <AcidDetailDialog acid={selectedAcid} open={dialogOpen} onClose={handleClose} />
+
+        <p className="text-[10px] text-deep/40 mt-4">
+          {locale === 'ko' ? '최종 업데이트: 2026년 5월 30일' : 'Last updated: May 30, 2026'}
+        </p>
       </div>
     </section>
   );

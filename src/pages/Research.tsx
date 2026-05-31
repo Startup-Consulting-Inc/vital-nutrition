@@ -1,7 +1,10 @@
 import ResearchSection from '../sections/ResearchSection';
 import SEOHead from '@/components/SEOHead';
+import { useLocale } from '@/lib/i18n';
 
 export default function Research() {
+  const [locale] = useLocale();
+  const isKo = locale === 'ko';
   return (
     <>
       <SEOHead
@@ -17,6 +20,8 @@ export default function Research() {
           keywords: ['fiber', 'omega-3', 'added sugar', 'sodium', 'protein quality', 'hydration', 'healthy plate'],
           isAccessibleForFree: true,
         }}
+        dateModified="2026-05-30"
+        breadcrumb={[{ name: 'Home', path: '/' }, { name: isKo ? '연구' : 'Research', path: '/research' }]}
       />
       <ResearchSection />
     </>

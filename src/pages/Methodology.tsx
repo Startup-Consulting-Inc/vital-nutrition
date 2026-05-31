@@ -98,6 +98,8 @@ export default function Methodology() {
         path="/methodology"
         type="article"
         jsonLd={[faqJsonLd, howToJsonLd]}
+        dateModified="2026-05-30"
+        breadcrumb={[{ name: 'Home', path: '/' }, { name: 'Methodology', path: '/methodology' }]}
       />
       <div className="max-w-[920px] mx-auto">
         <Link to="/analyzer" className="text-sm text-terracotta hover:underline mb-8 inline-block">
@@ -223,8 +225,9 @@ export default function Methodology() {
         </div>
 
         <p className="text-xs text-deep/40">
-          Last updated alongside the analyzer. If you spot a rule that looks wrong or under-cites
-          a guideline, please open a ticket — methodology should be defensible.
+          {locale === 'ko'
+            ? '최종 업데이트: 2026년 5월 30일. 규칙에 오류가 있거나 출처가 부족해 보이면 티켓을 열어주세요 — 방법론은 방어 가능해야 합니다.'
+            : 'Last updated: May 30, 2026. If you spot a rule that looks wrong or under-cites a guideline, please open a ticket — methodology should be defensible.'}
         </p>
       </div>
     </div>

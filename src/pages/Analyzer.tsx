@@ -17,7 +17,7 @@ export default function Analyzer() {
   };
   return (
     <>
-      <SEOHead titleKey="an.h1" descriptionKey="an.subtitle" path="/analyzer" type="article" jsonLd={howToJsonLd} />
+      <SEOHead titleKey="an.h1" descriptionKey="an.subtitle" path="/analyzer" type="article" jsonLd={howToJsonLd} dateModified="2026-05-30" breadcrumb={[{ name: 'Home', path: '/' }, { name: 'Analyzer', path: '/analyzer' }]} />
       <LabelAnalyzer />
     </>
   );

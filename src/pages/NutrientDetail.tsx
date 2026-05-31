@@ -18,6 +18,7 @@ export default function NutrientDetail() {
   const [tagFilter, setTagFilter] = useState<DietaryTag | null>(null);
   const [showRubric, setShowRubric] = useState(false);
   const t = useT();
+  const isKo = locale === 'ko';
   const bucketLabel = useBucketLabel();
 
   const targets = useMemo(() => personalizedTargets(profile), [profile]);
@@ -66,6 +67,45 @@ export default function NutrientDetail() {
   // schema.org types for AI-powered search) using the canonical English data
   // so machines can reliably parse it regardless of UI locale.
   const baselineFoods = (baseNutrient?.foodItems ?? []).slice(0, 8);
+  const topFoods = (nutrient?.foodItems ?? []).slice(0, 5).map(f => f.name).join(', ');
+  const faqItems = [
+    {
+      q: isKo ? `${nutrient.name}이란 무엇인가요?` : `What is ${nutrient.name}?`,
+      a: nutrient.description,
+    },
+    {
+      q: isKo ? `하루에 얼마나 섭취해야 하나요?` : `How much ${nutrient.name} do I need per day?`,
+      a: `${nutrient.dailyNeed} (${isKo ? '출처' : 'Source'}: ${nutrient.dailyNeedSource})`,
+    },
+    {
+      q: isKo ? `어떤 음식에 가장 많이 들어 있나요?` : `What foods are highest in ${nutrient.name}?`,
+      a: topFoods || (isKo ? '데이터를 확인 중입니다.' : 'Data being reviewed.'),
+    },
+    {
+      q: isKo ? `결핍 시 어떤 증상이 나타나나요?` : `What are the signs of ${nutrient.name} deficiency?`,
+      a: nutrient.deficiencySigns.join(', '),
+    },
+  ];
+  if (nutrient.warning) {
+    faqItems.push({
+      q: isKo ? `과다 섭취 시 주의사항은 무엇인가요?` : `Are there any risks from too much ${nutrient.name}?`,
+      a: nutrient.warning,
+    });
+  }
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(item => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  };
+
   const jsonLd: object[] = [
     {
       '@context': 'https://schema.org',
@@ -101,6 +141,7 @@ export default function NutrientDetail() {
         },
       })),
     },
+    faqJsonLd,
   ];
 
   return (
@@ -111,6 +152,11 @@ export default function NutrientDetail() {
         path={`/nutrients/${nutrient.slug}`}
         type="article"
         jsonLd={jsonLd}
+        dateModified="2026-05-30"
+        breadcrumb={[
+          { name: isKo ? '영양소' : 'Nutrients', path: '/nutrients' },
+          { name: nutrient.name, path: `/nutrients/${nutrient.slug}` },
+        ]}
       />
     <section className="w-full py-16 px-6" style={{ backgroundColor: '#f6f5f1' }}>
       <div className="max-w-[1000px] mx-auto">
@@ -581,6 +627,24 @@ export default function NutrientDetail() {
             <p className="text-sm text-deep/60">{nutrient.warning}</p>
           </div>
         )}
+
+        {/* FAQ Section */}
+        <div className="p-6 rounded-2xl bg-white border border-deep/5 mb-10">
+          <h2 className="text-lg text-deep mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+            {isKo ? '자주 묻는 질문' : 'Frequently Asked Questions'}
+          </h2>
+          <div className="space-y-5">
+            {faqItems.map((item, i) => (
+              <div key={i} className="border-l-2 border-terracotta/30 pl-4">
+                <p className="text-sm font-medium text-deep mb-1">{item.q}</p>
+                <p className="text-sm text-deep/60 leading-relaxed">{item.a}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[10px] text-deep/30 mt-4">
+            {isKo ? '마지막 업데이트: 2026년 5월 30일' : 'Last updated: May 30, 2026'}
+          </p>
+        </div>
 
         {/* Navigation to other nutrients */}
         <nav className="border-t border-deep/10 pt-10" aria-label={t('nd.exploreOthers')}>

@@ -262,6 +262,25 @@ See [`/methodology`](https://nutrition-help.web.app/methodology) for the full ru
 
 ---
 
+## AI Search Optimization (AEO / GEO)
+
+VITAL is optimized for AI-powered search engines and LLM citation:
+
+| Optimization | Implementation |
+|--------------|----------------|
+| **Schema.org** | `Article`, `HowTo`, `FAQPage`, `BreadcrumbList`, `ItemList`, `Food`, `NutritionInformation`, `WebApplication`, `CollectionPage` on every route |
+| **robots.txt** | Explicitly allows GPTBot, PerplexityBot, ClaudeBot, Google-Extended, and all major AI crawlers |
+| **llms.txt** | Machine-readable site summary with FAQs, citations, and source links for LLM consumption |
+| **FAQ blocks** | Every nutrient page (`/nutrients/:slug`) includes visible FAQs + `FAQPage` JSON-LD |
+| **Freshness signals** | `dateModified` in Article schema + visible "Last updated" on all content pages |
+| **Breadcrumbs** | `BreadcrumbList` schema on every route |
+| **HowTo** | Step-by-step `HowTo` schema on `/analyzer` and `/methodology` |
+| **Canonical + hreflang** | Canonical URLs + `en` / `ko` alternate links on every page |
+
+See [`AI_SEO_AUDIT.md`](AI_SEO_AUDIT.md) for the full audit and action items.
+
+---
+
 ## Deployment
 
 Configured for Firebase project `nutrition-help`:

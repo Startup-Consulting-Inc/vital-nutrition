@@ -28,7 +28,7 @@ export default function MealLog() {
 
   return (
     <section className="w-full py-16 px-6" style={{ backgroundColor: '#f6f5f1' }}>
-      <SEOHead titleKey="log.h1Prefix" descriptionKey="log.subtitle" path="/log" />
+      <SEOHead titleKey="log.h1Prefix" descriptionKey="log.subtitle" path="/log" dateModified="2026-05-30" breadcrumb={[{ name: 'Home', path: '/' }, { name: 'Meal Log', path: '/log' }]} />
       <div className="max-w-[1100px] mx-auto">
         <header className="mb-10">
           <p className="text-caption text-terracotta mb-2">{t('log.eyebrow')}</p>

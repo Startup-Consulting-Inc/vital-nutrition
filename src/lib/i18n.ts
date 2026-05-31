@@ -23,9 +23,9 @@ const dict = {
 
     // === Hero ===
     'hero.eyebrow': 'Personalized nutrition intelligence',
-    'hero.title': 'Upload any food label. Get a health score. Find better alternatives.',
+    'hero.title': "What's actually in your food?",
     'hero.subtitle':
-      'A label-aware analyzer that scores food against your dietary goal — heart, keto, high-protein, low-sodium, or diabetic — backed by an encyclopedia grounded in WHO, NIH, and Harvard research.',
+      "Understand what's in your food, why it matters, and what to choose instead — grounded in WHO, NIH, and Harvard research.",
     'hero.ctaPrimary': 'Begin Exploration',
     'hero.ctaSecondary': 'Scan Food Label',
 
@@ -278,9 +278,9 @@ const dict = {
 
     // === Hero ===
     'hero.eyebrow': '맞춤형 영양 인텔리전스',
-    'hero.title': '식품 라벨을 업로드하면 건강 점수와 더 나은 대안을 알려드립니다.',
+    'hero.title': '음식에 실제로 무엇이 들어있나요?',
     'hero.subtitle':
-      '심혈관, 케토, 고단백, 저나트륨, 당뇨 등 식단 목표에 맞춰 식품을 점수화하는 분석기. WHO·NIH·하버드 연구를 기반으로 한 백과사전이 함께 제공됩니다.',
+      '음식에 무엇이 들어있는지, 왜 중요한지, 그리고 대신 무엇을 선택해야 하는지 이해하세요 — WHO, NIH, 하버드 연구를 기반으로 합니다.',
     'hero.ctaPrimary': '탐색 시작',
     'hero.ctaSecondary': '라벨 스캔',
 

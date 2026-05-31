@@ -26,6 +26,10 @@ export interface SEOHeadProps {
   jsonLd?: object | object[];
   /** Optional secondary JSON-LD blocks (FAQ, HowTo, etc.). */
   extraJsonLd?: object[];
+  /** ISO 8601 date — injected into Article schemas and displayed as a freshness signal. */
+  dateModified?: string;
+  /** Breadcrumb trail for BreadcrumbList schema. */
+  breadcrumb?: { name: string; path: string }[];
 }
 
 /**
@@ -42,6 +46,8 @@ export default function SEOHead({
   type = 'website',
   jsonLd,
   extraJsonLd,
+  dateModified,
+  breadcrumb,
 }: SEOHeadProps) {
   const t = useT();
   const [locale] = useLocale();
@@ -82,6 +88,52 @@ export default function SEOHead({
     const all: object[] = [];
     if (jsonLd) all.push(...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]));
     if (extraJsonLd) all.push(...extraJsonLd);
+
+    // Inject dateModified into any existing Article schema
+    if (dateModified) {
+      for (const obj of all) {
+        const record = obj as Record<string, unknown>;
+        const t = record['@type'];
+        const isArticle = t === 'Article' || (Array.isArray(t) && (t as string[]).includes('Article'));
+        if (isArticle) {
+          (record as Record<string, string>).dateModified = dateModified;
+          if (!(record as Record<string, string>).datePublished) {
+            (record as Record<string, string>).datePublished = dateModified;
+          }
+        }
+      }
+      // If type is article but no Article schema exists, add a minimal one
+      if (type === 'article' && !all.some(obj => {
+        const record = obj as Record<string, unknown>;
+        const t = record['@type'];
+        return t === 'Article' || (Array.isArray(t) && (t as string[]).includes('Article'));
+      })) {
+        all.push({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: finalTitle,
+          description: finalDescription,
+          url,
+          datePublished: dateModified,
+          dateModified,
+          isAccessibleForFree: true,
+        });
+      }
+    }
+
+    // BreadcrumbList schema
+    if (breadcrumb && breadcrumb.length > 0) {
+      all.push({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumb.map((crumb, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: crumb.name,
+          item: `${SITE_URL.replace(/\/$/, '')}${crumb.path}`,
+        })),
+      });
+    }
 
     // Add a baseline WebSite + Organization on every page so AI crawlers
     // and rich-result tests find the brand context immediately.

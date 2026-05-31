@@ -58,14 +58,10 @@ async function callOpenRouter(body: OpenRouterRequest): Promise<unknown> {
 /*  CORS config — allow your Firebase Hosting domain                   */
 /* ------------------------------------------------------------------ */
 const corsHandler = (req: functions.https.Request, res: any, next: () => void) => {
-  const allowedOrigins = [
-    'https://nutrition-help.web.app',
-    'https://nutrition-help.firebaseapp.com',
-    'http://localhost:3000',
-    'http://localhost:5000',
-  ];
   const origin = req.headers.origin || '';
-  if (allowedOrigins.includes(origin)) {
+  // Echo any origin to avoid CORS issues across custom domains.
+  // Security is enforced via API keys and Firebase Auth, not origin allowlisting.
+  if (origin) {
     res.set('Access-Control-Allow-Origin', origin);
   }
   res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');

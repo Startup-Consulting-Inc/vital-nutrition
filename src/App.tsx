@@ -12,6 +12,8 @@ import Methodology from './pages/Methodology';
 import MealLog from './pages/MealLog';
 import SpecialPopulations from './pages/SpecialPopulations';
 import NutritionChat from './pages/NutritionChat';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 import { AuthProvider } from './hooks/useAuth';
 
@@ -33,6 +35,8 @@ export default function App() {
             <Route path="/log" element={<MealLog />} />
             <Route path="/special-populations" element={<SpecialPopulations />} />
             <Route path="/chat" element={<NutritionChat />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
           </Routes>
         </main>
         <FooterSection />

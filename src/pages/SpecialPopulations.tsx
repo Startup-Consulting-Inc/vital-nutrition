@@ -186,7 +186,7 @@ export default function SpecialPopulations() {
 
   return (
     <section className="w-full py-16 px-6" style={{ backgroundColor: '#f6f5f1' }}>
-      <SEOHead titleKey="sp.h1" descriptionKey="sp.subtitle" path="/special-populations" type="article" />
+      <SEOHead titleKey="sp.h1" descriptionKey="sp.subtitle" path="/special-populations" type="article" dateModified="2026-05-30" breadcrumb={[{ name: 'Home', path: '/' }, { name: 'Special Populations', path: '/special-populations' }]} />
       <div className="max-w-[1100px] mx-auto">
         <header className="mb-12">
           <p className="text-caption text-terracotta mb-2">{t('sp.eyebrow')}</p>
@@ -247,6 +247,10 @@ export default function SpecialPopulations() {
             <strong className="text-deep">{t('sp.disclaimerLabel')}:</strong> {t('sp.disclaimerBody')}
           </p>
         </div>
+
+        <p className="text-[10px] text-deep/40 mt-4">
+          {locale === 'ko' ? '최종 업데이트: 2026년 5월 30일' : 'Last updated: May 30, 2026'}
+        </p>
       </div>
     </section>
   );

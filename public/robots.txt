@@ -1,6 +1,8 @@
 # robots.txt — VITAL Nutrition Intelligence
 # https://vital.nutrition/robots.txt
 #
+# AI-readable site summary: https://vital.nutrition/llms.txt
+#
 # Default: allow all well-behaved crawlers, including AI search engines.
 
 User-agent: *
