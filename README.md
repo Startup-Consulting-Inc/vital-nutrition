@@ -8,11 +8,12 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 
 ## What it does
 
-1. **Scan** a nutrition label photo — AI (Kimi K2.6 via OpenRouter) extracts all nutrition facts automatically
-2. **Confirm** auto-read values before scoring (AI + OCR fallback for accuracy)
-3. **Score** with category-aware rules (beverages, snacks, protein, etc. use different baselines and weights)
-4. **Get AI-powered recommendations** — smart alternatives and actionable tips based on your nutrition profile
-5. **Compare** foods, log meals, chat with an AI nutrition assistant, and explore evidence-based nutrient encyclopedia content
+1. **Scan a barcode** — Instantly fetch nutrition data from 3M+ products via Open Food Facts
+2. **Scan** a nutrition label photo — AI (Kimi K2.6 via OpenRouter) extracts all nutrition facts automatically
+3. **Confirm** auto-read values before scoring (AI + OCR fallback for accuracy)
+4. **Score** with category-aware rules (beverages, snacks, protein, etc. use different baselines and weights)
+5. **Get AI-powered recommendations** — smart alternatives and actionable tips based on your nutrition profile
+6. **Save, share, and compare** — Build a shopping shortlist, share analyses, and compare side-by-side
 
 ---
 
@@ -20,15 +21,22 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 
 ### AI Food Label Analyzer (`/analyzer`)
 
+- **Barcode scanning** — Scan product barcodes to auto-fill nutrition data from Open Food Facts (3M+ products, offline cache)
 - **AI-first label scanning** — Multimodal AI reads nutrition labels from photos, extracts structured data (food name, category, all macros/micros)
 - **OCR fallback** — Tesseract.js kicks in if AI confidence is low or unavailable
 - **Smart food inference** — AI guesses food name and category from nutrition profile when label text is unclear
 - **Client-side preprocessing** — Image upscaling, grayscale, contrast enhancement before analysis
 - **Mandatory confirmation gate** — Users verify AI/OCR values before scoring
 - **Category-aware scoring** — Different baselines and weights per food category
-- **Dietary profiles:** General · Heart Health · Keto · High Protein · Low Sodium · Diabetic
+- **Traffic light verdicts** — `Go` / `Pause` / `Avoid` alongside the 0-100 score for instant scannability
+- **Narrative explanations** — Auto-generated plain-language summary of why the score is what it is
+- **Inline citations** — WHO, AHA, NIH, and US Dietary Guidelines sources visible on every nutrient and recommendation
+- **Dietary profiles:** General · Heart Health · Keto · High Protein · Low Sodium · Diabetic (persisted across sessions)
+- **Health goals** — One-time setup for blood sugar, heart health, weight, allergies, etc. with goal-aware nutrient highlighting
 - **Serving multiplier** (¼×–4×)
 - **AI-powered smart recommendations** — Contextual alternatives and tips based on full nutrition profile
+- **Save for Later** — Heart button saves products to a persistent comparison list
+- **Share** — One-tap shareable summary (Web Share API or clipboard)
 - **Add result to Meal Log**
 
 ### AI Nutrition Chat (`/chat`)
@@ -50,15 +58,17 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 | Route | Description |
 |-------|-------------|
 | `/` | Home — value prop and feature teasers |
+| `/analyzer` | AI label analyzer with barcode scanning, scoring, and recommendations |
 | `/nutrients` | Six essential nutrients overview |
 | `/nutrients/:slug` | Deep dives (carbs, protein, fats, vitamins, minerals, water) |
-| `/amino-acids` | Essential amino acids + BCAA calculator + complete-protein matchmaker |
 | `/compare` | Side-by-side food comparison with diff highlighting |
-| `/log` | Daily meal log with aggregated grade and totals |
+| `/saved` | Saved-for-later comparison list with multi-select diff |
 | `/methodology` | Full penalty/credit tables with sources |
 | `/research` | Evidence-based guidelines and citations (12 research topics) |
 | `/special-populations` | Pregnancy, seniors, athletes, vegan, diabetes, etc. |
 | `/chat` | AI nutrition Q&A assistant |
+| `/amino-acids` | Essential amino acids reference |
+| `/log` | Daily meal log (secondary feature, accessible from analyzer) |
 
 ### Platform
 
@@ -120,6 +130,8 @@ Browser (Vite App)
 - [React Router](https://reactrouter.com/) · [Tailwind CSS](https://tailwindcss.com/) · [shadcn/ui](https://ui.shadcn.com/)
 - [Firebase](https://firebase.google.com/) — Auth, Firestore, Hosting, Cloud Functions
 - [OpenRouter](https://openrouter.ai/) — AI model access (Kimi K2.6, configurable)
+- [Open Food Facts](https://world.openfoodfacts.org/) — Barcode product database
+- [html5-qrcode](https://github.com/mebjas/html5-qrcode) — Barcode scanner
 - [Tesseract.js](https://tesseract.projectnaptha.com/) — OCR fallback
 - [GSAP](https://greensock.com/gsap/) — Animations
 
@@ -219,19 +231,21 @@ Open [http://localhost:3000](http://localhost:3000).
 ├── src/
 │   ├── pages/           # Route-level screens
 │   ├── sections/        # Large page sections (Hero, LabelAnalyzer, Research, …)
-│   ├── components/      # Shared UI (Navbar, HealthScoreGauge, AuthModal, …)
+│   ├── components/      # Shared UI (Navbar, HealthScoreGauge, AuthModal, BarcodeScanner, HealthGoalsModal, …)
 │   ├── lib/
 │   │   ├── apiClient.ts         # Unified API client (dev ↔ production)
 │   │   ├── nutritionAnalyzer.ts # Health Index scoring engine
 │   │   ├── ocrParser.ts         # Label OCR + Atwater checks
 │   │   ├── openrouter.ts        # AI analysis wrapper
+│   │   ├── openFoodFacts.ts     # Barcode lookup + offline cache
 │   │   ├── chatService.ts       # AI chat service
 │   │   ├── firebase.ts          # Firebase initialization
 │   │   ├── firestore.ts         # Firestore CRUD operations
 │   │   ├── foodCatalog.ts       # Compare / search food data
 │   │   ├── mealLog.ts           # Daily log (localStorage + Firestore sync)
+│   │   ├── savedList.ts         # Saved analyses (localStorage)
 │   │   └── i18n.ts              # EN/KO strings
-│   ├── hooks/           # useAuth, useUserProfile
+│   ├── hooks/           # useAuth, useUserProfile, usePersistentProfile, useHealthGoals
 │   └── data/            # Nutrient encyclopedia content
 ├── functions/           # Firebase Cloud Functions
 │   ├── src/

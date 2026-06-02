@@ -57,6 +57,8 @@ export interface NutrientScore {
   /** Whether the limit is per-meal vs per-day so the UI can label clearly. */
   frame: 'meal' | 'day';
   icon: string;
+  /** Source citation for this nutrient's guideline (e.g., 'WHO', 'AHA'). */
+  source: string;
 }
 
 export interface ScoreContribution {
@@ -65,11 +67,17 @@ export interface ScoreContribution {
   reason: string;
 }
 
+export type TrafficLight = 'go' | 'pause' | 'avoid';
+
 export interface HealthAnalysis {
   overallScore: number;
   grade: 'A' | 'B' | 'C' | 'D' | 'F';
   gradeColor: string;
   category: string;
+  /** Traffic-light verdict for quick scannability. */
+  verdict: TrafficLight;
+  /** Plain-language 1-sentence summary of why the score is what it is. */
+  narrativeExplanation: string;
   nutrientScores: NutrientScore[];
   positiveFactors: string[];
   negativeFactors: string[];
@@ -91,6 +99,8 @@ export interface Recommendation {
   category: 'alternative' | 'tip' | 'warning';
   priority: 'high' | 'medium' | 'low';
   icon: string;
+  /** Source citation for this recommendation. */
+  source: string;
 }
 
 export interface InlineAlternative {
@@ -329,6 +339,46 @@ function applyCategoryWeights(
   };
 }
 
+function verdictForScore(score: number): TrafficLight {
+  if (score >= 70) return 'go';
+  if (score >= 55) return 'pause';
+  return 'avoid';
+}
+
+function generateNarrativeExplanation(
+  score: number,
+  grade: string,
+  _contributions: ScoreContribution[],
+  positiveFactors: string[],
+  negativeFactors: string[],
+  processingLevel: string,
+): string {
+  const verdict = verdictForScore(score);
+  const verdictLabel = verdict === 'go' ? 'a good choice' : verdict === 'pause' ? 'okay in moderation' : 'best limited';
+
+  // Pick top 2 negative and top 1 positive for brevity
+  const topNeg = negativeFactors.slice(0, 2);
+  const topPos = positiveFactors.slice(0, 1);
+
+  let sentence = `Score: ${score} (${grade}) — ${verdictLabel}.`;
+
+  if (topNeg.length > 0 && topPos.length > 0) {
+    sentence += ` Watch out for ${topNeg.join(' and ')}. On the plus side, ${topPos[0].toLowerCase()}.`;
+  } else if (topNeg.length > 0) {
+    sentence += ` Main concern${topNeg.length > 1 ? 's' : ''}: ${topNeg.join(' and ')}.`;
+  } else if (topPos.length > 0) {
+    sentence += ` ${topPos[0]}.`;
+  }
+
+  if (processingLevel === 'ultra') {
+    sentence += ' This is an ultra-processed product.';
+  } else if (processingLevel === 'minimally') {
+    sentence += ' Minimally processed, closer to whole food.';
+  }
+
+  return sentence;
+}
+
 function gradeColorFor(grade: 'A' | 'B' | 'C' | 'D' | 'F'): string {
   switch (grade) {
     case 'A': return '#4a7c59';
@@ -443,6 +493,7 @@ export function analyzeNutritionLabel(
     status: getCalorieStatus(calories, PER_MEAL_CALORIE_TARGET),
     frame: 'meal',
     icon: 'Cal',
+    source: 'IOM dietary reference intakes',
   });
   if (calories > 600) negativeFactors.push(`High calorie serving (${Math.round(calories)} cal)`);
   else if (calories > 0 && calories <= 350) positiveFactors.push('Moderate calorie serving');
@@ -452,6 +503,7 @@ export function analyzeNutritionLabel(
   scores.push({
     name: 'Saturated Fat', value: saturatedFat, unit: 'g', limit: RDI.saturatedFat,
     percentOfLimit: satFatPct, status: getStatus(satFatPct, 'limit'), frame: 'day', icon: 'SF',
+    source: 'US Dietary Guidelines 2020-25',
   });
   if (satFatPct > 25) {
     negativeFactors.push(`High in saturated fat (${satFatPct}% of daily limit per serving)`);
@@ -459,6 +511,7 @@ export function analyzeNutritionLabel(
       title: 'Choose Lower-Saturated-Fat Options',
       description: 'Look for products with under 2g saturated fat per serving. Plant-based fats (nuts, seeds, avocado, olive oil) are healthier substitutes.',
       category: 'alternative', priority: 'high', icon: 'swap',
+      source: 'US Dietary Guidelines 2020-25 (≤10% calories)',
     });
   }
 
@@ -467,12 +520,14 @@ export function analyzeNutritionLabel(
     scores.push({
       name: 'Trans Fat', value: transFat, unit: 'g', limit: RDI.transFat,
       percentOfLimit: 999, status: 'danger', frame: 'day', icon: 'TF',
+      source: 'WHO REPLACE Action Package, 2018',
     });
     negativeFactors.push('Contains trans fats — strongly linked to cardiovascular disease');
     recommendations.push({
       title: 'Avoid Trans Fats Completely',
       description: 'WHO recommends eliminating industrial trans fats from the food supply. Check ingredients for "partially hydrogenated oils."',
       category: 'warning', priority: 'high', icon: 'alert',
+      source: 'WHO REPLACE Action Package, 2018',
     });
   }
 
@@ -481,6 +536,7 @@ export function analyzeNutritionLabel(
   scores.push({
     name: 'Sodium', value: Math.round(sodium), unit: 'mg', limit: RDI.sodium,
     percentOfLimit: sodiumPct, status: getStatus(sodiumPct, 'limit'), frame: 'day', icon: 'Na',
+    source: 'AHA: ideal limit 1,500mg/day',
   });
   if (sodiumPct > 20) {
     negativeFactors.push(`High sodium (${sodiumPct}% of daily limit per serving)`);
@@ -489,6 +545,7 @@ export function analyzeNutritionLabel(
         title: 'Seek Low-Sodium Options',
         description: `${Math.round(sodium)}mg per serving. AHA's ideal daily limit is 1,500mg. Look for "low sodium" (≤140mg/serving).`,
         category: 'alternative', priority: 'high', icon: 'swap',
+        source: 'AHA: ideal limit 1,500mg/day',
       });
     }
   }
@@ -501,6 +558,7 @@ export function analyzeNutritionLabel(
   scores.push({
     name: 'Cholesterol', value: Math.round(cholesterol), unit: 'mg', limit: RDI.cholesterol,
     percentOfLimit: cholesterolPct, status: cholesterolPct > 60 ? 'warning' : 'good', frame: 'day', icon: 'Ch',
+    source: 'US Dietary Guidelines 2015',
   });
   // No factor surfaced unless extreme + ultra-processed context.
 
@@ -509,6 +567,7 @@ export function analyzeNutritionLabel(
   scores.push({
     name: 'Added Sugar', value: addedSugar, unit: 'g', limit: RDI.addedSugar,
     percentOfLimit: sugarPct, status: getStatus(sugarPct, 'limit'), frame: 'day', icon: 'SU',
+    source: 'AHA 2009; US Dietary Guidelines 2020-25',
   });
   if (sugarPct > 20) {
     negativeFactors.push(`High added sugar (${sugarPct}% of daily limit per serving)`);
@@ -516,6 +575,7 @@ export function analyzeNutritionLabel(
       title: 'Reduce Added Sugar',
       description: 'Excess added sugar is linked to obesity, type 2 diabetes, and heart disease. Choose unsweetened versions or fruit-sweetened alternatives.',
       category: 'alternative', priority: 'high', icon: 'swap',
+      source: 'AHA 2009; US Dietary Guidelines 2020-25',
     });
   }
   if (addedSugar === 0 && totalSugar <= 5) {
@@ -527,6 +587,7 @@ export function analyzeNutritionLabel(
     scores.push({
       name: 'Total Sugar', value: totalSugar, unit: 'g', limit: RDI.addedSugar,
       percentOfLimit: totalSugarPct, status: getStatus(totalSugarPct, 'limit'), frame: 'day', icon: 'TS',
+      source: 'AHA 2009; US Dietary Guidelines 2020-25',
     });
   }
 
@@ -535,6 +596,7 @@ export function analyzeNutritionLabel(
   scores.push({
     name: 'Dietary Fiber', value: dietaryFiber, unit: 'g', limit: RDI.dietaryFiber,
     percentOfLimit: fiberPct, status: getStatus(fiberPct, 'target'), frame: 'day', icon: 'FB',
+    source: 'IOM AI: 25-38g/day',
   });
   if (fiberPct >= 20) positiveFactors.push(`Excellent fiber content (${fiberPct}% of daily needs)`);
   else if (fiberPct >= 10) positiveFactors.push('Good source of dietary fiber');
@@ -544,6 +606,7 @@ export function analyzeNutritionLabel(
       title: 'Add Fiber-Rich Foods',
       description: 'Choose whole grains with ≥3g fiber per serving and add legumes, fruits, and vegetables.',
       category: 'tip', priority: 'medium', icon: 'plus',
+      source: 'FDA "good source of fiber" claim threshold',
     });
   }
 
@@ -552,6 +615,7 @@ export function analyzeNutritionLabel(
   scores.push({
     name: 'Protein', value: protein, unit: 'g', limit: RDI.protein,
     percentOfLimit: proteinPct, status: getStatus(proteinPct, 'target'), frame: 'day', icon: 'PR',
+    source: 'WHO/FAO 0.83g/kg/day',
   });
   if (proteinPct >= 20) positiveFactors.push(`High protein content (${proteinPct}% of daily needs)`);
 
@@ -560,6 +624,7 @@ export function analyzeNutritionLabel(
   scores.push({
     name: 'Total Fat', value: totalFat, unit: 'g', limit: RDI.totalFat,
     percentOfLimit: totalFatPct, status: getStatus(totalFatPct, 'limit'), frame: 'day', icon: 'TF',
+    source: 'US Dietary Guidelines 2020-25',
   });
 
   if (totalCarbs > 0) {
@@ -567,6 +632,7 @@ export function analyzeNutritionLabel(
     scores.push({
       name: 'Total Carbs', value: totalCarbs, unit: 'g', limit: RDI.totalCarbs,
       percentOfLimit: carbPct, status: getStatus(carbPct, 'limit'), frame: 'day', icon: 'CB',
+      source: 'US Dietary Guidelines 2020-25',
     });
   }
 
@@ -702,6 +768,7 @@ export function analyzeNutritionLabel(
         title: 'Limit Ultra-Processed Foods',
         description: 'Regular consumption of ultra-processed foods is linked with higher risk of obesity, heart disease, and type 2 diabetes. Prioritize whole foods.',
         category: 'warning', priority: 'high', icon: 'alert',
+        source: 'NOVA classification (Monteiro et al., 2019)',
       });
     }
   } else if (addedSugar > 5 || sodium > 200) {
@@ -721,24 +788,28 @@ export function analyzeNutritionLabel(
         title: 'Choose a Lower-Sugar Drink',
         description: 'Swap sugary sodas and juices for diet/zero-sugar versions, sparkling water, or unsweetened tea.',
         category: 'alternative', priority: 'high', icon: 'swap',
+        source: 'AHA 2009; US Dietary Guidelines 2020-25',
       });
     } else if (category === 'snack') {
       recommendations.push({
         title: 'Choose a Better Snack',
         description: 'Try roasted chickpeas, unsalted nuts, or whole-grain crackers with ≥3g fiber instead of highly processed snacks.',
         category: 'alternative', priority: 'high', icon: 'swap',
+        source: 'US Dietary Guidelines 2020-25',
       });
     } else if (category === 'protein') {
       recommendations.push({
         title: 'Choose a Leaner Protein',
         description: 'Look for 93% lean poultry, fish, or plant proteins with less saturated fat per serving.',
         category: 'alternative', priority: 'high', icon: 'swap',
+        source: 'US Dietary Guidelines 2020-25 (≤10% calories from saturated fat)',
       });
     } else {
       recommendations.push({
         title: 'Choose Whole Food Alternatives',
         description: 'Replace this with fresh fruits, vegetables, whole grains, lean proteins, or nuts. Whole foods provide more nutrients per calorie.',
         category: 'alternative', priority: 'high', icon: 'leaf',
+        source: 'NOVA classification (Monteiro et al., 2019)',
       });
     }
   }
@@ -750,6 +821,7 @@ export function analyzeNutritionLabel(
         ? 'Sodium from drinks adds up across the day. Pair with lower-sodium meals when possible.'
         : 'Multiple servings or paired foods compound sodium quickly. Aim for meals totaling under 700mg.',
       category: 'tip', priority: 'medium', icon: 'tip',
+      source: 'AHA: ideal limit 1,500mg/day',
     });
   }
 
@@ -759,23 +831,32 @@ export function analyzeNutritionLabel(
         title: 'Solid Choice Within Beverages',
         description: 'For everyday hydration, plain water or unsweetened tea are the lightest options.',
         category: 'tip', priority: 'low', icon: 'check',
+        source: 'US Dietary Guidelines 2020-25',
       });
     } else {
       recommendations.push({
         title: 'Solid Nutritious Choice',
         description: 'This product fits a healthy diet. Pair with a variety of vegetables, fruits, and whole grains.',
         category: 'tip', priority: 'low', icon: 'check',
+        source: 'US Dietary Guidelines 2020-25',
       });
     }
   }
 
   const inlineAlternative = computeInlineAlternative(data, score, isWholeFood);
 
+  const verdict = verdictForScore(score);
+  const narrativeExplanation = generateNarrativeExplanation(
+    score, grade, contributions, positiveFactors, negativeFactors, processingLevel
+  );
+
   return {
     overallScore: score,
     grade,
     gradeColor,
     category: gradeCategory,
+    verdict,
+    narrativeExplanation,
     nutrientScores: scores,
     positiveFactors,
     negativeFactors,

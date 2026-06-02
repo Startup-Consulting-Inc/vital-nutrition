@@ -10,6 +10,7 @@ import NutrientDetail from './pages/NutrientDetail';
 import AminoAcids from './pages/AminoAcids';
 import Methodology from './pages/Methodology';
 import MealLog from './pages/MealLog';
+import SavedList from './pages/SavedList';
 import SpecialPopulations from './pages/SpecialPopulations';
 import NutritionChat from './pages/NutritionChat';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/compare" element={<Compare />} />
             <Route path="/amino-acids" element={<AminoAcids />} />
             <Route path="/log" element={<MealLog />} />
+            <Route path="/saved" element={<SavedList />} />
             <Route path="/special-populations" element={<SpecialPopulations />} />
             <Route path="/chat" element={<NutritionChat />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />

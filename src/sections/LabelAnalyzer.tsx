@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useMemo } from 'react';
+import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { extractNutritionFromImage, type ExtractedNutrients, type ExtractedNutrientField } from '@/lib/ocrParser';
 import { analyzeLabelViaAPI, mergeAIWithOCR, type AIAnalysisResult } from '@/lib/openrouter';
@@ -14,7 +14,13 @@ import {
 } from '@/lib/nutritionAnalyzer';
 import HealthScoreGauge from '@/components/HealthScoreGauge';
 import { addEntry as addEntryToLog } from '@/lib/mealLog';
+import { saveAnalysis } from '@/lib/savedList';
+import { fetchProductByBarcode } from '@/lib/openFoodFacts';
+import BarcodeScanner from '@/components/BarcodeScanner';
 import { useT, useLocale } from '@/lib/i18n';
+import { usePersistentProfile } from '@/hooks/usePersistentProfile';
+import { useHealthGoals, type HealthGoal } from '@/hooks/useHealthGoals';
+import HealthGoalsModal from '@/components/HealthGoalsModal';
 
 const emptyForm: NutritionFacts = {
   productName: '',
@@ -100,6 +106,8 @@ export default function LabelAnalyzer() {
   const [ocrStatus, setOcrStatus] = useState<'idle' | 'scanning' | 'done' | 'error'>('idle');
   const [aiMode, setAiMode] = useState<'ai-first' | 'ocr-only'>('ai-first');
   // AI is always the default for analysis. OCR-only is a fallback option.
+  const [showBarcodeScanner, setShowBarcodeScanner] = useState(false);
+  const [barcodeLoading, setBarcodeLoading] = useState(false);
   const [aiResult, setAiResult] = useState<AIAnalysisResult | null>(null);
   const [ocrDebug, setOcrDebug] = useState<{ line: string; matched: string; value: number }[]>([]);
   const [autoFilledFields, setAutoFilledFields] = useState<Set<string>>(new Set());
@@ -107,13 +115,24 @@ export default function LabelAnalyzer() {
   const [atwaterWarning, setAtwaterWarning] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'details' | 'alternatives' | 'breakdown'>('details');
   const [showForm, setShowForm] = useState(true);
-  const [profile, setProfile] = useState<DietaryProfile>('general');
+  const { profile, setProfile } = usePersistentProfile();
+  const healthGoals = useHealthGoals();
+  const [showGoalsModal, setShowGoalsModal] = useState(false);
   const [servingMultiplier, setServingMultiplier] = useState<number>(1);
   const [needsConfirmation, setNeedsConfirmation] = useState(false);
   const [loggedFlash, setLoggedFlash] = useState(false);
+  const [savedFlash, setSavedFlash] = useState(false);
+  const [sharedFlash, setSharedFlash] = useState(false);
   const [confirmedOcr, setConfirmedOcr] = useState(false);
   const [proteinValidationError, setProteinValidationError] = useState<string | null>(null);
   const [autoDetectedCategory, setAutoDetectedCategory] = useState<NutritionFacts['foodCategory'] | null>(null);
+
+  // Show health goals modal on first visit
+  useEffect(() => {
+    if (!healthGoals.goals.hasCompletedSetup) {
+      setShowGoalsModal(true);
+    }
+  }, [healthGoals.goals.hasCompletedSetup]);
 
   const applyExtracted = useCallback((extracted: ExtractedNutrients) => {
     const filled = new Set<string>();
@@ -372,9 +391,40 @@ export default function LabelAnalyzer() {
 
   const hasData = form.calories > 0 || form.totalFat > 0 || form.sodium > 0 || form.protein > 0;
 
+  // Map health goals to nutrients that should be highlighted
+  const goalRelevantNutrients = useMemo(() => {
+    const map: Record<HealthGoal, string[]> = {
+      general: [],
+      bloodSugar: ['Added Sugar', 'Total Sugar', 'Total Carbs', 'Dietary Fiber'],
+      heartHealth: ['Saturated Fat', 'Sodium', 'Trans Fat'],
+      weightManagement: ['Calories', 'Total Fat', 'Added Sugar'],
+      lowSodium: ['Sodium'],
+      highProtein: ['Protein'],
+      foodAllergies: [],
+    };
+    const relevant = new Set<string>();
+    healthGoals.goals.goals.forEach((g) => {
+      map[g]?.forEach((n) => relevant.add(n));
+    });
+    return relevant;
+  }, [healthGoals.goals.goals]);
+
   // ---- RESULTS VIEW ----
   if (!showForm && analysis) {
     return (
+      <>
+      <HealthGoalsModal
+        isOpen={showGoalsModal}
+        onClose={() => setShowGoalsModal(false)}
+        onSave={(goals, allergens) => {
+          healthGoals.setGoals({
+            goals: goals.length > 0 ? goals : ['general'],
+            allergens,
+            hasCompletedSetup: true,
+          });
+          setShowGoalsModal(false);
+        }}
+      />
       <section id="analyzer" className="w-full py-24 px-6" style={{ backgroundColor: '#f6f5f1' }}>
         <div className="max-w-[1100px] mx-auto">
           <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
@@ -382,17 +432,64 @@ export default function LabelAnalyzer() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
               {t('an.scoreAnother')}
             </button>
-            <button
-              onClick={() => {
-                addEntryToLog({ name: form.productName || (locale === 'ko' ? '스캔한 제품' : 'Scanned product'), servings: servingMultiplier, data: form });
-                setLoggedFlash(true);
-                window.setTimeout(() => setLoggedFlash(false), 2000);
-              }}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-terracotta text-white text-sm font-medium hover:bg-[#c44e2f] transition-colors"
-            >
-              {loggedFlash ? t('an.addedToLog') : t('an.addToLog')}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                onClick={() => {
+                  saveAnalysis({
+                    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+                    timestamp: Date.now(),
+                    productName: form.productName || '',
+                    servingSize: form.servingSize || '',
+                    calories: form.calories,
+                    score: analysis.overallScore,
+                    grade: analysis.grade,
+                    gradeColor: analysis.gradeColor,
+                    verdict: analysis.verdict,
+                    profile,
+                    analysis,
+                    nutritionFacts: form,
+                    servingMultiplier,
+                  });
+                  setSavedFlash(true);
+                  window.setTimeout(() => setSavedFlash(false), 2000);
+                }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-deep text-white text-sm font-medium hover:bg-deep/90 transition-colors"
+              >
+                {savedFlash ? 'Saved!' : 'Save for Later'}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+              <button
+                onClick={async () => {
+                  const text = `${form.productName || 'Product'} — Health Index: ${analysis.overallScore}/100 (${analysis.grade})\n${analysis.narrativeExplanation}\nAnalyzed with VITAL: https://nutrition.ai-biz.app`;
+                  try {
+                    if (navigator.share) {
+                      await navigator.share({ title: 'VITAL Nutrition Analysis', text });
+                    } else {
+                      await navigator.clipboard.writeText(text);
+                      setSharedFlash(true);
+                      window.setTimeout(() => setSharedFlash(false), 2000);
+                    }
+                  } catch {
+                    // User cancelled or share failed
+                  }
+                }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-deep/15 text-deep text-sm font-medium hover:bg-deep/5 transition-colors"
+              >
+                {sharedFlash ? 'Copied!' : 'Share'}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+              </button>
+              <button
+                onClick={() => {
+                  addEntryToLog({ name: form.productName || (locale === 'ko' ? '스캔한 제품' : 'Scanned product'), servings: servingMultiplier, data: form });
+                  setLoggedFlash(true);
+                  window.setTimeout(() => setLoggedFlash(false), 2000);
+                }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-terracotta text-white text-sm font-medium hover:bg-[#c44e2f] transition-colors"
+              >
+                {loggedFlash ? t('an.addedToLog') : t('an.addToLog')}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
           </div>
 
           <div className="bg-white rounded-2xl p-8 shadow-sm border border-deep/5 mb-8">
@@ -410,10 +507,23 @@ export default function LabelAnalyzer() {
                   </span>
                   <span className="px-3 py-1 rounded-full bg-surface text-deep/60 text-xs">{Math.round(form.calories * servingMultiplier)} cal</span>
                   <span className="px-3 py-1 rounded-full text-white text-xs font-medium" style={{ backgroundColor: analysis.gradeColor }}>Grade {analysis.grade}</span>
+                  <span className="px-3 py-1 rounded-full text-white text-xs font-medium"
+                    style={{
+                      backgroundColor: analysis.verdict === 'go' ? '#4a7c59' : analysis.verdict === 'pause' ? '#c9a96e' : '#b8301f',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {analysis.verdict === 'go' ? '✓ Go' : analysis.verdict === 'pause' ? '◐ Pause' : '✕ Avoid'}
+                  </span>
                   <span className="px-3 py-1 rounded-full text-xs bg-deep/5 text-deep/60">
                     Profile: {profileOptions.find(p => p.value === profile)?.label}
                   </span>
                 </div>
+                {/* Narrative explanation */}
+                <p className="text-sm text-deep/80 leading-relaxed bg-deep/5 rounded-xl p-3">
+                  {analysis.narrativeExplanation}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   <span
                     className="px-3 py-1 rounded-lg text-xs font-medium"
@@ -555,27 +665,48 @@ export default function LabelAnalyzer() {
             <button onClick={() => setActiveTab('breakdown')} className={`pb-3 text-sm font-medium transition-colors ${activeTab === 'breakdown' ? 'text-terracotta border-b-2 border-terracotta' : 'text-deep/40 hover:text-deep/70'}`}>Score Breakdown</button>
           </div>
 
+          {/* Goal-aware banner */}
+          {goalRelevantNutrients.size > 0 && (
+            <div className="mb-4 p-3 rounded-xl bg-terracotta/5 border border-terracotta/15 flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d95c39" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <p className="text-xs text-deep/70">
+                Highlighting nutrients relevant to your goals: <span className="font-medium text-deep">{Array.from(goalRelevantNutrients).join(', ')}</span>
+              </p>
+            </div>
+          )}
+
           {activeTab === 'details' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {analysis.nutrientScores.map((ns) => (
-                <div key={ns.name} className="p-4 rounded-xl bg-white border border-deep/5">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: ns.status === 'good' ? '#4a7c59' : ns.status === 'warning' ? '#c9a96e' : '#d95c39' }}>{ns.icon}</div>
-                      <div>
-                        <p className="text-sm font-medium text-deep">{ns.name}</p>
-                        <p className="text-xs text-deep/40">
-                          {ns.value}{ns.unit} / {ns.limit}{ns.unit} <span className="text-deep/30">({ns.frame === 'meal' ? 'per meal' : 'daily'})</span>
-                        </p>
+              {analysis.nutrientScores.map((ns) => {
+                const isRelevant = goalRelevantNutrients.has(ns.name);
+                return (
+                  <div key={ns.name} className={`p-4 rounded-xl bg-white border transition-all ${isRelevant ? 'border-terracotta/40 shadow-sm' : 'border-deep/5'}`}>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: ns.status === 'good' ? '#4a7c59' : ns.status === 'warning' ? '#c9a96e' : '#d95c39' }}>{ns.icon}</div>
+                        <div>
+                          <p className="text-sm font-medium text-deep flex items-center gap-1.5">
+                            {ns.name}
+                            {isRelevant && (
+                              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-terracotta/10 text-terracotta font-medium">Your goal</span>
+                            )}
+                          </p>
+                          <p className="text-xs text-deep/40">
+                            {ns.value}{ns.unit} / {ns.limit}{ns.unit} <span className="text-deep/30">({ns.frame === 'meal' ? 'per meal' : 'daily'})</span>
+                          </p>
+                          {ns.source && (
+                            <p className="text-[10px] text-deep/30 mt-0.5">Source: {ns.source}</p>
+                          )}
+                        </div>
                       </div>
+                      <span className="text-lg font-bold" style={{ color: ns.status === 'good' ? '#4a7c59' : ns.status === 'warning' ? '#c9a96e' : '#d95c39' }}>{ns.percentOfLimit}%</span>
                     </div>
-                    <span className="text-lg font-bold" style={{ color: ns.status === 'good' ? '#4a7c59' : ns.status === 'warning' ? '#c9a96e' : '#d95c39' }}>{ns.percentOfLimit}%</span>
+                    <div className="h-2 bg-deep/5 rounded-full overflow-hidden">
+                      <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${Math.min(ns.percentOfLimit, 100)}%`, backgroundColor: ns.status === 'good' ? '#4a7c59' : ns.status === 'warning' ? '#c9a96e' : '#d95c39' }} />
+                    </div>
                   </div>
-                  <div className="h-2 bg-deep/5 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${Math.min(ns.percentOfLimit, 100)}%`, backgroundColor: ns.status === 'good' ? '#4a7c59' : ns.status === 'warning' ? '#c9a96e' : '#d95c39' }} />
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
 
@@ -621,6 +752,9 @@ export default function LabelAnalyzer() {
                         <span className="text-[10px] px-2 py-0.5 rounded-full font-medium" style={{ backgroundColor: rec.priority === 'high' ? '#d95c3915' : rec.priority === 'medium' ? '#c9a96e15' : '#4a7c5915', color: rec.priority === 'high' ? '#d95c39' : rec.priority === 'medium' ? '#c9a96e' : '#4a7c59' }}>{rec.priority}</span>
                       </div>
                       <p className="text-sm text-deep/60 leading-relaxed">{rec.description}</p>
+                      {rec.source && (
+                        <p className="text-[10px] text-deep/30 mt-1.5">Source: {rec.source}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -651,11 +785,62 @@ export default function LabelAnalyzer() {
           )}
         </div>
       </section>
+      </>
     );
   }
 
   // ---- FORM VIEW ----
   return (
+    <>
+    <HealthGoalsModal
+      isOpen={showGoalsModal}
+      onClose={() => setShowGoalsModal(false)}
+      onSave={(goals, allergens) => {
+        healthGoals.setGoals({
+          goals: goals.length > 0 ? goals : ['general'],
+          allergens,
+          hasCompletedSetup: true,
+        });
+        setShowGoalsModal(false);
+      }}
+    />
+    {showBarcodeScanner && (
+      <BarcodeScanner
+        onScan={async (barcode) => {
+          setShowBarcodeScanner(false);
+          setBarcodeLoading(true);
+          const facts = await fetchProductByBarcode(barcode);
+          setBarcodeLoading(false);
+          if (facts) {
+            setForm({ ...facts });
+            setUploadedImage(null);
+            setOcrStatus('idle');
+            setAutoFilledFields(new Set());
+            setEstimatedFields(new Set(facts.estimatedFields || []));
+            setAtwaterWarning(null);
+            setNeedsConfirmation(false);
+            setConfirmedOcr(true);
+            setProteinValidationError(null);
+            setAutoDetectedCategory(null);
+          } else {
+            setProteinValidationError(
+              locale === 'ko'
+                ? '바코드를 찾을 수 없습니다. 수동으로 입력해 주세요.'
+                : 'Product not found in database. Please enter manually.'
+            );
+          }
+        }}
+        onClose={() => setShowBarcodeScanner(false)}
+      />
+    )}
+    {barcodeLoading && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-deep/40 backdrop-blur-sm">
+        <div className="bg-white rounded-2xl p-6 flex items-center gap-3">
+          <div className="w-5 h-5 border-2 border-terracotta/30 border-t-terracotta rounded-full animate-spin" />
+          <p className="text-sm text-deep/70">Looking up product...</p>
+        </div>
+      </div>
+    )}
     <section id="analyzer" className="w-full py-24 px-6" style={{ backgroundColor: '#f6f5f1' }}>
       <div className="max-w-[1100px] mx-auto">
         <header className="text-center mb-10">
@@ -675,7 +860,13 @@ export default function LabelAnalyzer() {
 
         {/* Upload buttons */}
         {!uploadedImage && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <button onClick={() => setShowBarcodeScanner(true)} className="flex flex-col items-center gap-3 p-6 rounded-2xl border-2 border-dashed border-deep/15 hover:border-terracotta/40 hover:bg-terracotta/3 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-terracotta/10 flex items-center justify-center group-hover:bg-terracotta/20 transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d95c39" strokeWidth="2"><path d="M3 7h2M3 17h2M19 7h2M19 17h2M7 3v2M17 3v2M7 19v2M17 19v2M6 7h2v10H6zM16 7h2v10h-2z"/></svg>
+              </div>
+              <span className="text-sm font-medium text-deep">{locale === 'ko' ? '바코드 스캔' : 'Scan Barcode'}</span>
+            </button>
             <button onClick={() => fileInputRef.current?.click()} className="flex flex-col items-center gap-3 p-6 rounded-2xl border-2 border-dashed border-deep/15 hover:border-terracotta/40 hover:bg-terracotta/3 transition-all group">
               <div className="w-10 h-10 rounded-xl bg-terracotta/10 flex items-center justify-center group-hover:bg-terracotta/20 transition-colors">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d95c39" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
@@ -835,7 +1026,16 @@ export default function LabelAnalyzer() {
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-deep/5 mb-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-deep/40 mb-2">Score for</label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="text-xs uppercase tracking-wider text-deep/40">Score for</label>
+                    <button
+                      onClick={() => setShowGoalsModal(true)}
+                      className="text-[11px] text-terracotta hover:underline flex items-center gap-1"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                      {locale === 'ko' ? '건강 목표' : 'Health Goals'}
+                    </button>
+                  </div>
                   <div className="flex flex-wrap gap-1.5">
                     {profileOptions.map(opt => (
                       <button
@@ -851,6 +1051,11 @@ export default function LabelAnalyzer() {
                   <p className="text-[11px] text-deep/40 mt-2">
                     {profileOptions.find(p => p.value === profile)?.hint}
                   </p>
+                  {healthGoals.goals.goals.length > 0 && !healthGoals.goals.goals.includes('general') && (
+                    <p className="text-[11px] text-terracotta mt-1">
+                      Goals: {healthGoals.goals.goals.map(g => g === 'bloodSugar' ? 'Blood Sugar' : g === 'heartHealth' ? 'Heart Health' : g === 'weightManagement' ? 'Weight' : g === 'lowSodium' ? 'Low Sodium' : g === 'highProtein' ? 'High Protein' : g === 'foodAllergies' ? 'Allergies' : g).join(', ')}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-deep/40 mb-2">
@@ -1037,5 +1242,6 @@ export default function LabelAnalyzer() {
         </div>
       </div>
     </section>
+    </>
   );
 }

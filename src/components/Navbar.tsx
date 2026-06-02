@@ -8,12 +8,11 @@ import { useT, useLocale, type Locale } from '@/lib/i18n';
 const navLinkKeys = [
   { path: '/analyzer',    key: 'nav.analyzer' as const },
   { path: '/nutrients',   key: 'nav.nutrients' as const },
-  { path: '/amino-acids', key: 'nav.amino' as const },
-  { path: '/log',         key: 'nav.log' as const },
+  { path: '/compare',     key: 'nav.compare' as const },
+  { path: '/saved',       key: 'nav.saved' as const },
   { path: '/chat',        key: 'nav.chat' as const },
   { path: '/methodology', key: 'nav.methodology' as const },
   { path: '/research',    key: 'nav.research' as const },
-  { path: '/compare',     key: 'nav.compare' as const },
 ];
 
 export default function Navbar() {
@@ -139,17 +138,6 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link
-              to="/chat"
-              onClick={() => setMobileOpen(false)}
-              className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                location.pathname === '/chat'
-                  ? 'bg-deep text-inverse'
-                  : 'text-deep/60 hover:text-deep hover:bg-deep/5'
-              }`}
-            >
-              {t('nav.chat')}
-            </Link>
             <div className="flex items-center gap-2 px-4 py-2">
               <span className="text-xs text-deep/40">{t('language.label')}:</span>
               {(['en', 'ko'] as Locale[]).map(l => (
