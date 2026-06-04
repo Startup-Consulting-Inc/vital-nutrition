@@ -15,6 +15,8 @@ import SpecialPopulations from './pages/SpecialPopulations';
 import NutritionChat from './pages/NutritionChat';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import Blog from './pages/Blog';
+import BlogArticle from './pages/BlogArticle';
 
 import { AuthProvider } from './hooks/useAuth';
 
@@ -39,6 +41,8 @@ export default function App() {
             <Route path="/chat" element={<NutritionChat />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogArticle />} />
           </Routes>
         </main>
         <FooterSection />

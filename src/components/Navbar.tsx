@@ -11,6 +11,7 @@ const navLinkKeys = [
   { path: '/compare',     key: 'nav.compare' as const },
   { path: '/saved',       key: 'nav.saved' as const },
   { path: '/chat',        key: 'nav.chat' as const },
+  { path: '/blog',        key: 'nav.blog' as const },
   { path: '/methodology', key: 'nav.methodology' as const },
   { path: '/research',    key: 'nav.research' as const },
 ];
@@ -57,7 +58,10 @@ export default function Navbar() {
 
             <nav className="hidden md:flex items-center gap-1 flex-1 justify-center">
               {navLinkKeys.map((link) => {
-                const isActive = location.pathname === link.path;
+                const isActive =
+                  link.path === '/blog'
+                    ? location.pathname === link.path || location.pathname.startsWith('/blog/')
+                    : location.pathname === link.path;
                 return (
                   <Link
                     key={link.path}

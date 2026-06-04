@@ -64,6 +64,67 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://nutrition.ai-biz.app/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/dopamine-guide</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/dopamine-synthesis-balance</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/dopamine-foods</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/dopamine-stimulants</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/dopamine-lifestyle</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/dopamine-detox</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/vitamins-guide</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/vitamins-how-they-work</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/vitamins-b-energy</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/vitamins-b12-folate</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/vitamins-c-and-d</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/vitamins-fat-soluble</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/vitamins-korean-plate</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nutrition.ai-biz.app/blog/vitamins-supplements</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://nutrition.ai-biz.app/special-populations</loc>
     <priority>0.7</priority>
   </url>

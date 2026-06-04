@@ -14,6 +14,7 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 4. **Score** with category-aware rules (beverages, snacks, protein, etc. use different baselines and weights)
 5. **Get AI-powered recommendations** — smart alternatives and actionable tips based on your nutrition profile
 6. **Save, share, and compare** — Build a shopping shortlist, share analyses, and compare side-by-side
+7. **Read evidence-based articles** — Bilingual blog series on dopamine & nutrition and vitamins & daily life
 
 ---
 
@@ -46,6 +47,22 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 - Rate-limited to prevent abuse
 - Conversation history stored locally
 
+### Blog (`/blog`)
+
+Educational article series in **English and Korean**, written for general readers (plain language, NIH-sourced numbers, links into the nutrient encyclopedia).
+
+| Series | Episodes | Topics |
+|--------|----------|--------|
+| **Dopamine & Nutrition** | 6 | What dopamine does, synthesis pathway, supporting nutrients & foods, stimulants, lifestyle, “dopamine detox” myths |
+| **Vitamins & Daily Life** | 8 | Vitamins 101, how they work in the body, B vitamins, C & D, fat-soluble A/E/K, Korean plate, supplements & labels |
+
+**Blog UX**
+
+- **Two-column layout** on `/blog` — left: collapsible series index (collapsed by default); right: article body
+- **Deep links** — `/blog?article={slug}` opens the split view with that article selected
+- **Standalone URLs** — `/blog/{slug}` still works for sharing and SEO (full-page article view)
+- **Rich content blocks** — flow diagrams, tables, callouts, and stat highlights in articles
+
 ### Nutrient Encyclopedia (`/nutrients`)
 
 - Six essential nutrients with deep dives
@@ -67,6 +84,9 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 | `/research` | Evidence-based guidelines and citations (12 research topics) |
 | `/special-populations` | Pregnancy, seniors, athletes, vegan, diabetes, etc. |
 | `/chat` | AI nutrition Q&A assistant |
+| `/blog` | Article hub — collapsible series index + in-page reader |
+| `/blog/:slug` | Single article (shareable URL) |
+| `/blog?article=:slug` | Same article in the two-column hub |
 | `/amino-acids` | Essential amino acids reference |
 | `/log` | Daily meal log (secondary feature, accessible from analyzer) |
 
@@ -75,7 +95,7 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 - **User Authentication** — Anonymous auth by default, optional Email/Google sign-in via Firebase Auth
 - **Cloud Sync** — Profile and meal log sync to Firestore when signed in
 - **Profile** (navbar): age, weight, height, activity, gender, life stage → personalized daily targets
-- **Site search** (⌘/Ctrl+K): pages, nutrients, foods
+- **Site search** (⌘/Ctrl+K): pages, nutrients, foods, blog articles (series-aware)
 - **EN / KO** bilingual support
 - **PWA** — `manifest.webmanifest` + service worker for offline shell
 
@@ -229,9 +249,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ```
 ├── src/
-│   ├── pages/           # Route-level screens
 │   ├── sections/        # Large page sections (Hero, LabelAnalyzer, Research, …)
-│   ├── components/      # Shared UI (Navbar, HealthScoreGauge, AuthModal, BarcodeScanner, HealthGoalsModal, …)
+│   ├── components/      # Shared UI (Navbar, BlogArticleBody, BlogArticlePanel, …)
+│   ├── pages/           # Routes including Blog, BlogArticle
 │   ├── lib/
 │   │   ├── apiClient.ts         # Unified API client (dev ↔ production)
 │   │   ├── nutritionAnalyzer.ts # Health Index scoring engine
@@ -246,16 +266,18 @@ Open [http://localhost:3000](http://localhost:3000).
 │   │   ├── savedList.ts         # Saved analyses (localStorage)
 │   │   └── i18n.ts              # EN/KO strings
 │   ├── hooks/           # useAuth, useUserProfile, usePersistentProfile, useHealthGoals
-│   └── data/            # Nutrient encyclopedia content
+│   └── data/
+│       ├── blog/              # Blog series content (dopamineArticles, vitaminArticles)
+│       ├── blogArticles.ts    # Types, series metadata, helpers
+│       └── nutrientDetails.ts # Nutrient encyclopedia content
 ├── functions/           # Firebase Cloud Functions
 │   ├── src/
 │   │   └── index.ts     # analyzeLabel, chat, smartRecommendations
 │   └── package.json
 ├── scripts/
 │   └── regression.mts   # Scoring + OCR regression tests
-├── docs/
-│   └── VITAL_master_action_items.md
 ├── public/
+│   ├── sitemap.xml      # Includes blog article URLs
 │   ├── sw.js            # Service worker
 │   └── manifest.webmanifest
 ├── firebase.json        # Hosting + Firestore + Functions config
@@ -324,7 +346,8 @@ Requires Firebase CLI and project access.
 
 ## Documentation
 
-- [docs/VITAL_master_action_items.md](docs/VITAL_master_action_items.md) — Product/engineering backlog
+- Product/engineering backlog: `docs/VITAL_master_action_items.md` (local; `docs/` is gitignored)
+- Blog editorial plans (local): `docs/dopamine_series.md`, `docs/vitamin_series.md`
 
 ## License
 

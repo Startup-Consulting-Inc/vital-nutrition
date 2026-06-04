@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { nutrients, getAllFoods } from '@/data/nutrientDetails';
 import { aminoAcids } from '@/data/aminoAcids';
 import { foodCatalog } from '@/lib/foodCatalog';
+import { blogArticles, blogSeries, formatEpisodeLabel } from '@/data/blogArticles';
+import { useLocale } from '@/lib/i18n';
 
 interface SiteSearchProps {
   open: boolean;
@@ -21,12 +23,15 @@ const PAGES: PageResult[] = [
   { kind: 'page', title: 'Daily Meal Log', subtitle: 'Track today\'s plate and overall score', href: '/log' },
   { kind: 'page', title: 'Compare Foods', subtitle: 'Side-by-side nutrient diff', href: '/compare' },
   { kind: 'page', title: 'Special Populations', subtitle: 'Pregnancy, seniors, athletes, vegan, conditions', href: '/special-populations' },
+  { kind: 'page', title: 'Blog', subtitle: 'Dopamine & vitamins article series', href: '/blog' },
   { kind: 'page', title: 'Methodology', subtitle: 'How the Health Index is calculated', href: '/methodology' },
   { kind: 'page', title: 'Research', subtitle: 'Key findings with citations', href: '/research' },
   { kind: 'page', title: 'Amino Acids', subtitle: 'The 20 building blocks of protein', href: '/amino-acids' },
 ];
 
 export default function SiteSearch({ open, onClose }: SiteSearchProps) {
+  const [locale] = useLocale();
+  const isKo = locale === 'ko';
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -54,6 +59,28 @@ export default function SiteSearch({ open, onClose }: SiteSearchProps) {
     for (const p of PAGES) {
       if (p.title.toLowerCase().includes(q) || p.subtitle.toLowerCase().includes(q)) {
         all.push(p);
+      }
+    }
+
+    for (const article of blogArticles) {
+      const haystack = [
+        article.title.en,
+        article.title.ko,
+        article.description.en,
+        article.description.ko,
+        article.thesis.en,
+        article.thesis.ko,
+      ].join(' ').toLowerCase();
+      if (haystack.includes(q)) {
+        const seriesTitle = isKo
+          ? blogSeries[article.seriesId].title.ko
+          : blogSeries[article.seriesId].title.en;
+        all.push({
+          kind: 'page',
+          title: isKo ? article.title.ko : article.title.en,
+          subtitle: `${seriesTitle} · ${formatEpisodeLabel(article, isKo)}`,
+          href: `/blog?article=${article.slug}`,
+        });
       }
     }
 
@@ -95,7 +122,7 @@ export default function SiteSearch({ open, onClose }: SiteSearchProps) {
     }
 
     return all.slice(0, 30);
-  }, [query]);
+  }, [query, isKo]);
 
   if (!open) return null;
 

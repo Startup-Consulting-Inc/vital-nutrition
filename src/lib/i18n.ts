@@ -14,6 +14,7 @@ const dict = {
     'nav.nutrients': 'Nutrients',
     'nav.amino': 'Amino Acids',
     'nav.log': 'Meal Log',
+    'nav.blog': 'Blog',
     'nav.methodology': 'Methodology',
     'nav.research': 'Research',
     'nav.compare': 'Compare',
@@ -263,6 +264,18 @@ const dict = {
     'srch.try': 'Try a reverse lookup:',
     'srch.foodsHigh': 'foods high in',
     'srch.noMatches': 'No matches for',
+
+    // === Blog ===
+    'blog.eyebrow': 'Articles',
+    'blog.h1': 'Blog',
+    'blog.subtitle':
+      'Longer reads on dopamine, vitamins, and everyday nutrition — useful first, buzzwords never.',
+    'blog.seriesLabel': 'Series',
+    'blog.indexLabel': 'Index',
+    'blog.pickArticle': 'Choose a series on the left, then pick an article to read here.',
+    'blog.pickArticleHint': 'Series are collapsed by default. Click a series title to expand its article list.',
+    'blog.back': 'All articles',
+    'blog.continue': 'Continue reading',
   },
   ko: {
     // === Nav ===
@@ -270,6 +283,7 @@ const dict = {
     'nav.nutrients': '영양소',
     'nav.amino': '아미노산',
     'nav.log': '식단 기록',
+    'nav.blog': '블로그',
     'nav.methodology': '평가 방법',
     'nav.research': '연구 자료',
     'nav.compare': '비교',
@@ -519,6 +533,18 @@ const dict = {
     'srch.try': '거꾸로 찾기 예시:',
     'srch.foodsHigh': '이(가) 풍부한 식품',
     'srch.noMatches': '검색 결과 없음:',
+
+    // === Blog ===
+    'blog.eyebrow': '아티클',
+    'blog.h1': '블로그',
+    'blog.subtitle':
+      '도파민·비타민·일상 영양을 길게 풀어 쓴 글입니다. 유행어 채우기보다 읽고 바로 쓸 수 있게 썼어요.',
+    'blog.seriesLabel': '시리즈',
+    'blog.indexLabel': '목차',
+    'blog.pickArticle': '왼쪽에서 시리즈를 펼친 뒤, 읽을 글을 고르면 여기에 본문이 나와요.',
+    'blog.pickArticleHint': '시리즈는 기본으로 접혀 있어요. 시리즈 제목을 누르면 글 목록이 펼쳐져요.',
+    'blog.back': '글 목록',
+    'blog.continue': '이어서 읽기',
   },
 } as const;
 
