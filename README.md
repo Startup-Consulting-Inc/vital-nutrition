@@ -14,7 +14,7 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 4. **Score** with category-aware rules (beverages, snacks, protein, etc. use different baselines and weights)
 5. **Get AI-powered recommendations** — smart alternatives and actionable tips based on your nutrition profile
 6. **Save, share, and compare** — Build a shopping shortlist, share analyses, and compare side-by-side
-7. **Read evidence-based articles** — Bilingual blog series on carbohydrates, protein, vitamins, minerals, fats, and dopamine & nutrition
+7. **Read evidence-based articles** — Bilingual blog series on carbohydrates, fiber, sugar, protein, vitamins, minerals, fats, and dopamine & nutrition
 
 ---
 
@@ -49,20 +49,22 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 
 ### Blog (`/blog`)
 
-Educational article series in **English and Korean**, written for general readers (plain language, NIH/WHO/AHA-sourced numbers, links into the [nutrient encyclopedia](/nutrients)). **46 articles** across six series (hub + spoke format, 6–8 episodes each).
+Educational article series in **English and Korean**, written for general readers (plain language, NIH/WHO/AHA-sourced numbers, links into the [nutrient encyclopedia](/nutrients)). **62 articles** across eight series (hub + spoke format, 6–8 episodes each).
 
-**Series order in the UI:** carbohydrates → protein → vitamins → minerals → fats → dopamine.
+**Series order in the UI:** carbohydrates → fiber → sugar → protein → vitamins → minerals → fats → dopamine.
 
 | Series | Episodes | Topics |
 |--------|----------|--------|
-| **Carbohydrates & Everyday Meals** | 8 | Brain fuel, daily grams, fiber, added sugar, whole vs refined grains, blood-sugar pairing, US/Korean plates, low-carb myths |
+| **Carbohydrates & Everyday Meals** | 8 | Brain fuel, daily grams, fiber intro, added sugar, whole vs refined grains, blood-sugar pairing, US/Korean plates, low-carb myths |
+| **Fiber & Gut Health** | 8 | Soluble vs insoluble, daily grams, microbiome, cholesterol & glucose, US/Korean plates, supplements & labels, keto/low-carb, myths & FAQ |
+| **Sugar & Sweetness** | 8 | Why we crave sugar, health impacts, fruit vs added sugar, artificial sweeteners, zero-sugar labels, healthy approach, US/Korean drinks |
 | **Protein & Everyday Meals** | 8 | Protein roles, daily grams, amino acids, animal vs plant, US/Korean plates, timing myths, labels, special cases |
 | **Vitamins & Daily Life** | 8 | Vitamins 101, how they work in the body, B vitamins, C & D, fat-soluble A/E/K, Korean plate, supplements & labels |
 | **Minerals & Everyday Meals** | 8 | Macro vs trace minerals, iron, calcium & magnesium, sodium & potassium, zinc/iodine/selenium, absorption, US/Korean plates, supplements & labs |
 | **Fats & Everyday Meals** | 8 | Fat types, omega-3, saturated & trans fats, cooking oils, fat-soluble vitamins, US/Korean plates, myths & special cases |
 | **Dopamine & Nutrition** | 6 | What dopamine does, synthesis pathway, supporting nutrients & foods, stimulants, lifestyle, “dopamine detox” myths |
 
-**Locale-specific “everyday plate” articles** (same slug, different body by language): `carbohydrates-everyday-plate`, `protein-everyday-plate`, `minerals-everyday-plate`, `fats-everyday-plate` — English copy targets US staples; Korean copy targets Korean meals (rice, banchan, soups).
+**Locale-specific articles** (same slug, different body by language): everyday plates — `carbohydrates-everyday-plate`, `fiber-everyday-plate`, `protein-everyday-plate`, `minerals-everyday-plate`, `fats-everyday-plate` (en US / ko Korean meals); drinks — `sugar-everyday-drinks` (en US / ko Korean beverages).
 
 **Blog UX**
 
@@ -276,7 +278,7 @@ Open [http://localhost:3000](http://localhost:3000).
 │   │   └── i18n.ts              # EN/KO strings
 │   ├── hooks/           # useAuth, useUserProfile, usePersistentProfile, useHealthGoals
 │   └── data/
-│       ├── blog/              # Blog series content (carbohydrate, protein, vitamin, mineral, fat, dopamine articles)
+│       ├── blog/              # Blog series content (carbohydrate, fiber, sugar, protein, vitamin, mineral, fat, dopamine articles)
 │       ├── blogArticles.ts    # Types, series metadata, helpers
 │       └── nutrientDetails.ts # Nutrient encyclopedia content
 ├── functions/           # Firebase Cloud Functions
@@ -356,7 +358,7 @@ Requires Firebase CLI and project access.
 ## Documentation
 
 - Product/engineering backlog: `docs/VITAL_master_action_items.md` (local; `docs/` is gitignored)
-- Blog editorial plans (local): `docs/carbohydrate_series.md`, `docs/protein_series.md`, `docs/vitamin_series.md`, `docs/mineral_series.md`, `docs/fat_series.md`, `docs/dopamine_series.md`
+- Blog editorial plans (local): `docs/carbohydrate_series.md`, `docs/fiber_series.md`, `docs/sugar_series.md`, `docs/protein_series.md`, `docs/vitamin_series.md`, `docs/mineral_series.md`, `docs/fat_series.md`, `docs/dopamine_series.md`
 
 ## License
 

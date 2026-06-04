@@ -269,7 +269,7 @@ const dict = {
     'blog.eyebrow': 'Articles',
     'blog.h1': 'Blog',
     'blog.subtitle':
-      'Longer reads on carbohydrates, protein, vitamins, minerals, fats, dopamine, and everyday nutrition — useful first, buzzwords never.',
+      'Longer reads on carbohydrates, fiber, sugar, protein, vitamins, minerals, fats, dopamine, and everyday nutrition — useful first, buzzwords never.',
     'blog.seriesLabel': 'Series',
     'blog.indexLabel': 'Index',
     'blog.pickArticle': 'Choose a series on the left, then pick an article to read here.',
@@ -538,7 +538,7 @@ const dict = {
     'blog.eyebrow': '아티클',
     'blog.h1': '블로그',
     'blog.subtitle':
-      '탄수화물·단백질·비타민·미네랄·지방·도파민·일상 영양을 길게 풀어 쓴 글입니다. 유행어 채우기보다 읽고 바로 쓸 수 있게 썼어요.',
+      '탄수화물·식이섬유·당·단백질·비타민·미네랄·지방·도파민·일상 영양을 길게 풀어 쓴 글입니다. 유행어 채우기보다 읽고 바로 쓸 수 있게 썼어요.',
     'blog.seriesLabel': '시리즈',
     'blog.indexLabel': '목차',
     'blog.pickArticle': '왼쪽에서 시리즈를 펼친 뒤, 읽을 글을 고르면 여기에 본문이 나와요.',

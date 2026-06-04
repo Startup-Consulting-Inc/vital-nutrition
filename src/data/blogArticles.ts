@@ -4,6 +4,8 @@ export { blogSeries, BLOG_SERIES_ORDER, type BlogSeriesId } from './blog/series'
 import type { BlogArticle } from './blog/types';
 import { blogSeries } from './blog/series';
 import { carbohydrateArticles } from './blog/carbohydrateArticles';
+import { fiberArticles } from './blog/fiberArticles';
+import { sugarArticles } from './blog/sugarArticles';
 import { dopamineArticles } from './blog/dopamineArticles';
 import { fatArticles } from './blog/fatArticles';
 import { mineralArticles } from './blog/mineralArticles';
@@ -12,6 +14,8 @@ import { vitaminArticles } from './blog/vitaminArticles';
 
 export const blogArticles: BlogArticle[] = [
   ...carbohydrateArticles,
+  ...fiberArticles,
+  ...sugarArticles,
   ...proteinArticles,
   ...vitaminArticles,
   ...mineralArticles,

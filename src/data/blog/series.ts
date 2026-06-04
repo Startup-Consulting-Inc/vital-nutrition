@@ -7,6 +7,22 @@ export const blogSeries = {
       ko: '뇌 연료, 섬유, 첨가당, 통곡 vs 정제, 혈당 짝짓기, 미국·한국 식탁, 저탄수 오해를 여덟 편으로 풀어 쓴 시리즈예요.',
     },
   },
+  fiber: {
+    id: 'fiber' as const,
+    title: { en: 'Fiber & Gut Health', ko: '식이섬유와 장 건강' },
+    description: {
+      en: 'Eight articles on soluble vs insoluble fiber, daily targets, the microbiome, cholesterol and glucose, US and Korean plates, supplements, low-carb diets, and common myths.',
+      ko: '수용성·불용성, 하루 양, 장내미생물, 콜레스테롤·혈당, 미국·한국 식탁, 보충제, 저탄수, 흔한 오해를 여덟 편으로 풀어 쓴 시리즈예요.',
+    },
+  },
+  sugar: {
+    id: 'sugar' as const,
+    title: { en: 'Sugar & Sweetness', ko: '당과 단맛' },
+    description: {
+      en: 'Eight articles on why we crave sugar, health impacts, fruit vs added sugar, artificial sweeteners, zero-sugar labels, and a practical everyday approach.',
+      ko: '단맛을 좋아하는 이유, 건강, 과일 vs 첨가당, 인공감미료, 무설탕 라벨, 일상에서 쓸 수 있는 절충을 여덟 편으로 풀어 쓴 시리즈예요.',
+    },
+  },
   dopamine: {
     id: 'dopamine' as const,
     title: { en: 'Dopamine & Nutrition', ko: '도파민과 영양' },
@@ -53,6 +69,8 @@ export type BlogSeriesId = keyof typeof blogSeries;
 
 export const BLOG_SERIES_ORDER: BlogSeriesId[] = [
   'carbohydrates',
+  'fiber',
+  'sugar',
   'protein',
   'vitamins',
   'minerals',

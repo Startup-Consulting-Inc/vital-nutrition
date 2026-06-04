@@ -612,6 +612,7 @@ export const dopamineArticles: BlogArticle[] = [
             title: 'One swap that actually sticks',
             body: [
               'Trade one daily sweet drink for protein plus fiber: yogurt and berries, or eggs and toast. It is not exciting, and it works far more often than "quit sugar forever" posts.',
+              'Why sweetness hooks us—and how zero-sugar labels fit—is in the [Sugar & Sweetness series](/blog/sugar-why-we-crave).',
             ],
           },
         ],
@@ -669,6 +670,7 @@ export const dopamineArticles: BlogArticle[] = [
             title: '진짜 지켜지는 교환 하나',
             body: [
               '하루 단 음료 하나를 단백질+섬유로 바꿔 보세요. 그릭요거트+베리, 아니면 달걀+토스트요. 재미없지만, "설탕 영원히 끊기"보다 훨씬 자주 지켜져요.',
+              '단맛이 왜 붙는지, 제로 라벨은 어디쯤인지는 [당과 단맛 시리즈](/blog/sugar-why-we-crave)에서 이어요.',
             ],
           },
         ],

@@ -286,7 +286,7 @@ export const carbohydrateArticles: BlogArticle[] = [
     },
     readMinutes: 8,
     datePublished: '2026-07-08',
-    relatedSlugs: ['carbohydrates-guide', 'carbohydrates-refined-vs-whole', 'carbohydrates-everyday-plate', 'minerals-iron'],
+    relatedSlugs: ['carbohydrates-guide', 'carbohydrates-refined-vs-whole', 'fiber-guide', 'minerals-iron'],
     en: [
       {
         heading: 'Why fiber matters',
@@ -327,7 +327,8 @@ export const carbohydrateArticles: BlogArticle[] = [
       {
         heading: 'What to do',
         paragraphs: [
-          'Swap white rice for brown half the week; add lentils to soup. Next: [added sugar](/blog/carbohydrates-added-sugar).',
+          'Swap white rice for brown half the week; add lentils to soup. For a deeper dive—gut microbiome, supplements, keto, and myths—see the [Fiber & Gut Health series](/blog/fiber-guide).',
+          'Next in this carb line: [added sugar](/blog/carbohydrates-added-sugar).',
         ],
       },
     ],
@@ -371,7 +372,8 @@ export const carbohydrateArticles: BlogArticle[] = [
       {
         heading: '실천',
         paragraphs: [
-          '백미를 주 3회 현미로 바꾸고, 국에 렌틸을 넣어 보세요. 다음: [첨가당](/blog/carbohydrates-added-sugar).',
+          '백미를 주 3회 현미로 바꾸고, 국에 렌틸을 넣어 보세요. 장내미생물·보충제·저탄수·오해까지는 [식이섬유 시리즈](/blog/fiber-guide)에서 더 깊게 다뤄요.',
+          '탄수 시리즈 다음: [첨가당](/blog/carbohydrates-added-sugar).',
         ],
       },
     ],
@@ -394,7 +396,7 @@ export const carbohydrateArticles: BlogArticle[] = [
     },
     readMinutes: 8,
     datePublished: '2026-07-09',
-    relatedSlugs: ['carbohydrates-guide', 'carbohydrates-refined-vs-whole', 'dopamine-stimulants', 'carbohydrates-everyday-plate'],
+    relatedSlugs: ['carbohydrates-guide', 'carbohydrates-refined-vs-whole', 'sugar-guide', 'dopamine-stimulants'],
     en: [
       {
         heading: 'Added vs natural',
@@ -443,7 +445,8 @@ export const carbohydrateArticles: BlogArticle[] = [
       {
         heading: 'What to do',
         paragraphs: [
-          'Drop one sweet drink for a week and notice focus and sleep. Next: [refined vs whole](/blog/carbohydrates-refined-vs-whole).',
+          'Drop one sweet drink for a week and notice focus and sleep. For craving science, sweeteners, and a practical approach—not just grams—see the [Sugar & Sweetness series](/blog/sugar-guide).',
+          'Next in this carb line: [refined vs whole](/blog/carbohydrates-refined-vs-whole).',
         ],
       },
     ],
@@ -495,7 +498,8 @@ export const carbohydrateArticles: BlogArticle[] = [
       {
         heading: '실천',
         paragraphs: [
-          '달콤 음료 하나만 일주일 빼 보고 집중·잠을 봐요. 다음: [정제 vs 통곡](/blog/carbohydrates-refined-vs-whole).',
+          '달콤 음료 하나만 일주일 빼 보고 집중·잠을 봐요. g 너머—당김·감미료·일상 절충—은 [당과 단맛 시리즈](/blog/sugar-guide)에서 더 깊게 다뤄요.',
+          '탄수 시리즈 다음: [정제 vs 통곡](/blog/carbohydrates-refined-vs-whole).',
         ],
       },
     ],
