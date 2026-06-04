@@ -23,7 +23,7 @@ const PAGES: PageResult[] = [
   { kind: 'page', title: 'Daily Meal Log', subtitle: 'Track today\'s plate and overall score', href: '/log' },
   { kind: 'page', title: 'Compare Foods', subtitle: 'Side-by-side nutrient diff', href: '/compare' },
   { kind: 'page', title: 'Special Populations', subtitle: 'Pregnancy, seniors, athletes, vegan, conditions', href: '/special-populations' },
-  { kind: 'page', title: 'Blog', subtitle: 'Dopamine & vitamins article series', href: '/blog' },
+  { kind: 'page', title: 'Blog', subtitle: 'Carbs, protein, vitamins, minerals, fats & dopamine', href: '/blog' },
   { kind: 'page', title: 'Methodology', subtitle: 'How the Health Index is calculated', href: '/methodology' },
   { kind: 'page', title: 'Research', subtitle: 'Key findings with citations', href: '/research' },
   { kind: 'page', title: 'Amino Acids', subtitle: 'The 20 building blocks of protein', href: '/amino-acids' },

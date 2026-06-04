@@ -21,9 +21,17 @@ export default function BlogArticle() {
   const sections = isKo ? article.ko : article.en;
   const series = blogSeries[article.seriesId];
   const keywords =
-    article.seriesId === 'vitamins'
-      ? ['vitamins', 'nutrition', 'vitamin D', 'vitamin B12', 'folate', 'supplements', 'Korean diet']
-      : ['dopamine', 'nutrition', 'tyrosine', 'caffeine', 'sleep', 'exercise'];
+    article.seriesId === 'carbohydrates'
+      ? ['carbohydrates', 'nutrition', 'fiber', 'added sugar', 'blood sugar', 'whole grains', 'carbs']
+      : article.seriesId === 'vitamins'
+        ? ['vitamins', 'nutrition', 'vitamin D', 'vitamin B12', 'folate', 'supplements', 'Korean diet']
+        : article.seriesId === 'protein'
+          ? ['protein', 'nutrition', 'amino acids', 'protein intake', 'plant protein', 'protein supplements']
+          : article.seriesId === 'minerals'
+            ? ['minerals', 'nutrition', 'iron', 'calcium', 'sodium', 'zinc', 'selenium', 'supplements']
+            : article.seriesId === 'fats'
+              ? ['fats', 'nutrition', 'omega-3', 'saturated fat', 'trans fat', 'olive oil', 'cholesterol']
+              : ['dopamine', 'nutrition', 'tyrosine', 'caffeine', 'sleep', 'exercise'];
   const related = article.relatedSlugs
     .map(s => getBlogArticle(s))
     .filter((a): a is NonNullable<typeof a> => Boolean(a));

@@ -16,7 +16,7 @@ export interface BlogSection {
 
 export interface BlogArticle {
   slug: string;
-  seriesId: 'dopamine' | 'vitamins';
+  seriesId: 'dopamine' | 'vitamins' | 'protein' | 'minerals' | 'fats' | 'carbohydrates';
   episode: number;
   /** When set, shown instead of episode number (e.g. merged 2+4). */
   episodeLabel?: { en: string; ko: string };
