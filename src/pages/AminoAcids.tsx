@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { essentialAminoAcids, nonEssentialAminoAcids, aminoAcids, type AminoAcid } from '@/data/aminoAcids';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { aminoAcids, type AminoAcid } from '@/data/aminoAcids';
 import { useUserProfile } from '@/hooks/useUserProfile';
 import { useT, useLocale } from '@/lib/i18n';
 import SEOHead from '@/components/SEOHead';
@@ -19,9 +19,278 @@ const categoryLabels: Record<string, { label: string; color: string; bg: string 
   'negatively-charged': { label: 'Acidic (-)', color: '#d95c39', bg: '#d95c3910' },
 };
 
+export function getCategoryLabel(category: string, locale: string): string {
+  const labels: Record<string, string> = locale === 'ko' ? {
+    'nonpolar': '비극성',
+    'polar': '극성',
+    'aromatic': '방향족',
+    'positively-charged': '염기성 (+)',
+    'negatively-charged': '산성 (-)',
+  } : {
+    'nonpolar': 'Nonpolar',
+    'polar': 'Polar',
+    'aromatic': 'Aromatic',
+    'positively-charged': 'Basic (+)',
+    'negatively-charged': 'Acidic (-)',
+  };
+  return labels[category] || category;
+}
+
+export const aminoAcidsKoMap: Record<string, {
+  name: string;
+  functions: string[];
+  foodSources: string[];
+  deficiencyEffects: string[];
+  dailyNeed?: string;
+}> = {
+  'Histidine': {
+    name: '히스티딘',
+    functions: [
+      '히스타민의 전구체로서 면역 반응에 관여',
+      '신경 세포를 보호하는 미엘린 초장 유지',
+      '신체 성장 및 조직 수리에 필수적',
+      '아연 및 철분의 흡수 지원',
+    ],
+    foodSources: ['쇠고기', '돼지고기', '닭고기', '생선', '두부', '콩류', '렌틸콩', '통곡물'],
+    deficiencyEffects: ['면역 기능 저하', '인지 기능 장애', '영유아 청력 손실 위험'],
+  },
+  'Isoleucine': {
+    name: '이소류신',
+    functions: [
+      '근육 대사를 위한 분지사슬 아미노산(BCAA)',
+      '혈당 및 에너지 수치 조절',
+      '헤모글로빈 형성 지원',
+      '운동 후 근육 회복 지원',
+    ],
+    foodSources: ['계란', '생선', '닭고기', '대두', '치즈', '견과류', '씨앗류', '콩류'],
+    deficiencyEffects: ['근육 약화', '저혈당증', '몸의 떨림 현상'],
+    dailyNeed: '체중 1kg당 19-20 mg',
+  },
+  'Leucine': {
+    name: '류신',
+    functions: [
+      '근육 단백질 합성을 촉진하는 핵심 BCAA',
+      '혈당 조절 및 인슐린 기능 지원',
+      '뼈 조직의 성장 및 수리 지원',
+      '상처 치유 및 신체 회복 촉진',
+    ],
+    foodSources: ['닭가슴살', '쇠고기', '생선', '계란', '대두 단백질', '유제품', '호박씨', '땅콩'],
+    deficiencyEffects: ['근육 성장 부진', '상처 치유 지연', '근손실(근위축)'],
+    dailyNeed: '체중 1kg당 39-42 mg',
+  },
+  'Lysine': {
+    name: '라이신',
+    functions: [
+      '단백질 합성 및 콜라겐 형성에 필수적',
+      '칼슘 흡수 지원 및 뼈 건강 증진',
+      '카르니틴 생성(지방 대사)에 필수적',
+      '면역 기능 및 항체 생성 역할 수행',
+    ],
+    foodSources: ['적색육', '돼지고기', '닭고기', '생선', '계란', '치즈', '대두', '퀴노아', '렌틸콩'],
+    deficiencyEffects: ['피로', '빈혈', '성장 부진', '식욕 감퇴'],
+    dailyNeed: '체중 1kg당 30-38 mg',
+  },
+  'Methionine': {
+    name: '메티오닌',
+    functions: [
+      '시스테인의 전구체 (황 전환 경로)',
+      '메틸화 반응 및 DNA 발현에 중요',
+      '중금속 해독 작용 지원',
+      '피부 탄력 유지 및 손발톱 강화',
+    ],
+    foodSources: ['계란', '생선', '쇠고기', '닭고기', '돼지고기', '브라질너트', '참깨', '대두'],
+    deficiencyEffects: ['지방간', '피부 및 손발톱 건강 악화', '호모시스테인 수치 상승'],
+    dailyNeed: '체중 1kg당 10.4 mg',
+  },
+  'Phenylalanine': {
+    name: '페닐알라닌',
+    functions: [
+      '티로신, 도파민, 노르에피네프린, 에피네프린의 전구체',
+      '멜라닌 색소 생성에 필요',
+      '뇌 신경 신호 전달 및 기분 조절 지원',
+      '갑상선 호르몬 합성 가능하게 함',
+    ],
+    foodSources: ['쇠고기', '닭고기', '생선', '계란', '치즈', '우유', '대두', '호박씨'],
+    deficiencyEffects: ['우울감', '인지 기능 장애', '갑상선 기능 저하 증상'],
+    dailyNeed: '체중 1kg당 25-33 mg',
+  },
+  'Threonine': {
+    name: '트레오닌',
+    functions: [
+      '구조 단백질(콜라겐 및 엘라스틴)의 주요 구성 성분',
+      '지방 대사 및 간 기능 지원',
+      '면역 기능(항체 형성)에 관여',
+      '치아 에나멜질 및 피부 건강 유지',
+    ],
+    foodSources: ['살코기 쇠고기', '닭고기', '양고기', '돼지고기', '치즈', '렌틸콩', '참깨', '대두'],
+    deficiencyEffects: ['근육 떨림', '지방간', '과민증', '피부 건강 악화'],
+    dailyNeed: '체중 1kg당 15-20 mg',
+  },
+  'Tryptophan': {
+    name: '트립토판',
+    functions: [
+      '세로토닌(기분 조절) 및 멜라토닌(수면)의 전구체',
+      '체내 니아신(비타민 B3) 생성 지원',
+      '식욕 및 수면 주기 조절 지원',
+      '통증 인지 및 스트레스 반응 관여',
+    ],
+    foodSources: ['칠면조', '닭고기', '계란', '치즈', '생선', '우유', '호박씨', '두부', '귀리'],
+    deficiencyEffects: ['불면증', '우울증', '불안증', '통증 내성 감소'],
+    dailyNeed: '체중 1kg당 4-5 mg',
+  },
+  'Valine': {
+    name: '발린',
+    functions: [
+      '근육 성장, 조직 수리 및 에너지 생성을 위한 BCAA',
+      '류신과 함께 근육 단백질 합성 촉진',
+      '체내 질소 균형 유지',
+      '정신적 집중 및 운동 협응력 유지',
+    ],
+    foodSources: ['쇠고기', '닭고기', '생선', '계란', '유제품', '대두', '땅콩', '버섯'],
+    deficiencyEffects: ['근손실', '운동 협응력 장애', '불면증', '정신적 피로'],
+    dailyNeed: '체중 1kg당 24-26 mg',
+  },
+  'Alanine': {
+    name: '알라닌',
+    functions: [
+      '포도당 생성(포도당 신생합성)의 주요 아미노산',
+      '면역 체계 기능 지원',
+      '유기산 대사 지원',
+      '운동 시 근육에 에너지 공급',
+    ],
+    foodSources: ['쇠고기', '생선', '가금류', '계란', '유제품', '콩류', '견과류', '씨앗류'],
+    deficiencyEffects: ['드묾 — 체내에서 충분히 합성됨'],
+  },
+  'Arginine': {
+    name: '아르기닌',
+    functions: [
+      '산화질소(혈관 확장, 혈류 개선)의 전구체',
+      '상처 치유 및 면역 기능 지원',
+      '성장 호르몬 분비 촉진',
+      '단백질 분해로 발생하는 암모니아 해독',
+    ],
+    foodSources: ['칠면조', '닭고기', '돼지고기', '대두', '호박씨', '땅콩', '병아리콩', '유제품'],
+    deficiencyEffects: ['상처 치유 지연', '혈압 상승', '발기력 저하'],
+  },
+  'Asparagine': {
+    name: '아스파라긴',
+    functions: [
+      '단백질 합성 및 아미노산 대사에 중요',
+      '신경계 발달 및 기능 지원',
+      '당단백질 합성에 필수적',
+      '체내 암모니아 제거 지원',
+    ],
+    foodSources: ['쇠고기', '가금류', '생선', '계란', '유제품', '아스파라거스', '감자', '견과류', '콩류'],
+    deficiencyEffects: ['드묾 — 아스파르트산으로부터 체내 합성됨'],
+  },
+  'Aspartic Acid': {
+    name: '아스파르트산',
+    functions: [
+      '호르몬 생성 및 분비에 관여',
+      '뇌 내 신경 전달 물질 기능 지원',
+      '요소 회로(암모니아 제거)의 핵심 역할',
+      '항체 생성 지원을 통한 면역 기능 보강',
+    ],
+    foodSources: ['굴', '소시지', '생선', '쇠고기', '가금류', '계란', '새싹 씨앗', '콩류'],
+    deficiencyEffects: ['드묾 — 체내에서 충분히 합성됨'],
+  },
+  'Cysteine': {
+    name: '시스테인',
+    functions: [
+      '체내 마스터 항산화제인 글루타치온의 전구체',
+      '단백질 합성 및 해독 작용에 필수적',
+      '피부 건강 지원 (콜라겐 가교 결합)',
+      '철분 및 아연 대사 지원',
+    ],
+    foodSources: ['돼지고기', '닭고기', '칠면조', '계란', '유청 단백질', '요거트', '해바라기씨', '콩류'],
+    deficiencyEffects: ['항산화 방어 능력 저하', '모발 및 손발톱 약화', '해독 능력 저하'],
+  },
+  'Glutamic Acid': {
+    name: '글루탐산',
+    functions: [
+      '뇌에서 가장 풍부한 흥분성 신경 전달 물질',
+      '단백질 대사의 핵심 역할',
+      '면역 기능 및 장 건강 지원',
+      '진정 신경 전달 물질인 GABA의 전구체',
+    ],
+    foodSources: ['치즈 (파르메산)', '간장', '액젓', '육류', '가금류', '계란', '토마토', '버섯'],
+    deficiencyEffects: ['드묾 — 식단 및 체내에서 가장 풍부한 아미노산'],
+  },
+  'Glutamine': {
+    name: '글루타민',
+    functions: [
+      '체내에서 가장 풍부한 유리 아미노산',
+      '장 세포 및 면역 세포의 핵심 에너지원',
+      '고강도 운동 후 근육 회복 지원',
+      '신장의 산-염기 균형 유지',
+    ],
+    foodSources: ['쇠고기', '닭고기', '생선', '계란', '유제품', '양배추', '콩류', '비트'],
+    deficiencyEffects: ['장 장벽 기능 약화', '질병 시 근손실', '면역력 약화'],
+  },
+  'Glycine': {
+    name: '글리신',
+    functions: [
+      '콜라겐의 주요 구성 성분 (콜라겐 단백질의 1/3)',
+      '억제성 신경 전달 물질로서 중추 신경계 지원',
+      '지방 소화를 돕는 담즙산 생성 조절',
+      '에너지 저장을 위한 크레아틴 합성에 관여',
+    ],
+    foodSources: ['젤라틴', '돼지 껍데기', '닭 껍질', '생선', '콩류', '시금치', '양배추', '단호박'],
+    deficiencyEffects: ['피부 탄력 저하', '상처 회복 지연', '수면 장애'],
+  },
+  'Proline': {
+    name: '프롤린',
+    functions: [
+      '콜라겐 구조 및 관절 건강에 필수적',
+      '피부 탄력 및 상처 치유 지원',
+      '동맥 벽 콜라겐 유지를 통한 심혈관 건강 지원',
+      '연골 복구 및 유지 지원',
+    ],
+    foodSources: ['젤라틴', '쇠고기', '양고기', '닭고기', '생선', '양배추', '아스파라거스', '메밀', '아몬드'],
+    deficiencyEffects: ['관절 통증', '상처 치유 지연', '피부 및 혈관 약화'],
+  },
+  'Serine': {
+    name: '세린',
+    functions: [
+      '세포막 형성을 위한 인지질 합성에 필요',
+      '뇌 기능 및 신경 전달 물질 생성 지원',
+      'DNA 및 RNA 합성에 관여',
+      '근육 형성 및 면역 기능 역할',
+    ],
+    foodSources: ['계란', '생선', '쇠고기', '닭고기', '돼지고기', '대두', '견과류', '씨앗류', '콩류'],
+    deficiencyEffects: ['드묾 — 글리신으로부터 체내 합성됨'],
+  },
+  'Tyrosine': {
+    name: '티로신',
+    functions: [
+      '도파민, 노르에피네프린, 아드레날린의 전구체',
+      '갑상선 호르몬(T3 및 T4) 생성에 필요',
+      '피부 및 모발의 멜라닌 색소 생성에 필요',
+      '스트레스 상황에서 인지 기능 향상',
+    ],
+    foodSources: ['닭고기', '칠면조', '생선', '우유', '치즈', '요거트', '호박씨', '땅콩', '대두'],
+    deficiencyEffects: ['갑상선 기능 저하', '우울감', '스트레스 내성 감소'],
+  },
+};
+
+export function localizeAminoAcid(acid: AminoAcid, locale: string): AminoAcid {
+  if (locale !== 'ko') return acid;
+  const ko = aminoAcidsKoMap[acid.name];
+  if (!ko) return acid;
+  return {
+    ...acid,
+    name: ko.name,
+    functions: ko.functions,
+    foodSources: ko.foodSources,
+    deficiencyEffects: ko.deficiencyEffects,
+    dailyNeed: ko.dailyNeed || acid.dailyNeed,
+  };
+}
+
 function AcidCard({ acid, onClick }: { acid: AminoAcid; onClick: (acid: AminoAcid) => void }) {
-  const cat = categoryLabels[acid.category];
   const [locale] = useLocale();
+  const cat = categoryLabels[acid.category];
+  const catLabel = getCategoryLabel(acid.category, locale);
   return (
     <button
       onClick={() => onClick(acid)}
@@ -58,7 +327,7 @@ function AcidCard({ acid, onClick }: { acid: AminoAcid; onClick: (acid: AminoAci
           className="text-[10px] px-2 py-1 rounded-full font-medium flex-shrink-0"
           style={{ backgroundColor: cat.bg, color: cat.color }}
         >
-          {cat.label}
+          {catLabel}
         </span>
       </div>
 
@@ -98,6 +367,16 @@ export default function AminoAcids() {
   const t = useT();
   const [locale] = useLocale();
   const [selectedAcid, setSelectedAcid] = useState<AminoAcid | null>(null);
+
+  const localizedAminoAcids = useMemo(() => {
+    return aminoAcids.map(a => localizeAminoAcid(a, locale));
+  }, [locale]);
+  const localizedEssentials = useMemo(() => {
+    return localizedAminoAcids.filter(a => a.essential);
+  }, [localizedAminoAcids]);
+  const localizedNonEssentials = useMemo(() => {
+    return localizedAminoAcids.filter(a => !a.essential);
+  }, [localizedAminoAcids]);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleOpen = useCallback((acid: AminoAcid) => {
@@ -157,7 +436,7 @@ export default function AminoAcids() {
             <span className="text-xs text-deep/30">{t('aa.essentialNote')}</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {essentialAminoAcids.map((acid) => (
+            {localizedEssentials.map((acid) => (
               <AcidCard key={acid.name} acid={acid} onClick={handleOpen} />
             ))}
           </div>
@@ -173,7 +452,7 @@ export default function AminoAcids() {
             <span className="text-xs text-deep/30">{t('aa.nonEssentialNote')}</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {nonEssentialAminoAcids.map((acid) => (
+            {localizedNonEssentials.map((acid) => (
               <AcidCard key={acid.name} acid={acid} onClick={handleOpen} />
             ))}
           </div>
@@ -197,7 +476,7 @@ export default function AminoAcids() {
                 </tr>
               </thead>
               <tbody>
-                {aminoAcids.map((acid, i) => (
+                {localizedAminoAcids.map((acid, i) => (
                   <tr
                     key={acid.name}
                     className="border-b border-deep/5 hover:bg-[#f6f5f1] transition-colors"
@@ -207,7 +486,7 @@ export default function AminoAcids() {
                     <td className="py-2 pr-4 font-mono text-deep/50 text-xs">{acid.abbreviation3} ({acid.abbreviation1})</td>
                     <td className="py-2 pr-4">
                       <span className="text-[10px] px-2 py-0.5 rounded-full font-medium" style={{ backgroundColor: categoryLabels[acid.category]?.bg, color: categoryLabels[acid.category]?.color }}>
-                        {categoryLabels[acid.category]?.label}
+                        {getCategoryLabel(acid.category, locale)}
                       </span>
                     </td>
                     <td className="py-2 pr-4">
@@ -268,6 +547,17 @@ const BCAA_FOODS: BcaaFood[] = [
   { name: 'Whey protein (1 scoop)',serving: '30 g',        leu: 2700, ile: 1500, val: 1430, protein: 24 },
 ];
 
+const BCAA_FOODS_KO: Record<string, { name: string; serving: string }> = {
+  'Chicken breast (3 oz)': { name: '닭가슴살 (3 oz)', serving: '조리됨 85g' },
+  'Greek yogurt (1 cup)': { name: '그릭 요거트 (1컵)', serving: '227g' },
+  'Salmon (3 oz)': { name: '연어 (3 oz)', serving: '조리됨 85g' },
+  'Eggs (2 large)': { name: '계란 (대란 2개)', serving: '100g' },
+  'Lentils (1 cup)': { name: '렌틸콩 (1컵)', serving: '조리됨 198g' },
+  'Tofu (1/2 cup)': { name: '두부 (1/2컵)', serving: '126g' },
+  'Quinoa (1 cup)': { name: '퀴노아 (1컵)', serving: '조리됨 185g' },
+  'Whey protein (1 scoop)': { name: '유청 단백질 (1스쿱)', serving: '30g' },
+};
+
 function BcaaCalculator() {
   const [profile] = useUserProfile();
   const [picked, setPicked] = useState<string[]>(['Chicken breast (3 oz)', 'Greek yogurt (1 cup)']);
@@ -313,14 +603,16 @@ function BcaaCalculator() {
       <div className="flex flex-wrap gap-2">
         {BCAA_FOODS.map(f => {
           const active = picked.includes(f.name);
+          const displayName = locale === 'ko' ? BCAA_FOODS_KO[f.name]?.name || f.name : f.name;
+          const displayServing = locale === 'ko' ? BCAA_FOODS_KO[f.name]?.serving || f.serving : f.serving;
           return (
             <button
               key={f.name}
               onClick={() => toggle(f.name)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${active ? 'bg-terracotta text-white' : 'bg-white/10 text-white/70 hover:bg-white/15'}`}
-              title={`${f.serving} · ${f.protein}g protein · ${f.leu} mg Leu`}
+              title={`${displayServing} · ${f.protein}g protein · ${f.leu} mg Leu`}
             >
-              {f.name}
+              {displayName}
             </button>
           );
         })}
@@ -394,10 +686,45 @@ const COMPLEMENTS: { base: string; pairs: { food: string; rationale: string }[] 
   },
 ];
 
+const COMPLEMENTS_KO = [
+  {
+    base: '콩류 / 렌틸콩 / 완두콩',
+    pairs: [
+      { food: '현미 / 밀 / 옥수수', rationale: '곡물은 메티오닌을 공급하고, 두류는 라이신을 공급하여 결합 시 완전 단백질이 됩니다.' },
+      { food: '견과류 / 씨앗류', rationale: '참깨, 해바라기씨, 호박씨 등이 부족한 메티오닌 성분을 채워줍니다.' },
+      { food: '통밀 또띠아', rationale: '쌀과 콩, 후무스와 피타 브레드, 달(Dal)과 로티 등 고전적인 채식 단백질 조합입니다.' },
+    ],
+  },
+  {
+    base: '곡류 (쌀, 귀리, 밀, 옥수수)',
+    pairs: [
+      { food: '콩류 / 렌틸콩', rationale: '라이신이 풍부한 두류가 곡물의 아미노산 프로필을 상호 보완해 완성해 줍니다.' },
+      { food: '대두 / 두부 / 에다마메(풋콩)', rationale: '대두는 그 자체로 완전 단백질이므로 모든 곡류의 질을 즉각적으로 높여줍니다.' },
+      { food: '유제품 또는 계란', rationale: '동물성 단백질은 완전 단백질이며 라이신 함량이 높습니다.' },
+    ],
+  },
+  {
+    base: '견과류 및 씨앗류',
+    pairs: [
+      { food: '콩류 / 렌틸콩', rationale: '견과류/씨앗류에 부족하기 쉬운 라이신을 두류가 채워줍니다.' },
+      { food: '통곡물', rationale: '통밀 식빵에 땅콩버터 바르기 — 오랜 역사의 대표적인 완전 단백질 조합입니다.' },
+    ],
+  },
+  {
+    base: '채소류',
+    pairs: [
+      { food: '퀴노아 / 대두 / 아마란스', rationale: '이 세 가지 식물성 단백질은 그 자체로 이미 완전 단백질입니다.' },
+      { food: '콩류 + 곡류', rationale: '채소 볶음에 콩과 현미밥 한 그릇을 곁들이면 모든 단백질 아미노산이 골고루 충족됩니다.' },
+    ],
+  },
+];
+
 function CompleteProteinMatchmaker() {
-  const [base, setBase] = useState(COMPLEMENTS[0].base);
-  const current = COMPLEMENTS.find(c => c.base === base) || COMPLEMENTS[0];
+  const [activeIdx, setActiveIdx] = useState(0);
   const t = useT();
+  const [locale] = useLocale();
+  const list = locale === 'ko' ? COMPLEMENTS_KO : COMPLEMENTS;
+  const current = list[activeIdx] || list[0];
   return (
     <div className="p-6 rounded-2xl bg-white border border-deep/5 mb-10">
       <h3 className="text-lg text-deep mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
@@ -407,11 +734,11 @@ function CompleteProteinMatchmaker() {
         {t('aa.completeIntro')}
       </p>
       <div className="flex flex-wrap gap-2 mb-4">
-        {COMPLEMENTS.map(c => (
+        {list.map((c, idx) => (
           <button
             key={c.base}
-            onClick={() => setBase(c.base)}
-            className={`text-xs px-3 py-1.5 rounded-md font-medium ${base === c.base ? 'bg-deep text-inverse' : 'bg-surface text-deep/60 hover:bg-deep/10'}`}
+            onClick={() => setActiveIdx(idx)}
+            className={`text-xs px-3 py-1.5 rounded-md font-medium ${activeIdx === idx ? 'bg-deep text-inverse' : 'bg-surface text-deep/60 hover:bg-deep/10'}`}
           >
             {c.base}
           </button>
@@ -439,8 +766,10 @@ function AcidDetailDialog({
   onClose: () => void;
 }) {
   const [locale] = useLocale();
-  if (!acid) return null;
-  const cat = categoryLabels[acid.category];
+  const localizedAcid = acid ? localizeAminoAcid(acid, locale) : null;
+  if (!localizedAcid) return null;
+  const cat = categoryLabels[localizedAcid.category];
+  const catLabel = getCategoryLabel(localizedAcid.category, locale);
   const isKo = locale === 'ko';
 
   return (
@@ -454,15 +783,15 @@ function AcidDetailDialog({
           className="p-6 pb-4"
           style={{
             borderBottom: '1px solid rgba(32,42,38,0.06)',
-            backgroundColor: acid.essential ? 'rgba(74,124,89,0.03)' : 'rgba(107,125,118,0.03)',
+            backgroundColor: localizedAcid.essential ? 'rgba(74,124,89,0.03)' : 'rgba(107,125,118,0.03)',
           }}
         >
           <div className="flex items-start gap-4">
             <span
               className="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-bold text-white flex-shrink-0"
-              style={{ backgroundColor: acid.essential ? '#4a7c59' : '#6b7d76' }}
+              style={{ backgroundColor: localizedAcid.essential ? '#4a7c59' : '#6b7d76' }}
             >
-              {acid.abbreviation1}
+              {localizedAcid.abbreviation1}
             </span>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
@@ -470,21 +799,21 @@ function AcidDetailDialog({
                   className="text-xl font-medium text-deep"
                   style={{ fontFamily: 'Playfair Display, serif', lineHeight: 1.2 }}
                 >
-                  {acid.name}
+                  {localizedAcid.name}
                 </DialogTitle>
-                {acid.essential && (
+                {localizedAcid.essential && (
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#4a7c59] text-white">
                     {isKo ? '필수' : 'Essential'}
                   </span>
                 )}
               </div>
               <DialogDescription className="text-xs text-deep/40 font-mono mt-1">
-                {acid.abbreviation3} — {acid.abbreviation1} ·{' '}
+                {localizedAcid.abbreviation3} — {localizedAcid.abbreviation1} ·{' '}
                 <span
                   className="text-[10px] px-2 py-0.5 rounded-full font-medium"
                   style={{ backgroundColor: cat.bg, color: cat.color }}
                 >
-                  {cat.label}
+                  {catLabel}
                 </span>
               </DialogDescription>
             </div>
@@ -492,9 +821,9 @@ function AcidDetailDialog({
         </div>
 
         <DialogHeader className="sr-only">
-          <DialogTitle>{acid.name}</DialogTitle>
+          <DialogTitle>{localizedAcid.name}</DialogTitle>
           <DialogDescription>
-            {isKo ? `${acid.name}의 상세 정보` : `Detailed information about ${acid.name}`}
+            {isKo ? `${localizedAcid.name}의 상세 정보` : `Detailed information about ${localizedAcid.name}`}
           </DialogDescription>
         </DialogHeader>
 
@@ -506,13 +835,13 @@ function AcidDetailDialog({
               {isKo ? '주요 기능' : 'Key Functions'}
             </h4>
             <div className="space-y-2">
-              {acid.functions.map((fn, i) => (
+              {localizedAcid.functions.map((fn, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div
                     className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                    style={{ backgroundColor: (acid.essential ? '#4a7c59' : '#6b7d76') + '15' }}
+                    style={{ backgroundColor: (localizedAcid.essential ? '#4a7c59' : '#6b7d76') + '15' }}
                   >
-                    <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke={acid.essential ? '#4a7c59' : '#6b7d76'} strokeWidth="2">
+                    <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke={localizedAcid.essential ? '#4a7c59' : '#6b7d76'} strokeWidth="2">
                       <path d="M3 8l3 3 7-7" />
                     </svg>
                   </div>
@@ -528,13 +857,13 @@ function AcidDetailDialog({
               {isKo ? '식품 공급원' : 'Food Sources'}
             </h4>
             <div className="flex flex-wrap gap-1.5">
-              {acid.foodSources.map((src) => (
+              {localizedAcid.foodSources.map((src) => (
                 <span
                   key={src}
                   className="text-xs px-2.5 py-1 rounded-full"
                   style={{
-                    backgroundColor: (acid.essential ? '#4a7c59' : '#6b7d76') + '10',
-                    color: acid.essential ? '#4a7c59' : '#6b7d76',
+                    backgroundColor: (localizedAcid.essential ? '#4a7c59' : '#6b7d76') + '10',
+                    color: localizedAcid.essential ? '#4a7c59' : '#6b7d76',
                   }}
                 >
                   {src}
@@ -549,7 +878,7 @@ function AcidDetailDialog({
               {isKo ? '결핍 시 증상' : 'Deficiency Effects'}
             </h4>
             <div className="flex flex-wrap gap-2">
-              {acid.deficiencyEffects.map((eff, i) => (
+              {localizedAcid.deficiencyEffects.map((eff, i) => (
                 <span
                   key={i}
                   className="px-3 py-1.5 rounded-full text-xs"
@@ -562,15 +891,15 @@ function AcidDetailDialog({
           </section>
 
           {/* Daily Need */}
-          {acid.dailyNeed && (
+          {localizedAcid.dailyNeed && (
             <section
               className="p-4 rounded-xl"
-              style={{ backgroundColor: acid.essential ? 'rgba(74,124,89,0.06)' : 'rgba(107,125,118,0.06)' }}
+              style={{ backgroundColor: localizedAcid.essential ? 'rgba(74,124,89,0.06)' : 'rgba(107,125,118,0.06)' }}
             >
               <p className="text-[10px] uppercase tracking-wider text-deep/40 mb-1">
                 {isKo ? '하루 권장량' : 'Daily Requirement'}
               </p>
-              <p className="text-sm font-medium text-deep">{acid.dailyNeed}</p>
+              <p className="text-sm font-medium text-deep">{localizedAcid.dailyNeed}</p>
               <p className="text-[10px] text-deep/30 mt-1">
                 {isKo ? 'WHO/FAO 2007 기준' : 'Based on WHO/FAO 2007'}
               </p>

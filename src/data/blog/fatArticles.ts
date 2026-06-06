@@ -24,7 +24,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: 'What fats do in the body',
         paragraphs: [
-          'Fats store energy, cushion organs, build cell membranes, and carry fat-soluble vitamins A, D, E, and K into absorption. Your brain is rich in lipids; hormones like estrogen and testosterone are built from cholesterol backbones.',
+          'Fats store energy, cushion organs, build cell membranes, and help you absorb the fat-soluble vitamins A, D, E, and K. Your brain is largely lipid; hormones like estrogen and testosterone are built from cholesterol backbones.',
           'Cutting fat to zero breaks vitamin absorption and can make meals unsatisfying in a way that pushes people toward sugar instead. The goal is quality and balance, not elimination.',
           'The [fats encyclopedia](/nutrients/fats) breaks down unsaturated, saturated, and trans fats with food lists. This series walks them in order.',
         ],
@@ -90,7 +90,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '몸에서 지방이 하는 일',
         paragraphs: [
-          '지방은 에너지를 저장하고, 장기를 보호하고, 세포막을 만들고, 지용성 비타민 A·D·E·K 흡수를 돕아요. 뇌도 지질이 많고, 호르몬도 콜레스테롤 골격에서 나와요.',
+          '지방은 에너지를 저장하고 장기를 보호해요. 세포막을 만들고 지용성 비타민 A·D·E·K 흡수도 도와요. 뇌에도 지질이 많고, 에스트로겐·테스토스테론 같은 호르몬도 콜레스테롤 골격에서 만들어져요.',
           '지방을 제로로 잡으면 비타민 흡수가 깨지고, 배고픔이 설탕 쪽으로 밀릴 수 있어요. 목표는 없애기가 아니라 질과 균형이에요.',
           '[지방 백과](/nutrients/fats)에 불포화·포화·트랜스 음식표가 있어요. 이 시리즈는 순서대로 풀어요.',
         ],
@@ -100,7 +100,7 @@ export const fatArticles: BlogArticle[] = [
             tone: 'key',
             title: '한 줄만 기억',
             body: [
-              '해로운 지방 종류를 바꾸고 오메가3 식품을 더한 뒤, 하루 지방 g 숫자에 집착하세요.',
+              '하루 지방 g 숫자에 집착하기 전에, 해로운 지방 종류부터 바꾸고 오메가3 식품을 더하세요.',
             ],
           },
         ],
@@ -108,7 +108,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '식탁의 세 가족',
         paragraphs: [
-          '불포화(올리브오일, 견과, 생선)를 기본으로. 포화(버터, 기름진 고기, 코코넛)는 적당히, 많으면 LDL이 올라가요. 공업 트랜스는 예외적으로 해로워요.',
+          '불포화(올리브오일, 견과, 생선)를 기본으로 하세요. 포화(버터, 기름진 고기, 코코넛)는 적당히 먹으면 괜찮은데, 많아지면 LDL이 올라가요. 공업 트랜스는 양에 상관없이 해로워서 예외예요.',
         ],
         blocks: [
           {
@@ -125,7 +125,7 @@ export const fatArticles: BlogArticle[] = [
             kind: 'stats',
             items: [
               { value: '9kcal/g', label: '지방 에너지 밀도' },
-              { value: '20–35%', label: 'AHA 지방 칼로리 구간' },
+              { value: '20–35%', label: '미국심장협회(AHA) 권장 지방 칼로리 비율' },
               { value: '3종', label: '불포화·포화·트랜스' },
             ],
           },
@@ -134,7 +134,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '시리즈 지도',
         paragraphs: [
-          '뇌 화학과 지방은 간접으로 연결돼요—기분 음식 과장은 [도파민 시리즈](/blog/dopamine-guide). 여기선 심혈관·일상 식단에 맞출게요.',
+          '뇌 화학도 지방과 간접적으로 얽혀 있는데, 기분에 좋다는 음식 과장은 [도파민 시리즈](/blog/dopamine-guide)에서 다뤄요. 여기선 심혈관과 일상 식단에 집중할게요.',
         ],
         blocks: [
           {
@@ -220,8 +220,8 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '이름 셋, 한 가족',
         paragraphs: [
-          'ALA는 아마, 치아, 호두, 카나ola에서 와요. 몸이 EPA·DHA로 바꾸는 비율은 작아요. 고등어·꽁치·연어의 EPA·DHA는 그 병목을 건너뛰어요.',
-          '가이드라인에선 심혈관 이득으로 EPA+DHA 합쳐 하루 약 250mg, 주 2회 85g 등푸른생선쯤이 자주 나와요. 단백질 시리즈는 살코기 각도, 여기선 살 속 기름이에요.',
+          'ALA는 아마, 치아, 호두, 카놀라유에서 와요. 그런데 몸이 ALA를 EPA·DHA로 바꾸는 비율은 작아요. 고등어·꽁치·연어에 든 EPA·DHA는 이 병목을 건너뛰고요.',
+          '가이드라인은 심혈관 이득을 위해 EPA+DHA를 합쳐 하루 약 250mg, 주 2회 85g짜리 등푸른생선쯤을 자주 권해요. 단백질 시리즈가 생선을 살코기 관점에서 봤다면, 여기선 살 속 기름이 주인공이에요.',
         ],
         blocks: [
           {
@@ -240,7 +240,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '피쉬오일 vs 음식',
         paragraphs: [
-          '생선을 전혀 안 먹으면 보충이 대안일 수 있어요. 음식은 단백·비타민 D·셀레늄이 같이 와요. 항응고제면 고용량은 진료와 맞추세요.',
+          '생선을 전혀 안 먹는다면 보충제도 대안이 돼요. 하지만 음식으로 먹으면 단백질·비타민 D·셀레늄이 기름과 함께 따라와요. 항응고제를 쓰고 있다면 고용량 피쉬오일은 꼭 진료와 맞춰야 해요.',
         ],
         blocks: [
           {
@@ -275,7 +275,7 @@ export const fatArticles: BlogArticle[] = [
     },
     description: {
       en: 'AHA 6–10% calorie limits, top saturated sources, and practical swaps.',
-      ko: 'AHA 6–10%, 포화 공급원, 실전 스왑.',
+      ko: '미국심장협회(AHA)의 6~10% 포화지방 제한 권장량, 주요 포화지방 급원 식품, 그리고 실천할 수 있는 식단 대체법.',
     },
     readMinutes: 8,
     datePublished: '2026-06-30',
@@ -330,7 +330,7 @@ export const fatArticles: BlogArticle[] = [
         heading: '포화지방이란',
         paragraphs: [
           '이중결합이 없어 실온에서 굳어요—버터, 코코넛오일, 삼겹, 크림. 양념은 괜찮고, 매 끼니 주인공이면 LDL이 올라가기 쉬워요.',
-          'AHA는 LDL·심혈관 위험이 있으면 포화지방을 칼로리 6% 이하(~2,000kcal에 13g), 일반 성인은 10% 이하(~22g)를 제안해요.',
+          '미국심장협회(AHA)는 나쁜 LDL 콜레스테롤 수치 및 심혈관 질환 위험이 있는 경우 포화지방을 총 칼로리의 6% 이하(하루 2,000kcal 섭취 시 약 13g 이하), 일반 성인은 10% 이하(약 22g 이하)로 제한할 것을 권장합니다.',
         ],
         blocks: [
           {
@@ -347,10 +347,10 @@ export const fatArticles: BlogArticle[] = [
         ],
       },
       {
-        heading: '붉은 고기·유제품 맥락',
+        heading: '붉은 고기와 유제품은 어떻게 볼까',
         paragraphs: [
-          '닭·생선은 꽃등심 매일보다 포화가 적어요. 유제품은 칼슘 대신 치즈가 주 garnishes면 포화가 쌓여요.',
-          '가공육은 나트륨도 많아요—[나트륨·칼륨](/blog/minerals-sodium-potassium) 참고.',
+          '닭고기·생선은 매일 꽃등심을 먹는 것보다 포화가 적으면서 단백질을 줘요. 유제품은 칼슘을 주지만, 치즈를 주로 곁들이는 식이면 포화가 쌓여요.',
+          '가공육은 나트륨도 많아요. 델리 햄이나 패스트푸드 얘기는 [나트륨·칼륨](/blog/minerals-sodium-potassium)에서 더 봐요.',
         ],
         blocks: [
           {
@@ -366,7 +366,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '실천',
         paragraphs: [
-          '올리브·카나ola로 조리하고, 버터는 양념으로, 고기 visible fat은 제거하세요. 다음: [트랜스 라벨](/blog/fats-trans-labels).',
+          '올리브유·카놀라유로 조리하고, 버터는 포인트로만 쓰고, 고기에 보이는 기름은 떼어내세요. 다음: [트랜스 라벨](/blog/fats-trans-labels).',
         ],
       },
     ],
@@ -395,7 +395,7 @@ export const fatArticles: BlogArticle[] = [
         heading: 'Why trans fat is different',
         paragraphs: [
           'No other fat type simultaneously raises "bad" LDL and lowers "good" HDL. WHO targets eliminating industrial trans fat globally because of heart disease burden.',
-          'Natural trace trans in dairy and beef exists, but the problem scale is industrial partial hydrogenation.',
+          'Dairy and beef carry trace natural trans fat, but the real problem is industrial partial hydrogenation.',
         ],
         blocks: [
           {
@@ -448,8 +448,8 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '트랜스가 다른 이유',
         paragraphs: [
-          '다른 지방은 LDL·HDL을 동시에 이렇게 망가뜨리지 않아요. WHO도 공업 트랜스 제거를 심혈관 부담 때문에 권해요.',
-          '유제품·쇠고기에 아주 소량 자연 트랜스는 있지만, 문제 규모는 부분수소 공업유예요.',
+          '다른 지방은 \'나쁜\' LDL을 올리면서 \'좋은\' HDL까지 동시에 떨어뜨리진 않아요. 세계보건기구(WHO)도 심혈관 질환 부담 때문에 공업 트랜스를 전 세계에서 없애자고 해요.',
+          '유제품·쇠고기에도 자연 트랜스가 아주 소량 들어 있긴 해요. 그래도 진짜 문제는 부분수소 공정으로 만든 공업용 트랜스예요.',
         ],
         blocks: [
           {
@@ -457,7 +457,7 @@ export const fatArticles: BlogArticle[] = [
             tone: 'caution',
             title: '앞면보다 원재료',
             body: [
-              '1회 제공량 트랜스 0.5g 미만이면 "0g"일 수 있어요. 한 봉지 다 먹으면 의미가 달라져요.',
+              '1회 제공량당 트랜스가 0.5g 미만이면 "0g"으로 표시할 수 있어요. 한 봉지를 다 먹으면 이 표시는 의미가 없어지고요.',
             ],
           },
         ],
@@ -473,7 +473,7 @@ export const fatArticles: BlogArticle[] = [
             caption: '라벨 체크리스트',
             headers: ['볼 곳', '경고', '대안'],
             rows: [
-              ['원재료', '부분수소·쇼트닝', '올리브·카나ola·아보카도'],
+              ['원재료', '부분수소·쇼트닝', '올리브·카놀라·아보카도'],
               ['1회량', '작게 쪼갠 표시', '반복 간식 줄이기'],
               ['튀김', '기름 재사용', '굽기·찜'],
               ['분석기', '일주일 패턴', '한 가지 끊기'],
@@ -490,7 +490,7 @@ export const fatArticles: BlogArticle[] = [
           {
             kind: 'stats',
             items: [
-              { value: '<2g', label: '트랜스 상한 (AHA)' },
+              { value: '<2g', label: '미국심장협회(AHA) 권장 하루 트랜스지방 상한선' },
               { value: '2018', label: '미국 PHO 금지(대부분)' },
               { value: '0.5g', label: '1회량 0g 함정' },
             ],
@@ -505,11 +505,11 @@ export const fatArticles: BlogArticle[] = [
     episode: 5,
     title: {
       en: 'Cooking oils: olive for everyday, high heat without smoke panic',
-      ko: '조리유: 올리브는 일상, 연점은 과장 말고',
+      ko: '조리유: 올리브는 일상용, 연점은 너무 걱정 말기',
     },
     thesis: {
       en: 'Olive, canola, and avocado oils cover most home cooking. Smoke point matters for deep frying, but most people overthink oil chemistry while underthinking fried takeout frequency.',
-      ko: '올리브·카나ola·아보카도가 대부분의 집밥을 커버해요. 연점은 깊은 튀김에 중요하지만, 화학 걱정보다 배달 튀김 빈도가 더 클 때가 많아요.',
+      ko: '올리브·카놀라·아보카도면 집밥은 거의 다 돼요. 연점은 튀김할 때나 중요하지, 사실 기름 화학 따지는 것보다 배달 튀김을 얼마나 자주 먹느냐가 더 큰 변수예요.',
     },
     description: {
       en: 'Oil choice by cooking method, reused fryer oil, and coconut oil saturation reality.',
@@ -565,7 +565,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '한국·미국 주방 기본유',
         paragraphs: [
-          '미국: 올리브(볶음·드레싱), 카나ola·아보카도(중성·고온), 버터는 마무리 향. 한국: 들기름·참기름은 향이 강해 소량—나물 마무리, 매 끼니 대량은 포화·산패 주의.',
+          '미국식이면 볶음·드레싱엔 올리브, 중성 맛이나 고온엔 카놀라·아보카도, 버터는 마무리 향용으로 써요. 한국이라면 들기름·참기름은 향이 강하니까 나물 마무리에 조금만 쓰고, 매 끼니 많이 쓰면 포화와 산패를 조심하는 게 좋아요.',
         ],
         blocks: [
           {
@@ -574,7 +574,7 @@ export const fatArticles: BlogArticle[] = [
             headers: ['용도', '유', '메모'],
             rows: [
               ['나물 마무리', '참기름 소량', '향, 포화 인지'],
-              ['일반 볶음', '올리브·카나ola', '집에서 충분'],
+              ['일반 볶음', '올리브·카놀라', '집에서 충분'],
               ['국물', '기름 적게', '국물이 포화 저장고'],
               ['튀김(가끔)', '새 기름', '재사용 튀김집 주의'],
             ],
@@ -590,9 +590,9 @@ export const fatArticles: BlogArticle[] = [
           {
             kind: 'callout',
             tone: 'tip',
-            title: '빈도가 화학 튀비보다 큼',
+            title: '화학 지식보다 빈도가 중요해요',
             body: [
-              '올리브 볶음밥 한 번이, 연점 공부하면서 감자튀김 시키는 것보다 낫습니다.',
+              '연점 공부하면서 감자튀김 시키는 것보다, 올리브유로 볶음밥 한 번 해 먹는 게 나아요.',
             ],
           },
         ],
@@ -615,7 +615,7 @@ export const fatArticles: BlogArticle[] = [
     },
     thesis: {
       en: 'Vitamins A, D, E, and K need dietary fat to absorb well. A fat-free dressing or skim-only pattern can leave colorful plates that still under-deliver fat-soluble nutrients.',
-      ko: '비타민 A·D·E·K는 지방이 있어야 잘 흡수돼요. 무지방 드레싱·스킨만 패턴이면 색은 화려한데 지용성은 부족할 수 있어요.',
+      ko: '비타민 A·D·E·K는 지방이 있어야 잘 흡수돼요. 무지방 드레싱에 저지방 우유만 먹는 식이면 접시 색은 화려해도 정작 지용성 영양소는 부족할 수 있어요.',
     },
     description: {
       en: 'Pairing greens with oil, eggs, fish, nuts; link to vitamin ULs without repeating the full fat-soluble article.',
@@ -628,7 +628,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: 'Fat as a delivery truck',
         paragraphs: [
-          'Carotenoids in carrots and sweet potatoes convert to vitamin A with fat present. Vitamin D in salmon and egg yolks rides with the fish oil. Vitamin E hides in almonds and sunflower seeds—already fatty foods.',
+          'Carotenoids in carrots and sweet potatoes convert to vitamin A only when fat is present. Vitamin D in salmon and egg yolks rides along with the fish oil. Vitamin E sits in almonds and sunflower seeds, which are already fatty foods.',
           'A bare spinach salad with lemon only is a missed chance. Olive oil, avocado, or seeds on the same bowl fix absorption without a pill.',
         ],
         blocks: [
@@ -671,7 +671,7 @@ export const fatArticles: BlogArticle[] = [
       {
         heading: '지방은 배달 트럭',
         paragraphs: [
-          '당근·고구마의 카로티노이드는 지방이 있어야 비타민 A로 잘 갑니다. 연어·노른자의 D는 생선 기름과 같이 와요. 비타민 E는 아몬드·해바라기씨—이미 기름진 음식이에요.',
+          '당근·고구마의 카로티노이드는 지방이 곁들여져야 비타민 A로 잘 바뀌어요. 연어·노른자의 비타민 D는 생선 기름에 실려 같이 들어오고요. 비타민 E는 아몬드·해바라기씨에 들어 있는데, 이건 원래 기름진 음식이에요.',
           '레몬만 뿌린 시금치 샐러드는 아쉬워요. 올리브·아보카도·씨앗을 같은 그릇에 올리면 알약 없이 흡수가 나아져요.',
         ],
         blocks: [
@@ -732,10 +732,10 @@ export const fatArticles: BlogArticle[] = [
     relatedSlugs: ['fats-omega-3', 'fats-saturated', 'fats-trans-labels', 'fats-guide'],
     en: [
       {
-        heading: 'US patterns that skew the wrong fat',
+        heading: 'US patterns that push fat the wrong way',
         paragraphs: [
-          'Coffee and pastry breakfast adds saturated and trans fat without omega-3. Lunch deli sandwiches stack cheese and cured meat. Dinner-only protein with no fish all week misses EPA/DHA.',
-          'Fix: one unsaturated anchor per meal—nuts on oats, olive on salad, salmon twice weekly.',
+          'A coffee-and-pastry breakfast adds saturated and trans fat with no omega-3. Deli lunch sandwiches stack cheese and cured meat. And a week of dinners with protein but no fish misses out on EPA and DHA.',
+          'The fix is one unsaturated anchor per meal: nuts on oats, olive oil on salad, salmon twice a week.',
         ],
         blocks: [
           {
@@ -785,10 +785,10 @@ export const fatArticles: BlogArticle[] = [
     ],
     ko: [
       {
-        heading: '한국 식탁에서 지방이 기울는 패턴',
+        heading: '한국 식탁에서 지방이 한쪽으로 쏠리는 패턴',
         paragraphs: [
-          '아침 빵·커피만이면 불포화·오메가3가 비어요. 점심 돈까스·라면은 튀김 포화+나트륨. 일주일 내내 삼겹만이면 EPA/DHA가 없어요.',
-          '끼니마다 불포화 앵커—아침 견과·두유, 점심 나물+참기름 소량, 저녁 고등어.',
+          '아침을 빵·커피로만 때우면 불포화와 오메가3가 비어요. 점심 돈까스·라면은 튀김 포화에 나트륨까지 더해지고요. 일주일 내내 삼겹살만 먹으면 EPA·DHA가 빠져요.',
+          '그래서 끼니마다 불포화를 하나씩 챙기면 좋아요. 아침엔 견과·두유, 점심엔 나물에 참기름 조금, 저녁엔 고등어처럼요.',
         ],
         blocks: [
           {

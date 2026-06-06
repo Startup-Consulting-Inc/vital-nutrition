@@ -4,6 +4,13 @@ import { useLocale } from '@/lib/i18n';
 import { getSavedAnalyses, removeSavedAnalysis, clearSavedAnalyses, type SavedAnalysis } from '@/lib/savedList';
 import SEOHead from '@/components/SEOHead';
 
+const PROFILE_MAP: Record<string, string> = {
+  general: '일반 성인',
+  pregnancy: '임신 중',
+  lactation: '수유 중',
+  senior: '시니어',
+};
+
 export default function SavedList() {
   const [locale] = useLocale();
   const [items, setItems] = useState<SavedAnalysis[]>(() => getSavedAnalyses());
@@ -108,10 +115,10 @@ export default function SavedList() {
                 {comparisonDiff && (
                   <div className="mt-2 flex flex-wrap gap-3 text-xs">
                     <span className={`font-medium ${comparisonDiff.scoreDelta >= 0 ? 'text-[#4a7c59]' : 'text-[#b8301f]'}`}>
-                      Score: {comparisonDiff.scoreDelta >= 0 ? '+' : ''}{comparisonDiff.scoreDelta}
+                      {locale === 'ko' ? '점수' : 'Score'}: {comparisonDiff.scoreDelta >= 0 ? '+' : ''}{comparisonDiff.scoreDelta}
                     </span>
                     <span className="text-deep/50">
-                      Calories: {comparisonDiff.calDelta >= 0 ? '+' : ''}{comparisonDiff.calDelta}
+                      {locale === 'ko' ? '칼로리' : 'Calories'}: {comparisonDiff.calDelta >= 0 ? '+' : ''}{comparisonDiff.calDelta} {locale === 'ko' ? 'kcal' : 'cal'}
                     </span>
                   </div>
                 )}
@@ -160,8 +167,8 @@ export default function SavedList() {
                     </button>
                   </div>
 
-                  <h3 className="text-sm font-medium text-deep mb-1 truncate">{item.productName || 'Unnamed Product'}</h3>
-                  <p className="text-xs text-deep/50 mb-3">{item.servingSize} · {item.calories} cal</p>
+                  <h3 className="text-sm font-medium text-deep mb-1 truncate">{item.productName || (locale === 'ko' ? '이름 없는 제품' : 'Unnamed Product')}</h3>
+                  <p className="text-xs text-deep/50 mb-3">{item.servingSize} · {item.calories} {locale === 'ko' ? 'kcal' : 'cal'}</p>
 
                   <div className="flex items-center gap-2 mb-3">
                     <div className="flex-1 h-2 bg-deep/5 rounded-full overflow-hidden">
@@ -174,7 +181,7 @@ export default function SavedList() {
                   </div>
 
                   <p className="text-xs text-deep/50">
-                    {new Date(item.timestamp).toLocaleDateString()} · {item.profile}
+                    {new Date(item.timestamp).toLocaleDateString()} · {locale === 'ko' ? (PROFILE_MAP[item.profile] || item.profile) : item.profile}
                   </p>
                 </div>
               ))}

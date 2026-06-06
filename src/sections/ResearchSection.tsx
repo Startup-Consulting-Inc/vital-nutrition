@@ -294,6 +294,15 @@ const keyTakeaways = [
   { id: 'water', label: 'Water', value: '2.7–3.7L', sub: 'total daily intake' },
 ];
 
+const keyTakeawaysKo = [
+  { id: 'fiber', label: '식이섬유', value: '25–38g', sub: '일일 권장량' },
+  { id: 'sugar', label: '첨가당 제한', value: '<10%', sub: '총 칼로리 대비' },
+  { id: 'sodium', label: '나트륨 제한', value: '<2,300mg', sub: '일일 권장량' },
+  { id: 'omega3', label: '오메가-3', value: '주 2회 이상', sub: '생선 섭취' },
+  { id: 'protein', label: '단백질', value: '0.8–1.6g', sub: '체중 1kg당 권장량' },
+  { id: 'water', label: '수분 섭취', value: '2.7–3.7L', sub: '하루 총 권장량' },
+];
+
 /* ------------------------------------------------------------------ */
 /*  Chapter card component                                             */
 /* ------------------------------------------------------------------ */
@@ -445,7 +454,7 @@ export default function ResearchSection() {
         {/* Key Takeaways Bar */}
         <div className="mb-16">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {keyTakeaways.map((item) => (
+            {(locale === 'ko' ? keyTakeawaysKo : keyTakeaways).map((item) => (
               <div
                 key={item.id}
                 className="p-4 rounded-xl bg-white border border-deep/5 text-center hover:shadow-md transition-shadow duration-300"

@@ -10,7 +10,7 @@ export const mineralArticles: BlogArticle[] = [
       ko: '미네랄: 뼈·혈액·신경을 만드는 무기 재료',
     },
     thesis: {
-      en: 'Minerals are not calories and not vitamins. They are inorganic elements your body uses for bone, fluid balance, oxygen transport, and enzyme work—and most gaps are pattern problems, not one missing superfood.',
+      en: 'Minerals are not calories and not vitamins. They are inorganic elements your body uses for bone, fluid balance, oxygen transport, and enzyme work. Most gaps come from your overall diet pattern, not one missing superfood.',
       ko: '미네랄은 칼로리도 비타민도 아니에요. 뼈·수분·산소 운반·효소에 쓰이는 무기 원소이고, 부족은 보통 한 가지 슈퍼푸드가 아니라 식단 패턴에서 나와요.',
     },
     description: {
@@ -92,7 +92,7 @@ export const mineralArticles: BlogArticle[] = [
         heading: '미네랄이 뭐고, 뭐가 아닌지',
         paragraphs: [
           '비타민은 유기 분자예요. 미네랄은 원소예요. 뼈의 칼슘, 헤모글로빈의 철, 신경 신호의 나트륨·칼륨. 하루에 그램 단위(다량)와 밀리·마이크로그램 단위(미량)가 같이 필요해요.',
-          '"전해질 음료", 누구에게나 칼슘 고용량, 피곤=미네랄 결핍 같은 말은 헷갈리게 만들어요. 이 시리즈는 음식 우선이고, 의료 이야기면 검사·진료로 보내요.',
+          '"전해질 음료", 누구에게나 칼슘 고용량, 피곤하면 미네랄 부족이라는 식의 말은 오히려 헷갈리게 해요. 이 글은 음식이 먼저고, 병원이 필요한 얘기는 검사·진료 쪽으로 넘길게요.',
           '[미네랄 백과](/nutrients/minerals)에 기능·음식·상한이 있어요. 이 글들은 순서대로 풀어요.',
         ],
         blocks: [
@@ -101,7 +101,7 @@ export const mineralArticles: BlogArticle[] = [
             tone: 'key',
             title: '한 줄만 기억',
             body: [
-              '미네랄은 구조와 신호를 유지해요. 피곧다고 바로 영양제 살 일은 아닐 때가 많아요.',
+              '미네랄은 몸의 구조와 신호를 유지해요. 피곤하다고 바로 영양제부터 살 일은 아니에요.',
             ],
           },
         ],
@@ -126,7 +126,7 @@ export const mineralArticles: BlogArticle[] = [
           {
             kind: 'stats',
             items: [
-              { value: '1,000mg', label: '칼슘 RDA (성인, NIH)' },
+              { value: '1,000mg', label: '칼슘 권장섭취량(RDA) (성인, 미국 국립보건원 NIH 기준)' },
               { value: '8–18mg', label: '철 RDA 구간' },
               { value: '2,300mg', label: '나트륨 UL (미국 성인)' },
             ],
@@ -165,7 +165,7 @@ export const mineralArticles: BlogArticle[] = [
     },
     thesis: {
       en: 'Iron carries oxygen in blood. Heme iron from animal foods absorbs easily; plant iron needs vitamin C and steady intake. Fatigue alone is not proof you need pills.',
-      ko: '철은 혈액이 산소를 실어 나르요. 동물성 헴철은 잘 흡수되고, 식물 철은 비타민 C·꾸준한 섭취가 필요해요. 피곤만으로 철제가 답은 아니에요.',
+      ko: '철은 혈액이 산소를 실어 나르게 해요. 동물성 헴철은 잘 흡수되고, 식물 철은 비타민 C와 꾸준한 섭취가 필요해요. 피곤하다고 철분제가 답인 건 아니에요.',
     },
     description: {
       en: 'Iron types, RDAs, menstruation and pregnancy flags, and links to B12/folate.',
@@ -198,8 +198,8 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Who should think about iron seriously',
         paragraphs: [
-          'Menstruating adults, pregnancy, endurance athletes with heavy losses, and restrictive diets can run low over time. Vegan eaters need planning—not hope from salad alone. [B12 and folate](/blog/vitamins-b12-folate) matter for anemia workups too; iron without B12 does not fix every "tired" story.',
-          'Signs like persistent pallor, breathlessness on stairs, or craving ice belong with clinicians and ferritin/hemoglobin tests—not supplement roulette.',
+          'Menstruating adults, pregnancy, endurance athletes with heavy losses, and restrictive diets can all run low over time. Vegan eaters need a plan, not just hope that salad will cover it. [B12 and folate](/blog/vitamins-b12-folate) matter for anemia workups too; iron without B12 does not fix every "tired" story.',
+          'Persistent pallor, breathlessness on stairs, or craving ice belong with a clinician and ferritin/hemoglobin tests, not supplement roulette.',
         ],
         blocks: [
           {
@@ -249,10 +249,10 @@ export const mineralArticles: BlogArticle[] = [
         ],
       },
       {
-        heading: '철을 진지히 볼 사람',
+        heading: '철을 진지하게 챙겨야 할 사람',
         paragraphs: [
-          '생리·임신·큰 운동 손실·좁은 식단은 시간이 지나면 낮아질 수 있어요. 비건은 계획이 필요해요. [B12·엽산](/blog/vitamins-b12-folate)도 빈혈 검사에 같이 봐요. 철만으로 모든 "피곤"이 해결되진 않아요.',
-          '계단에서 숨참, 창백함, 얼음 먹고 싶음이 계속되면 페리틴·헤모글로빈 검사와 진료 쪽이 맞아요.',
+          '생리, 임신, 운동으로 손실이 큰 경우, 식단이 좁은 경우는 시간이 지나면서 철이 모자랄 수 있어요. 비건이라면 샐러드만 믿지 말고 계획을 세워야 해요. 빈혈을 볼 때는 [B12·엽산](/blog/vitamins-b12-folate)도 같이 확인하고요. 철만으로 모든 피곤이 풀리진 않아요.',
+          '창백함이 가시지 않거나, 계단에서 숨이 차거나, 얼음을 자꾸 씹고 싶다면 페리틴·헤모글로빈 검사와 진료가 맞아요.',
         ],
         blocks: [
           {
@@ -260,7 +260,7 @@ export const mineralArticles: BlogArticle[] = [
             tone: 'caution',
             title: '증상≠진단',
             body: [
-              '저장이 정상인데 철을 많이 먹으면 해로울 수 있어요. 보충 철 UL 45mg/일(NIH).',
+              '철의 체내 저장량이 정상인데도 추가로 많이 섭취하면 오히려 해로울 수 있습니다. 철의 일일 상한섭취량(UL)은 하루 45mg입니다(미국 국립보건원 NIH 기준).',
             ],
           },
           {
@@ -287,7 +287,7 @@ export const mineralArticles: BlogArticle[] = [
     episode: 3,
     title: {
       en: 'Calcium and magnesium: bone, cramps, and supplement upper limits',
-      ko: '칼슘·마그네슘: 뼈, 쥐먹저리, 보충 상한',
+      ko: '칼슘·마그네슘: 뼈, 근육 경련, 보충 상한',
     },
     thesis: {
       en: 'Calcium builds bone with vitamin D and weight-bearing movement; magnesium runs hundreds of enzymes and muscle relaxation. Food first—megadose pills have ULs.',
@@ -304,7 +304,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Calcium beyond "drink milk"',
         paragraphs: [
-          'Adults need about 1,000 mg calcium per day (NIH), more for some older adults. One cup milk delivers ~300 mg; calcium-set tofu half cup ~434 mg; cooked kale cup ~177 mg. Bone health still needs [vitamin D](/blog/vitamins-c-and-d) and activity—not calcium alone in a pill.',
+          'Adults need about 1,000 mg calcium per day (NIH), more for some older adults. A cup of milk delivers ~300 mg, half a cup of calcium-set tofu ~434 mg, a cup of cooked kale ~177 mg. Bone health still needs [vitamin D](/blog/vitamins-c-and-d) and activity, not just calcium in a pill.',
         ],
         blocks: [
           {
@@ -323,7 +323,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Magnesium: cramps, sleep, and pills',
         paragraphs: [
-          'Magnesium supports 300+ enzyme reactions and muscle function. Pumpkin seeds, almonds, black beans, and leafy greens carry it. Supplement UL from pills is 350 mg/day for adults (food magnesium has no UL). Loose stools often mean you crossed personal tolerance on pills.',
+          'Magnesium supports 300+ enzyme reactions and muscle function. Pumpkin seeds, almonds, black beans, and leafy greens carry it. The supplement UL is 350 mg/day for adults (magnesium from food has no UL). Loose stools usually mean you went past your own tolerance on the pills.',
         ],
         blocks: [
           {
@@ -355,7 +355,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '칼슘, "우유만"이 아님',
         paragraphs: [
-          '성인은 하루 약 1,000mg(NIH), 고령은 더 필요할 수 있어요. 우유 1컵 ~300mg, 칼슘두부 반 모 ~434mg, 익힌 케일 1컵 ~177mg. 뼈는 [비타민 D](/blog/vitamins-c-and-d)·활동과 같이 가요—알약만으로 끝나진 않아요.',
+          '성인의 일일 칼슘 권장섭취량은 하루 약 1,000mg(미국 국립보건원 NIH 기준)이며, 일부 고령층은 이보다 더 필요할 수 있습니다. 우유 1컵에는 약 300mg, 칼슘 응고 두부 반 모에는 약 434mg, 익힌 케일 1컵에는 약 177mg이 들어있습니다. 뼈 건강은 알약 하나만으로 해결되지 않으며, [비타민 D](/blog/vitamins-c-and-d) 및 규칙적인 운동(체중 부하 운동)과 함께 관리해야 합니다.',
         ],
         blocks: [
           {
@@ -372,15 +372,15 @@ export const mineralArticles: BlogArticle[] = [
         ],
       },
       {
-        heading: '마그네슘: 쥐먹저리·수면·알약',
+        heading: '마그네슘: 경련·수면·알약',
         paragraphs: [
-          '마그네슘은 300개 넘는 효소·근육 이완에 쓰여요. 호박씨·아몬드·검은콩·나물에 있어요. 보충제만 UL 350mg/일(음식 Mg는 UL 없음). 알약으로 설사 나면 용량을 넘긴 경우가 많아요.',
+          '마그네슘은 300개가 넘는 효소 반응과 근육 이완에 관여해요. 호박씨, 아몬드, 검은콩, 나물에 들어 있어요. 보충제는 UL이 하루 350mg이에요(음식 마그네슘은 상한이 없어요). 알약 먹고 설사가 나면 보통 자기 용량을 넘긴 거예요.',
         ],
         blocks: [
           {
             kind: 'stats',
             items: [
-              { value: '310–420mg', label: 'Mg RDA (NIH)' },
+              { value: '310–420mg', label: '마그네슘 일일 권장섭취량(RDA) (미국 국립보건원 NIH 기준)' },
               { value: '2,500mg', label: '칼슘 UL 19–50' },
               { value: '350mg', label: 'Mg 보충 UL' },
             ],
@@ -398,7 +398,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '실천',
         paragraphs: [
-          '유제품·강화 두유·채소·씨앗으로 식탁을 만들어요. 충분히 먹는데도 밤 쥐먹저리가 계속이면 다른 원인도 봐야 해요. 다음: [나트륨·칼륨](/blog/minerals-sodium-potassium).',
+          '유제품이나 강화 두유, 채소, 씨앗으로 식탁을 채워요. 충분히 먹는데도 밤마다 쥐가 계속 나면 다른 원인도 살펴봐야 해요. 다음: [나트륨·칼륨](/blog/minerals-sodium-potassium).',
         ],
       },
     ],
@@ -426,7 +426,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Where sodium actually comes from',
         paragraphs: [
-          'US adults are advised to stay under 2,300 mg sodium per day (Dietary Guidelines); AHA ideal target is 1,500 mg for many. Roughly 70% of sodium in typical US diets comes from packaged, restaurant, and deli foods—not home cooking salt.',
+          'US adults are advised to stay under 2,300 mg sodium per day (Dietary Guidelines), and the AHA ideal target is 1,500 mg for many people. Roughly 70% of sodium in a typical US diet comes from packaged, restaurant, and deli foods, not the salt you add at home.',
           'Deli turkey, canned soup, frozen meals, and fast food stack sodium while adding little potassium.',
         ],
         blocks: [
@@ -446,7 +446,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Potassium and blood pressure context',
         paragraphs: [
-          'Potassium helps kidneys balance sodium. A medium banana (~422 mg potassium) is a snack, not a prescription. People on certain blood pressure meds or kidney disease need clinician guidance—more potassium is not automatically safe.',
+          'Potassium helps kidneys balance sodium. A medium banana (~422 mg potassium) is a snack, not a prescription. People on certain blood pressure meds, or with kidney disease, need clinician guidance, since more potassium is not automatically safe.',
         ],
         blocks: [
           {
@@ -478,7 +478,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '나트륨은 어디서 오나',
         paragraphs: [
-          '미국 기준 성인 나트륨은 하루 2,300mg 이하 권고(AHA는 1,500mg 이상적이라는 경우도). 전형적인 미국 식단의 70% 가까이가 가공·외식·델리에서 와요.',
+          '미국에서는 성인의 나트륨 섭취량을 하루 2,300mg 이하로 권고하고 있으며, 미국심장협회(AHA)는 대부분 성인의 이상적인 하루 나트륨 제한 목표치로 1,500mg 이하를 제시합니다. 일반적인 식단에서는 나트륨의 70% 가까이가 집에서 직접 넣는 소금이 아닌 가공식품, 외식, 델리 제품 등을 통해 섭취됩니다.',
           '한국은 김치·젓갈·라면·배달 국물이 하루 염분을 올려요. 소금을 덜 쳐도 국물 한 그릇이 크면 숫자가 커져요.',
         ],
         blocks: [
@@ -550,7 +550,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Zinc in food',
         paragraphs: [
-          'Adults need about 8–11 mg zinc per day (NIH). Oysters are extreme on the chart; pumpkin seeds, beef, and chickpeas are everyday sources. Chronic mega-zinc blocks copper absorption—UL 40 mg/day.',
+          'Adults need about 8–11 mg zinc per day (NIH). Oysters are off the top of the chart; pumpkin seeds, beef, and chickpeas are the everyday sources. Too much zinc for too long blocks copper absorption, so the UL is 40 mg/day.',
         ],
         blocks: [
           {
@@ -569,13 +569,13 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Iodine and thyroid',
         paragraphs: [
-          'Iodized table salt fixed deficiency in many countries. Seaweed and fish add iodine; excess from kelp supplements can swing thyroid the wrong way. Pregnancy needs adequate iodine—obstetric care sets targets.',
+          'Iodized table salt fixed deficiency in many countries. Seaweed and fish add iodine, while too much from kelp supplements can swing the thyroid the wrong way. Pregnancy needs adequate iodine, so let obstetric care set the targets.',
         ],
       },
       {
         heading: 'Selenium: one nut can be enough',
         paragraphs: [
-          'One Brazil nut (~5 g) can deliver roughly 175% DV selenium; four to five nuts can exceed the 400 mcg/day UL. Food-first: a nut or two some days, not a handful daily plus a multivitamin.',
+          'One Brazil nut (~5 g) can deliver roughly 175% DV selenium, and four to five nuts can push you past the 400 mcg/day UL. So a nut or two on some days is plenty, not a handful every day on top of a multivitamin.',
         ],
         blocks: [
           {
@@ -601,7 +601,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '아연, 음식에서',
         paragraphs: [
-          '성인 아연은 하루 8–11mg(NIH). 굴은 극단적으로 높고, 호박씨·소고기·병아리콩이 일상이에요. 아연을 오래 과다하면 구리 흡수가 막혀요—UL 40mg/일.',
+          '성인의 일일 아연 권장섭취량은 하루 8–11mg(미국 국립보건원 NIH 기준)입니다. 굴은 아연 함량이 독보적으로 높고, 일상 식단에서는 호박씨, 소고기, 병아리콩 등이 좋은 급원 식품이 됩니다. 다만 아연을 오랜 기간 과다하게 섭취하면 구리의 체내 흡수가 방해받을 수 있으므로 일일 상한섭취량(UL)인 하루 40mg 이하로 조절하는 것이 중요합니다.',
         ],
         blocks: [
           {
@@ -620,13 +620,13 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '요오드·갑상선',
         paragraphs: [
-          '요오드화 소금이 결핍을 줄였어요. 김·미역·생선이 요오드를 더해요. 다시마 보충 과다는 갑상선을 흔들 수 있어요. 임신은 충분한 요오드가 필요—산부가 목표를 잡아요.',
+          '요오드 소금이 결핍을 많이 줄였어요. 김·미역·생선도 요오드를 더해 주고요. 다시마 보충제를 과하게 먹으면 오히려 갑상선이 흔들릴 수 있어요. 임신 때는 요오드가 충분히 필요한데, 목표치는 산부인과 진료에서 잡아요.',
         ],
       },
       {
         heading: '셀레늄: 한 알이면 충분할 때',
         paragraphs: [
-          '브라질너트 1알(~5g)이 하루 DV의 175%쯤; 4–5알이면 UL 400mcg를 넘을 수 있어요. 하루 한두 알 가끔, 종합비타민+한 줌은 위험해요.',
+          '브라질너트 1알(~5g)이면 하루 DV의 175%쯤 돼요. 4–5알이면 UL인 400mcg를 넘을 수 있고요. 음식 먼저라면 가끔 한두 알이면 충분하지, 매일 한 줌에 종합비타민까지 더하는 건 위험해요.',
         ],
         blocks: [
           {
@@ -672,7 +672,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Phytates and plants',
         paragraphs: [
-          'Whole grains and legumes carry phytates that bind minerals. Soaking beans and lentils overnight and discarding water reduces phytates—the encyclopedia tip—and improves iron and zinc uptake.',
+          'Whole grains and legumes carry phytates that bind minerals. Soaking beans and lentils overnight and tossing the water reduces phytates, a tip from the encyclopedia, and improves iron and zinc uptake.',
         ],
         blocks: [
           {
@@ -690,7 +690,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Competition at the supplement aisle',
         paragraphs: [
-          'Calcium and iron supplements taken together fight for absorption. High-dose zinc long-term can steal copper. Spread minerals across meals when possible; use [Part 8](/blog/minerals-supplements-labs) for pill strategy.',
+          'Calcium and iron supplements taken together fight for absorption. High-dose zinc over the long run can steal copper. Spread minerals across meals when you can, and see [Part 8](/blog/minerals-supplements-labs) for how to handle the pills.',
         ],
         blocks: [
           {
@@ -714,7 +714,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '피틴산과 식물',
         paragraphs: [
-          '통곡·콩에 피틴산이 있어 미네랄을 붙잡아요. 콩·렌틸을 밤새 불리고 물 버리면 피틴산이 줄어요—백과 팁—철·아연 흡수가 나아져요.',
+          '통곡·콩에는 피틴산이 있어서 미네랄을 붙잡아요. 콩·렌틸을 밤새 불린 다음 그 물을 버리면 피틴산이 줄어드는데, 이건 백과에 나오는 팁이에요. 그러면 철·아연 흡수도 나아져요.',
         ],
         blocks: [
           {
@@ -732,7 +732,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '보충제끼리 경쟁',
         paragraphs: [
-          '칼슘·철 알약을 같이 먹으면 흡수가 싸워요. 아연 고용량 장기는 구리를 뺏어요. 끼니로 나누고, 알약 전략은 [8편](/blog/minerals-supplements-labs).',
+          '칼슘·철 알약을 같이 먹으면 흡수가 서로 싸워요. 아연을 고용량으로 오래 먹으면 구리를 빼앗고요. 끼니별로 나눠 먹고, 알약 전략은 [8편](/blog/minerals-supplements-labs)에서 봐요.',
         ],
         blocks: [
           {
@@ -763,7 +763,7 @@ export const mineralArticles: BlogArticle[] = [
     },
     thesis: {
       en: 'A typical US day can cover calcium and iron with milk, yogurt, lentils, and greens—while blowing sodium through deli, bread, and drive-through. Log before buying a multimineral.',
-      ko: '밥·국·반찬이면 철·칼슘·요오드가 나뉘어 들어와요. 김치·젓갈·라면이 나트륨을 올리고, 피곧함만으로 종합미네랄을 사기 전에 일주일 기록이 낫아요.',
+      ko: '밥·국·반찬으로 먹으면 철·칼슘·요오드가 끼니마다 나뉘어 들어와요. 김치·젓갈·라면이 나트륨을 올리는데, 피곤하다고 종합미네랄부터 사기보다 일주일 기록이 먼저예요.',
     },
     description: {
       en: 'US meal slots for iron, calcium, potassium, and sodium traps.',
@@ -776,8 +776,8 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'US patterns that miss minerals',
         paragraphs: [
-          'Coffee and a pastry breakfast skips calcium and iron. Lunch sandwich with chips adds sodium without potassium. Dinner-only meat leaves non-heme iron without vitamin C partners.',
-          'Fix: one mineral-dense anchor per meal—yogurt, bean soup, salmon or tofu, side salad.',
+          'Coffee and a pastry for breakfast skips calcium and iron. A lunch sandwich with chips adds sodium without potassium. Saving all the meat for dinner leaves non-heme iron without a vitamin C partner.',
+          'The fix: one mineral-dense anchor per meal, like yogurt, bean soup, salmon or tofu, a side salad.',
         ],
         blocks: [
           {
@@ -841,7 +841,7 @@ export const mineralArticles: BlogArticle[] = [
         heading: '한국 식탁에서 미네랄이 숨는 곳',
         paragraphs: [
           '아침이 커피·빵만이면 철·칼슘이 비어요. 점심이 김밥·라면만이면 나트륨은 넘치고 칼륨·철 짝이 약해요. 저녁 고기만으로는 비헴철+C가 부족할 수 있어요.',
-          '끼니마다 앵커 하나—두유·달걀, 된장국·나물, 생선·두부.',
+          '끼니마다 앵커 하나면 돼요. 두유·달걀, 된장국·나물, 생선·두부 이렇게요.',
         ],
         blocks: [
           {
@@ -868,7 +868,7 @@ export const mineralArticles: BlogArticle[] = [
             rows: [
               ['아침', '두유·달걀', 'Ca, Fe', '단 것만 아침'],
               ['점심', '밥+시금치나물+된장', 'Fe, Ca, folate', '김치만 반찬'],
-              ['저녈', '고등어·멸치국', 'Fe, I, Se', '젓갈 나트륨'],
+              ['저녁', '고등어·멸치국', 'Fe, I, Se', '젓갈 나트륨'],
               ['간식', '호박씨·바나나', 'Zn, K', '짠 과자 대신'],
             ],
           },
@@ -911,7 +911,7 @@ export const mineralArticles: BlogArticle[] = [
     },
     thesis: {
       en: 'Supplements fill targeted gaps after food and context—not "insurance" for everyone. Ferritin, thyroid panels, and pregnancy care beat buying minerals from fatigue alone.',
-      ko: '보충은 음식·맥락 다음에 빈 곳을 채우는 거지, 모두에게 "보험"이 아니에요. 페리틴·갑상선·임신 관리가 피곧함만으로 사는 것보다 낫아요.',
+      ko: '보충은 음식·맥락 다음에 빈 곳을 채우는 거지, 모두에게 "보험"은 아니에요. 그냥 피곤하다고 미네랄부터 사는 것보다 페리틴·갑상선·임신 관리가 먼저예요.',
     },
     description: {
       en: 'When iron, calcium, or multimineral products help, UL reminders, and medical red flags.',
@@ -924,7 +924,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Food first, then targeted bottles',
         paragraphs: [
-          'Multimineral gummies rarely match what your log shows missing. Iron pills help diagnosed deficiency; they stain teeth and upset stomachs when unnecessary. Calcium carbonate needs food; spread doses if prescribed.',
+          'Multimineral gummies rarely match the gaps your log actually shows. Iron pills help a diagnosed deficiency, but when you do not need them they stain teeth and upset stomachs. Calcium carbonate needs food, and if you are prescribed it, spread the doses out.',
         ],
         blocks: [
           {
@@ -943,7 +943,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: 'Labs worth the name',
         paragraphs: [
-          'Ferritin and CBC for iron stories. TSH and iodine context for thyroid—not seaweed mega-doses. Sodium is usually a diet pattern, not a blood test for healthy adults.',
+          'Ferritin and a CBC cover the iron questions. For thyroid, look at TSH and iodine context, not seaweed mega-doses. Sodium is usually a diet pattern, not a blood test for healthy adults.',
         ],
         blocks: [
           {
@@ -979,7 +979,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '음식 먼저, 그다음 겨냥한 알약',
         paragraphs: [
-          '종합미네랄 젤리가 기록과 맞는 경우는 드물어요. 철제는 진단된 결핍에 도움이 되고, 불필요하면 속쓰림·변색이 와요. 칼슘 탄산염은 식사와, 처방이면 분할 복용.',
+          '종합미네랄 젤리가 기록 속 빈 곳과 딱 맞는 경우는 드물어요. 철제는 진단된 결핍엔 도움이 되지만, 필요 없는데 먹으면 속쓰림·변색이 와요. 칼슘 탄산염은 식사와 같이 먹고, 처방받았으면 나눠서 복용해요.',
         ],
         blocks: [
           {
@@ -998,7 +998,7 @@ export const mineralArticles: BlogArticle[] = [
       {
         heading: '검사가 의미 있을 때',
         paragraphs: [
-          '철 이야기는 페리틴·CBC. 갑상선은 TSH·요오드 맥락—다시마 고용량 아님. 나트륨은 보통 식단 패턴이지 건강한 성인 혈액검사 주제가 아니에요.',
+          '철 문제는 페리틴·CBC로 봐요. 갑상선은 TSH랑 요오드 맥락이지, 다시마 고용량이 아니에요. 나트륨은 보통 식단 패턴 문제지 건강한 성인의 혈액검사 주제는 아니고요.',
         ],
         blocks: [
           {

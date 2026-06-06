@@ -242,14 +242,14 @@ export default function ProfileSheet({ open, onClose }: ProfileSheetProps) {
           {/* Live preview */}
           <div className="p-4 rounded-xl bg-[#374640]/5 border border-[#374640]/10 space-y-1 text-xs text-deep/70">
             <p className="text-caption text-deep mb-2">{isKo ? '나의 일일 목표' : 'Your daily targets'}</p>
-            <Row label="Calories" value={`${targets.calories} kcal`} />
-            <Row label="Protein" value={`${targets.proteinG} g`} />
-            <Row label="Carbs" value={`${targets.carbsG} g`} />
-            <Row label="Fat (total / sat ceiling)" value={`${targets.fatG} g / ≤${targets.saturatedFatG} g`} />
-            <Row label="Fiber" value={`${targets.fiberG} g`} />
-            <Row label="Added sugar ceiling" value={`≤${targets.addedSugarG} g`} />
-            <Row label="Sodium ceiling" value={`≤${targets.sodiumMg} mg`} />
-            <Row label="Water" value={`${targets.waterL} L (food + drink)`} />
+            <Row label={isKo ? '칼로리 (열량)' : 'Calories'} value={`${targets.calories} kcal`} />
+            <Row label={isKo ? '단백질' : 'Protein'} value={`${targets.proteinG} g`} />
+            <Row label={isKo ? '탄수화물' : 'Carbs'} value={`${targets.carbsG} g`} />
+            <Row label={isKo ? '지방 (총 지방 / 포화지방 상한)' : 'Fat (total / sat ceiling)'} value={`${targets.fatG} g / ≤${targets.saturatedFatG} g`} />
+            <Row label={isKo ? '식이섬유' : 'Fiber'} value={`${targets.fiberG} g`} />
+            <Row label={isKo ? '첨가당 상한' : 'Added sugar ceiling'} value={`≤${targets.addedSugarG} g`} />
+            <Row label={isKo ? '나트륨 상한' : 'Sodium ceiling'} value={`≤${targets.sodiumMg} mg`} />
+            <Row label={isKo ? '수분' : 'Water'} value={`${targets.waterL} L ${isKo ? '(음식 및 음료 포함)' : '(food + drink)'}`} />
           </div>
 
           <div className="flex gap-2 pt-2">

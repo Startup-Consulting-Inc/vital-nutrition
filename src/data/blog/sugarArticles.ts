@@ -10,8 +10,8 @@ export const sugarArticles: BlogArticle[] = [
       ko: '당: 단맛이 왜 중요한지, “건강하게”의 뜻',
     },
     thesis: {
-      en: 'Sugar is not one villain. Added sugars in drinks and ultra-processed snacks are the weakest case; whole fruit and balanced meals are a different conversation—and artificial sweeteners sit in between.',
-      ko: '당은 악당 하나가 아니에요. 음료·초가공 스낵의 첨가당이 가장 약하고, 통과일·균형 끼니는 다른 이야기예요. 인공감미료는 그 사이에 있어요.',
+      en: 'Sugar is not one villain. Added sugars in drinks and ultra-processed snacks make the worst case; whole fruit and balanced meals are a different conversation, and artificial sweeteners sit in between.',
+      ko: '당이라고 다 같은 악당은 아니에요. 음료와 초가공 스낵 속 첨가당이 가장 문제고, 통과일이나 균형 잡힌 끼니는 다른 이야기예요. 인공감미료는 그 사이쯤에 있고요.',
     },
     description: {
       en: 'A hub on types of sugar, the eight-part series map, and links to carbs and dopamine primers.',
@@ -24,8 +24,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'Three buckets of “sugar”',
         paragraphs: [
-          'Starch breaks into glucose over time. Table sugar is sucrose (glucose + fructose). Labels also list “added sugars” separate from lactose in plain milk or fructose in whole fruit.',
-          'The [carbohydrates encyclopedia](/nutrients/carbohydrates) ranks sugar-sweetened beverages and pastries in the Avoid bucket. The carb series [added sugar](/blog/carbohydrates-added-sugar) piece is a quick primer; this series goes deeper on craving, sweeteners, and a sane everyday approach.',
+          'Starch breaks down into glucose over time. Table sugar is sucrose (glucose + fructose). Labels list "added sugars" separately from the lactose in plain milk or the fructose in whole fruit.',
+          'The [carbohydrates encyclopedia](/nutrients/carbohydrates) puts sugar-sweetened beverages and pastries in the Avoid bucket. The carb series [added sugar](/blog/carbohydrates-added-sugar) piece is a quick primer. This series goes deeper on craving, sweeteners, and a sane everyday approach.',
         ],
         blocks: [
           {
@@ -41,7 +41,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'Why this series exists',
         paragraphs: [
-          'People talk about sugar for four reasons at once: pleasure, weight, diabetes fear, and “zero sugar” marketing. Splitting those threads stops you from banning apples because you fear Coke.',
+          'People talk about sugar for four reasons at once: pleasure, weight, fear of diabetes, and "zero sugar" marketing. Separating those threads keeps you from banning apples just because you fear Coke.',
         ],
         blocks: [
           {
@@ -64,8 +64,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '“당” 세 바구니',
         paragraphs: [
-          '전분은 시간을 두고 포도당으로 풀려요. 설탕은 자당+과당(자당). 라벨은 우유 유당·과일 과당과 “첨가당”을 나눠 적어요.',
-          '[탄수화물 백과](/nutrients/carbohydrates)는 당음료·과자를 피하기에 넣었어요. 탄수 [첨가당](/blog/carbohydrates-added-sugar) 편이 짧은 입문이고, 여기서는 당김·감미료·일상 절충을 더 깊게 다뤄요.',
+          '전분은 시간이 지나면서 포도당으로 분해돼요. 설탕은 자당이고, 포도당과 과당이 붙어 있는 형태예요. 라벨에는 우유의 유당이나 과일의 과당과 따로 "첨가당"을 적어요.',
+          '[탄수화물 백과](/nutrients/carbohydrates)는 당음료와 과자를 피하기 바구니에 넣어요. 탄수 시리즈의 [첨가당](/blog/carbohydrates-added-sugar) 편이 짧은 입문이고, 여기서는 당김과 감미료, 일상에서의 절충을 더 깊게 다뤄요.',
         ],
         blocks: [
           {
@@ -81,7 +81,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '왜 이 시리즈가 있는지',
         paragraphs: [
-          '단맛 이야기는 쾌락·체중·당뇨 공포·“제로” 마케팅이 한꺼번에 섞여요. 실을 나누면 콜라 때문에 사과까지 끊지 않게 돼요.',
+          '단맛 이야기에는 쾌락, 체중, 당뇨 공포, "제로" 마케팅이 한꺼번에 섞여 있어요. 이걸 갈래별로 나눠 보면 콜라가 무서워서 사과까지 끊는 일은 안 생겨요.',
         ],
         blocks: [
           {
@@ -110,8 +110,8 @@ export const sugarArticles: BlogArticle[] = [
       ko: '사람은 왜 단맛을 좋아할까—의지력만으로는 안 되는 이유',
     },
     thesis: {
-      en: 'Sweet taste signaled safe calories for most of human history. Modern ultra-processed foods hijack that signal with sugar + fat + salt combos that train craving faster than fruit ever did.',
-      ko: '오랫동안 단맛은 안전한 칼로리 신호였어요. 지금은 설탕+지방+소금 초가공이 과일보다 빨리 당김을 가르쳐요.',
+      en: 'Sweet taste signaled safe calories for most of human history. Modern ultra-processed foods hijack that signal with sugar + fat + salt combos that train craving faster than fruit ever could.',
+      ko: '오랫동안 단맛은 안전한 칼로리라는 신호였어요. 그런데 지금은 설탕+지방+소금으로 만든 초가공식품이 과일보다 훨씬 빨리 당김을 길들여요.',
     },
     description: {
       en: 'Evolution, brain reward, dopamine overlap, and culture—not moral failure.',
@@ -124,8 +124,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'Biology in one minute',
         paragraphs: [
-          'Sweet receptors fire; the brain tags the experience as rewarding. Breast milk is slightly sweet—sweetness meant survival, not weakness.',
-          'The spike-crash-crave loop from soda is behavioral chemistry: fast glucose in, insulin up, crash, search for the next hit. That story is detailed in [dopamine stimulants](/blog/dopamine-stimulants); here we focus on why the loop sticks.',
+          'Sweet receptors fire, and the brain tags the experience as rewarding. Breast milk is slightly sweet, so sweetness meant survival, not weakness.',
+          'The spike-crash-crave loop from soda is behavioral chemistry: fast glucose in, insulin up, crash, hunt for the next hit. [Dopamine stimulants](/blog/dopamine-stimulants) covers that in detail. Here we focus on why the loop sticks.',
         ],
         blocks: [
           {
@@ -142,8 +142,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'Culture and timing',
         paragraphs: [
-          'Sleep debt, stress, and skipping protein at lunch all make 4 p.m. cookies more likely—not because you “lack discipline.”',
-          'Holidays and birthdays are social sugar. The goal is a default low-liquid-sugar week, not zero joy.',
+          'Sleep debt, stress, and skipping protein at lunch all make those 4 p.m. cookies more likely. It is not that you "lack discipline."',
+          'Holidays and birthdays are social sugar. The goal is a week that defaults to low liquid sugar, not zero joy.',
         ],
         blocks: [
           {
@@ -151,7 +151,7 @@ export const sugarArticles: BlogArticle[] = [
             tone: 'tip',
             title: 'Swap the cue',
             body: [
-              'Same time, different reward: sparkling water with citrus, yogurt with berries, or a walk before the vending machine.',
+              'Same time, different reward: sparkling water with citrus, yogurt with berries, or a short walk before you hit the vending machine.',
             ],
           },
         ],
@@ -159,7 +159,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'What to do',
         paragraphs: [
-          'Name your top three sugar sources (often drinks). Fix one before banning dessert forever.',
+          'Name your top three sugar sources, which are often drinks. Fix one before you swear off dessert forever.',
           'Next: [everyday drinks](/blog/sugar-everyday-drinks).',
         ],
       },
@@ -168,8 +168,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '생물학 1분',
         paragraphs: [
-          '단맛 수용체가 켜지고 뇌는 보상으로 기록해요. 모유도 약간 달아요—단맛은 나약함이 아니라 생존 신호였어요.',
-          '소다의 올랐다-추락-당김 루프는 [도파민 자극제](/blog/dopamine-stimulants)에서 자세히, 여기선 왜 고착되는지만 볼게요.',
+          '단맛 수용체가 켜지면 뇌는 그 경험을 보상으로 기록해요. 모유도 약간 달죠. 단맛은 나약함이 아니라 생존 신호였던 거예요.',
+          '소다의 올랐다-추락-당김 루프는 [도파민 자극제](/blog/dopamine-stimulants) 편에서 자세히 다뤄요. 여기선 이 루프가 왜 고착되는지만 볼게요.',
         ],
         blocks: [
           {
@@ -186,8 +186,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '문화·타이밍',
         paragraphs: [
-          '잠 부족·스트레스·점심 단백질 스킵이 오후 과자를 부르죠—의지 부족이 아니에요.',
-          '명절·생일은 사회적 단맛. 목표는 평소 액체당 낮추기지 기쁨 0이 아니에요.',
+          '잠이 모자라고 스트레스를 받고 점심에 단백질을 거르면 오후 과자가 더 당겨요. 의지가 부족해서가 아니에요.',
+          '명절이나 생일에 먹는 단맛은 사회적인 거예요. 목표는 평소에 액체당을 낮추는 거지, 기쁨을 0으로 만드는 게 아니고요.',
         ],
         blocks: [
           {
@@ -203,7 +203,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '실천',
         paragraphs: [
-          '당 소스 TOP3(보통 음료) 적어 보세요. 디저트 영구 금지 전에 하나만.',
+          '당이 들어오는 주된 통로 세 가지(보통 음료예요)를 적어 보세요. 디저트를 영영 끊기 전에, 하나만 먼저 바꿔요.',
           '다음: [일상 음료](/blog/sugar-everyday-drinks).',
         ],
       },
@@ -218,8 +218,8 @@ export const sugarArticles: BlogArticle[] = [
       ko: '당과 건강: 심장·간·치아·10% 선',
     },
     thesis: {
-      en: 'High added-sugar patterns raise risk for weight gain, fatty liver, cavities, and type 2 diabetes over years—not from one slice of cake. WHO suggests under 10% of calories from added sugar, with 5% as a better target.',
-      ko: '첨가당 패턴이 몇 년에 걸쳐 체중·지방간·충치·제2형 당뇨 위험을 올려요—케이크 한 조각이 아니에요. WHO는 첨가당 칼로리 10% 미만, 5%가 더 낫다고 해요.',
+      en: 'A high added-sugar pattern raises the risk of weight gain, fatty liver, cavities, and type 2 diabetes over years. One slice of cake does not. WHO suggests keeping added sugar under 10% of calories, with 5% as a better target.',
+      ko: '첨가당을 많이 먹는 습관이 몇 년에 걸쳐 체중, 지방간, 충치, 제2형 당뇨 위험을 올려요. 케이크 한 조각 때문이 아니고요. 세계보건기구(WHO)는 첨가당을 전체 칼로리의 10% 미만으로, 가능하면 5%까지 줄이라고 권장합니다.',
     },
     description: {
       en: 'Metabolic and dental impacts without fear-mongering fruit.',
@@ -232,8 +232,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'What the evidence actually targets',
         paragraphs: [
-          'Large reviews link sugar-sweetened beverages to higher type 2 diabetes and cardiovascular risk. The signal is strongest for liquid sugar and frequent ultra-processed snacks—not occasional homemade dessert.',
-          'Diabetes management is individual: medication, activity, and total carb quality matter. This blog does not replace your care team.',
+          'Large reviews link sugar-sweetened beverages to higher type 2 diabetes and cardiovascular risk. The signal is strongest for liquid sugar and frequent ultra-processed snacks, not the occasional homemade dessert.',
+          'Diabetes management is personal: medication, activity, and overall carb quality all matter. This blog does not replace your care team.',
         ],
         blocks: [
           {
@@ -249,8 +249,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'Liver, teeth, and weight',
         paragraphs: [
-          'Fructose from added sugar (not whole fruit context) can contribute to liver fat when calories are surplus. Cavities track frequency of sticky sweets and sipping sweet drinks.',
-          'Pairing sweets with meals and brushing beats grazing candy all afternoon.',
+          'Fructose from added sugar, not from whole fruit, can add to liver fat when you are eating surplus calories. Cavities track how often you eat sticky sweets and sip sweet drinks.',
+          'Having sweets with a meal and then brushing beats grazing on candy all afternoon.',
         ],
         blocks: [
           {
@@ -269,7 +269,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'What to do',
         paragraphs: [
-          'Log seven days in the [Analyzer](/analyzer). Cut one drink before overhauling every recipe.',
+          'Log seven days in the [Analyzer](/analyzer). Cut one drink before you overhaul every recipe.',
           'Next: [added vs fruit](/blog/sugar-added-natural-fruit).',
         ],
       },
@@ -278,14 +278,14 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '근거가 겨냥하는 것',
         paragraphs: [
-          '당음료는 제2형 당뇨·심혈관 위험과 강하게 연결돼요. 신호는 액체당·잦은 초가공이지 가끔 만든 디저트가 아니에요.',
-          '당뇨 관리는 개인별이에요—약·활동·탄수 질. 이 블로그는 진료 대체가 아니에요.',
+          '대규모 연구들은 당음료를 제2형 당뇨, 심혈관 위험과 강하게 연결지어요. 신호가 가장 뚜렷한 건 액체당과 잦은 초가공식품이지, 가끔 만들어 먹는 디저트가 아니에요.',
+          '당뇨 관리는 사람마다 달라요. 약, 활동량, 탄수화물의 질이 다 중요하죠. 이 블로그가 진료를 대신하지는 않아요.',
         ],
         blocks: [
           {
             kind: 'stats',
             items: [
-              { value: '<10%', label: 'WHO 첨가당 칼로리' },
+              { value: '<10%', label: '세계보건기구(WHO) 권장 첨가당 칼로리' },
               { value: '~50g', label: '2,000kcal의 10%' },
               { value: '~25g', label: '5% “더 낫다”' },
             ],
@@ -295,8 +295,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '간·치아·체중',
         paragraphs: [
-          '첨가 과당(과일 맥락 아님)은 칼로리 잉여일 때 지방간에 기여할 수 있어요. 충치는 끈적 단 간식·달콤 음료 자주 마시기와 연결돼요.',
-          '단 것은 끼니와 함께, 양치—오후 내내 사탕 깨물기보다 나아요.',
+          '첨가당에서 온 과당은(과일이 아니라요) 칼로리가 남아돌 때 지방간을 키울 수 있어요. 충치는 끈적한 단 간식을 먹거나 단 음료를 자주 홀짝이는 빈도와 관련이 깊고요.',
+          '단 건 끼니와 함께 먹고 바로 양치하는 게, 오후 내내 사탕을 깨무는 것보다 나아요.',
         ],
         blocks: [
           {
@@ -344,7 +344,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'Whole fruit is not soda',
         paragraphs: [
-          'An apple’s ~4 g fiber slows absorption; polyphenols ride along. Apple juice removes fiber and is easy to over-drink.',
+          'The ~4 g of fiber in an apple slows absorption, and polyphenols come along for the ride. Apple juice strips the fiber out and goes down fast, so it is easy to overdo.',
           'If you fear fruit but drink sweet coffee, fix the drink first. More in [fiber myths](/blog/fiber-myths-faq).',
         ],
         blocks: [
@@ -390,8 +390,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '통과일≠소다',
         paragraphs: [
-          '사과 섬유 ~4g이 흡수를 늦추고 폴리페놀도 와요. 주스는 섬유가 빠지고 많이 마시기 쉬워요.',
-          '과일은 피하고 달콤 커피만 마시면 음료부터. [섬유 오해](/blog/fiber-myths-faq)도 참고.',
+          '사과에 든 섬유 ~4g이 흡수를 늦춰 주고 폴리페놀도 같이 들어와요. 반면 주스는 섬유가 빠져서 자기도 모르게 많이 마시게 돼요.',
+          '과일은 피하면서 달콤한 커피는 마신다면, 과일이 아니라 그 음료부터 손봐야 해요. [섬유 오해](/blog/fiber-myths-faq)도 같이 보세요.',
         ],
         blocks: [
           {
@@ -408,10 +408,10 @@ export const sugarArticles: BlogArticle[] = [
         ],
       },
       {
-        heading: '꿀·애사비·코코넛슈가',
+        heading: '꿀·아가베·코코넛슈거',
         paragraphs: [
-          '라벨 “첨가당”에 들어가요. 미량 미네랄이 g을 없애진 않아요.',
-          '플레인 우유 유당은 첨가가 아니에요—시럽 넣은 우유는 첨가.',
+          '셋 다 라벨에선 “첨가당”으로 들어가요. 미량 미네랄이 있다고 해서 g 수가 줄어드는 건 아니고요.',
+          '플레인 우유의 유당은 첨가당이 아니지만, 시럽을 넣은 가공유는 첨가당이에요.',
         ],
         blocks: [
           {
@@ -493,7 +493,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'What to do',
         paragraphs: [
-          'If you drink 40 oz soda daily, diet soda for a month can be a step down—then sparkling water.',
+          'If you drink 40 oz of soda a day, switching to diet soda for a month can be a step down, and sparkling water comes after that.',
           'Next: [zero labels](/blog/sugar-zero-labels).',
         ],
       },
@@ -502,8 +502,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '규제가 말하는 것',
         paragraphs: [
-          '아스파탐·수크랄로스·아세설팜·사크린·스테비아 추출물은 FDA/EFSA 일일 허용량이 있어요. “독” 헤드라인은 용량을 빼는 경우가 많아요.',
-          '그래서 식단 질이 자동으로 좋아지진 않아요—제품 속 설탕 칼로리만 바꿀 뿐이에요.',
+          '아스파탐·수크랄로스·아세설팜·사카린·스테비아 추출물은 FDA/EFSA가 정한 일일 허용량이 있어요. “독”이라고 외치는 기사들은 보통 이 용량 얘기를 빼놓고요.',
+          '그렇다고 식단 질이 알아서 좋아지는 건 아니에요. 제품 속 설탕 칼로리를 대신할 뿐이거든요.',
         ],
         blocks: [
           {
@@ -522,8 +522,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '열린 질문(솔직히)',
         paragraphs: [
-          '다이어트 소다 많이 마시는 사람과 대사 문제 상관 연구는 있지만—이미 체중 걱정 있는 사람이 바꾸는 경우가 많아 혼란 변수가 커요. 장내 미생물 변화는 연구 중, 공포·무한 안전 둘 다 과장 금지.',
-          '칼로리 없는 단맛이 “디저트 뇌”를 켜 두면, 밤에 더 큰 간식으로 이어질 수 있어요.',
+          '다이어트 소다를 많이 마시는 사람과 대사 문제를 연결한 연구도 있긴 해요. 근데 애초에 체중 걱정이 있어서 갈아탄 사람이 많다 보니 혼란 변수가 커요. 장내 미생물 변화는 아직 연구 중이라, 무섭다고 겁먹을 일도, 어떤 양이든 안전하다고 단정할 일도 아니에요.',
+          '칼로리 없는 단맛이라도 “디저트 뇌”를 계속 켜 두면, 밤에 더 큰 간식으로 이어지기도 해요.',
         ],
         blocks: [
           {
@@ -539,7 +539,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '실천',
         paragraphs: [
-          '소다 하루 1.2L면 한 달 다이어트 소다→그다음 탄산수도 괜찮은 단계예요.',
+          '소다를 하루 1.2L씩 마신다면, 한 달은 다이어트 소다로 갈아탔다가 그다음 탄산수로 넘어가는 것도 괜찮은 단계예요.',
           '다음: [제로 라벨](/blog/sugar-zero-labels).',
         ],
       },
@@ -568,8 +568,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'Phrase decoder',
         paragraphs: [
-          'Sugar-free: less than 0.5 g sugar per serving (US)—may still have sugar alcohols. No added sugar: no sucrose/h syrup; fruit juice concentrate may still count as added in spirit.',
-          'Keto net carbs subtract fiber and sugar alcohols; erythritol bothers fewer guts than maltitol, which can spike glucose in some people.',
+          'Sugar-free means less than 0.5 g of sugar per serving in the US, but it may still contain sugar alcohols. No added sugar means no sucrose or high-fructose syrup, though fruit juice concentrate is added sugar in all but name.',
+          'Keto net carbs subtract fiber and sugar alcohols. Erythritol bothers fewer guts than maltitol, which can spike glucose in some people.',
         ],
         blocks: [
           {
@@ -596,7 +596,7 @@ export const sugarArticles: BlogArticle[] = [
             tone: 'caution',
             title: 'Sugar alcohol warning',
             body: [
-              'Maltitol syrup in “sugar-free” chocolate can cause gas and raise blood sugar in sensitive people—read the specific polyol.',
+              'Maltitol syrup in “sugar-free” chocolate can cause gas and raise blood sugar in sensitive people, so check which polyol it actually uses.',
             ],
           },
         ],
@@ -613,8 +613,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '문구 해독',
         paragraphs: [
-          '무설탕: 1회 제공당 설탕 0.5g 미만(미국)—당알코올은 있을 수 있어요. 무첨가당: 설탕/물엿 없음, 과일 농축액은 실질 첨가당에 가깝게 봐요.',
-          '케토 순탄수는 섬유·당알코올을 뺌. 에리스리톨은 말티톨보다 배 덜 아픈 편, 말티톨은 혈당 오르는 사람도 있어요.',
+          '무설탕은 1회 제공량당 설탕 0.5g 미만(미국 기준)이라는 뜻인데, 당알코올은 들어 있을 수 있어요. 무첨가당은 설탕이나 물엿을 안 넣었다는 거지만, 과일 농축액은 사실상 첨가당으로 봐야 해요.',
+          '케토 순탄수는 섬유와 당알코올을 뺀 값이에요. 에리스리톨은 말티톨보다 속이 덜 불편한 편인데, 말티톨은 사람에 따라 혈당이 오르기도 해요.',
         ],
         blocks: [
           {
@@ -641,7 +641,7 @@ export const sugarArticles: BlogArticle[] = [
             tone: 'caution',
             title: '당알코올 주의',
             body: [
-              '“무설탕” 초콜릿의 말티톨 시럽은 가스·혈당 반응—어떤 폴리올인지 확인.',
+              '“무설탕” 초콜릿에 든 말티톨 시럽은 가스가 차거나 혈당을 올릴 수 있어요. 어떤 폴리올을 썼는지 확인하세요.',
             ],
           },
         ],
@@ -723,7 +723,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '선언보다 기본값',
         paragraphs: [
-          '“설탕 영원히 끊기”는 10일 버티고 폭식으로 가기 쉬워요. “달콤 음료는 기본 무가당”은 추석 떡은 남길 수 있어요.',
+          '“설탕 영원히 끊기”는 10일쯤 버티다 폭식으로 가기 쉬워요. 반면 “달콤한 음료는 기본적으로 무가당”이라고 정하면 추석 떡은 그대로 즐길 수 있고요.',
           '기계적 짝짓기는 [혈당 짝](/blog/carbohydrates-blood-sugar-pairs), 여기선 마음가짐이에요.',
         ],
         blocks: [
@@ -742,8 +742,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '가장 효과 큰 습관 하나',
         paragraphs: [
-          '액체당이 제일 큰 소스부터—탄산, 달콤 커피, 에너지음료. 하루 30–80g이 빠지는 경우가 많아요.',
-          '전후 [분석기](/analyzer). 남는 단 것은 [섬유](/blog/fiber-how-much)·단백과 짝지어 추락을 줄이세요.',
+          '액체당이 제일 큰 것부터 바꿔요. 탄산, 달콤한 커피, 에너지음료 같은 것들이요. 이것만 해도 하루 30–80g이 빠지는 경우가 많아요.',
+          '바꾸기 전후를 [분석기](/analyzer)에 기록해 보세요. 남는 단 것은 [섬유](/blog/fiber-how-much)·단백질과 짝지으면 혈당이 급하게 떨어지는 걸 줄일 수 있어요.',
         ],
         blocks: [
           {
@@ -789,7 +789,7 @@ export const sugarArticles: BlogArticle[] = [
         heading: 'US drink patterns that stack sugar',
         paragraphs: [
           'A 12 oz soda is ~39 g sugar. Large sweet coffee drinks can exceed 50 g before lunch. Sedentary days do not need sports drinks.',
-          'Diet drinks can be a downgrade step—see [artificial sweeteners](/blog/sugar-artificial-sweeteners)—but water is the endgame default.',
+          'Diet drinks can be a step down on the way (see [artificial sweeteners](/blog/sugar-artificial-sweeteners)), but water is the endgame default.',
         ],
         blocks: [
           {
@@ -808,7 +808,7 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: 'Coffee shop math',
         paragraphs: [
-          'Syrups are measured in pumps—not visible like a candy bar. One pump can be 5–10 g sugar; four pumps in a large cup is a dessert.',
+          'Syrups get measured in pumps, so the sugar is invisible in a way a candy bar never is. One pump can be 5–10 g of sugar, and four pumps in a large cup is a dessert.',
           'The [Analyzer](/analyzer) catches “I only had coffee” weeks that are secretly 200 g added sugar.',
         ],
         blocks: [
@@ -834,8 +834,8 @@ export const sugarArticles: BlogArticle[] = [
       {
         heading: '한국에서 쌓이는 음료당',
         paragraphs: [
-          '탄산·에너지음료는 캔당 30–40g+가 흔해요. 밀크티·시럽 커피는 양이 안 보여요. 앉아 있는 날 스포츠음료는 필요 없어요.',
-          '제로 음료는 단계적 하향—[인공감미료](/blog/sugar-artificial-sweeteners)—물이 최종 기본값.',
+          '탄산·에너지음료는 캔 하나에 30–40g 넘는 게 흔해요. 밀크티나 시럽 커피는 들어간 양이 눈에 안 보이고요. 하루 종일 앉아 있는 날엔 스포츠음료가 필요 없어요.',
+          '제로 음료는 단계적으로 줄여 가는 데 쓸 수 있어요([인공감미료](/blog/sugar-artificial-sweeteners) 참고). 최종 기본값은 물이고요.',
         ],
         blocks: [
           {
@@ -863,7 +863,7 @@ export const sugarArticles: BlogArticle[] = [
             tone: 'tip',
             title: '주문 한 줄',
             body: [
-              '“시럽 빼 주세요” “무가당, 시나몬 추가.” 반달달도 달달.',
+              '“시럽 빼 주세요” “무가당으로, 시나몬 추가요.” 시럽 반만 넣어도 단 건 마찬가지예요.',
             ],
           },
         ],

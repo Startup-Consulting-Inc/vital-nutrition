@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { foodCatalog, searchCatalog, type CatalogEntry } from '@/lib/foodCatalog';
+import { foodCatalog, searchCatalog, translateFoodName, type CatalogEntry } from '@/lib/foodCatalog';
 import { analyzeNutritionLabel, type NutritionFacts } from '@/lib/nutritionAnalyzer';
 import HealthScoreGauge from '@/components/HealthScoreGauge';
 import { useUserProfile, personalizedTargets } from '@/hooks/useUserProfile';
@@ -41,7 +41,7 @@ function FoodPicker({
 }) {
   const [query, setQuery] = useState('');
   const [locale] = useLocale();
-  const results = useMemo(() => searchCatalog(query).slice(0, 30), [query]);
+  const results = useMemo(() => searchCatalog(query, locale).slice(0, 30), [query, locale]);
 
   return (
     <div className="bg-white rounded-2xl border border-deep/5 p-5">
@@ -68,7 +68,7 @@ function FoodPicker({
                 {r.emoji}
               </span>
               <div className="flex-1 min-w-0">
-                <p className="text-sm truncate">{r.name}</p>
+                <p className="text-sm truncate">{translateFoodName(r.name, locale)}</p>
                 <p className={`text-[10px] ${isActive ? 'text-white/70' : 'text-deep/40'}`}>
                   {r.data.servingSize} · {r.data.calories} {locale === 'ko' ? 'kcal' : 'cal'}
                 </p>
@@ -134,8 +134,8 @@ export default function Compare() {
                 <thead className="text-deep/40 text-xs uppercase tracking-wider">
                   <tr className="border-b border-deep/5">
                     <th className="text-left px-5 py-3 font-medium">{t('nd.upperCol1')}</th>
-                    <th className="text-right px-3 py-3 font-medium">{a.name.split(' ')[0]}</th>
-                    <th className="text-right px-3 py-3 font-medium">{b.name.split(' ')[0]}</th>
+                    <th className="text-right px-3 py-3 font-medium">{translateFoodName(a.name, locale).split(' ')[0]}</th>
+                    <th className="text-right px-3 py-3 font-medium">{translateFoodName(b.name, locale).split(' ')[0]}</th>
                     <th className="text-right px-5 py-3 font-medium">Δ</th>
                   </tr>
                 </thead>
@@ -213,12 +213,13 @@ export default function Compare() {
 function ScoreCard({
   entry, score, grade, color, sideLabel,
 }: { entry: CatalogEntry; score: number; grade: string; color: string; sideLabel: string }) {
+  const [locale] = useLocale();
   return (
     <div className="bg-white rounded-2xl border border-deep/5 p-5 flex items-center gap-5">
       <HealthScoreGauge score={score} grade={grade} gradeColor={color} category="" size={140} />
       <div>
         <p className="text-caption text-deep/40 mb-1">{sideLabel}</p>
-        <h3 className="text-lg text-deep mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>{entry.name}</h3>
+        <h3 className="text-lg text-deep mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>{translateFoodName(entry.name, locale)}</h3>
         <p className="text-xs text-deep/50">{entry.data.servingSize}</p>
         <span className="inline-block mt-2 px-2 py-0.5 rounded-full text-[10px] font-medium text-white" style={{ backgroundColor: color }}>
           {grade} · {score}

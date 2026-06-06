@@ -178,7 +178,7 @@ export default function NutrientDetail() {
             {nutrient.icon}
           </div>
           <div>
-            <p className="text-caption mb-1" style={{ color: nutrient.color }}>
+            <p className="text-caption mb-1 font-medium" style={{ color: nutrient.color }}>
               {t('nd.essentialNutrient')}
             </p>
             <h1
@@ -187,31 +187,46 @@ export default function NutrientDetail() {
             >
               {nutrient.name}
             </h1>
-            <p className="text-deep/50">{nutrient.subtitle}</p>
+            <p className="text-deep/70">{nutrient.subtitle}</p>
           </div>
         </header>
 
         {/* Description + Daily Need */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-          <div className="lg:col-span-2 p-6 rounded-2xl bg-white border border-deep/5">
+          <div className="lg:col-span-2 p-6 rounded-2xl bg-white border border-deep/10">
             <h2 className="text-lg text-deep mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
               {t('nd.overview')}
             </h2>
-            <p className="text-sm text-deep/70 leading-relaxed">{nutrient.description}</p>
+            <p className="text-sm text-deep/85 leading-relaxed">{nutrient.description}</p>
           </div>
-          <aside className="p-6 rounded-2xl text-white" style={{ backgroundColor: nutrient.color }}>
-            <p className="text-xs uppercase tracking-wider text-white/50 mb-2">{t('nd.dailyNeed')}</p>
-            <p className="text-sm font-medium mb-3">{nutrient.dailyNeed}</p>
+          <aside
+            className="p-6 rounded-2xl bg-white border border-deep/10 shadow-sm"
+            style={{ boxShadow: `inset 4px 0 0 ${nutrient.color}` }}
+          >
+            <p
+              className="text-xs uppercase tracking-wider font-semibold mb-2"
+              style={{ color: nutrient.color }}
+            >
+              {t('nd.dailyNeed')}
+            </p>
+            <p className="text-sm font-medium text-deep leading-relaxed">{nutrient.dailyNeed}</p>
             {personalizedNeed && (
-              <div className="mt-3 pt-3 border-t border-white/15">
-                <p className="text-xs uppercase tracking-wider text-white/50 mb-1">{t('common.personalized')}</p>
-                <p className="text-sm font-semibold">{personalizedNeed}</p>
-                <p className="text-[10px] text-white/40 mt-1">
-                  {profile.weightKg}kg · {t(`pf.activity.${profile.activity}` as never)}
+              <div
+                className="mt-4 pt-4 border-t border-deep/10 rounded-lg px-3 py-3 -mx-1"
+                style={{ backgroundColor: `${nutrient.color}14` }}
+              >
+                <p className="text-xs uppercase tracking-wider font-semibold text-deep/75 mb-1">
+                  {t('common.personalized')}
+                </p>
+                <p className="text-base font-semibold text-deep">{personalizedNeed}</p>
+                <p className="text-xs text-deep/70 mt-1">
+                  {Math.round(profile.weightKg)}kg · {t(`pf.activity.${profile.activity}` as never)}
                 </p>
               </div>
             )}
-            <p className="text-xs text-white/40 mt-3">{t('common.source')}: {nutrient.dailyNeedSource}</p>
+            <p className="text-xs text-deep/70 mt-4">
+              {t('common.source')}: {nutrient.dailyNeedSource}
+            </p>
           </aside>
         </div>
 
@@ -335,6 +350,114 @@ export default function NutrientDetail() {
             </div>
           </div>
         )}
+        {/* Featured Topics (shown for nutrients that define featuredTopics, like water and proteins) */}
+        {nutrient.featuredTopics && nutrient.featuredTopics.length > 0 && (
+          <div className="mb-10">
+            <h2
+              className="text-xl text-deep mb-1"
+              style={{ fontFamily: 'Playfair Display, serif' }}
+            >
+              {isKo
+                ? nutrient.slug === 'water'
+                  ? '대중적인 수분 보충 주제'
+                  : '주목할 만한 단백질 주제'
+                : nutrient.slug === 'water'
+                ? 'Popular Hydration Topics'
+                : 'Featured Protein Topics'}
+            </h2>
+            <p className="text-sm text-deep/50 mb-6">
+              {isKo
+                ? nutrient.slug === 'water'
+                  ? '무설탕 음료, 인공 감미료, 탄산수 등 수분 섭취 시 자주 언급되는 주제들에 대한 과학적 팩트입니다.'
+                  : '단백질 보충제(파우더), RTD 음료 등 단백질 섭취 시 자주 고민하는 주제들에 대한 팩트체크입니다.'
+                : nutrient.slug === 'water'
+                ? 'Scientific facts about zero-sugar drinks, artificial sweeteners, and carbonated water.'
+                : 'Facts and guidance regarding protein powders, ready-to-drink shakes, and dietary supplements.'}
+            </p>
+
+            <div className="grid grid-cols-1 gap-5">
+              {nutrient.featuredTopics.map((topic) => {
+                const toneColor =
+                  topic.tone === 'good'
+                    ? '#4a7c59'
+                    : topic.tone === 'caution'
+                    ? '#c9a96e'
+                    : topic.tone === 'avoid'
+                    ? '#d95c39'
+                    : '#6b7d76';
+
+                return (
+                  <div
+                    key={topic.name}
+                    className="p-6 rounded-2xl bg-white border"
+                    style={{ borderColor: toneColor + '25' }}
+                  >
+                    <div className="flex items-center gap-3 mb-3 flex-wrap">
+                      <h3
+                        className="text-lg text-deep"
+                        style={{ fontFamily: 'Playfair Display, serif' }}
+                      >
+                        {topic.name}
+                      </h3>
+                      <span
+                        className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full font-semibold"
+                        style={{ backgroundColor: toneColor + '15', color: toneColor }}
+                      >
+                        {topic.toneLabel}
+                      </span>
+                    </div>
+
+                    <p className="text-sm text-deep/70 italic mb-4">{topic.oneLiner}</p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                      <div>
+                        <p className="text-xs uppercase tracking-wider text-deep/40 mb-1">
+                          {isKo ? '어떤 것인가요?' : 'What It Is'}
+                        </p>
+                        <p className="text-sm text-deep/70 leading-relaxed">{topic.whatItIs}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase tracking-wider text-deep/40 mb-1">
+                          {isKo ? '영양 성분' : 'Nutrition Facts'}
+                        </p>
+                        <p className="text-sm text-deep/70 leading-relaxed">{topic.nutritionFacts}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase tracking-wider text-deep/40 mb-1">
+                          {isKo ? '건강에 좋을까요?' : 'Is It a Healthy Choice?'}
+                        </p>
+                        <p className="text-sm text-deep/70 leading-relaxed">{topic.isHealthyChoice}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 pt-3 border-t border-deep/5">
+                      <div
+                        className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                        style={{ backgroundColor: toneColor + '15' }}
+                      >
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          stroke={toneColor}
+                          strokeWidth="2"
+                        >
+                          <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                      </div>
+                      <p className="text-sm text-deep/70 leading-relaxed">
+                        <span className="font-medium text-deep">{isKo ? '실천 팁:' : 'Practical Advice:'} </span>
+                        {topic.practicalAdvice}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
 
         {/* Functions */}
         <div className="p-6 rounded-2xl bg-white border border-deep/5 mb-10">

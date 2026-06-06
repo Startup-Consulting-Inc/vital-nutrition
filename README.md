@@ -42,10 +42,13 @@ A privacy-first web app that turns a packaged **Nutrition Facts** label into an 
 
 ### AI Nutrition Chat (`/chat`)
 
-- Ask any nutrition question in English or Korean
-- Evidence-based answers grounded in WHO, NIH, Harvard, AHA, Mayo Clinic research
-- Rate-limited to prevent abuse
-- Conversation history stored locally
+- **Bilingual Conversations** — Ask any nutrition question in English or Korean
+- **Evidence-Based Grounding** — Grounded in WHO, NIH, Harvard, AHA, Mayo Clinic research
+- **Multi-Session Chat History** — Start multiple chats, rename sessions, delete conversations, and switch sessions in a responsive sidebar.
+- **Message Interactive Actions** — Copy message text, upvote/downvote feedback (persisted), share natively (or fallback copy), and retry (regenerate) from user prompt.
+- **Natural AI Speech Synthesis** — Listen to responses read aloud in premium, online neural voices.
+- **Direct Source Links** — View references as clean inline links (Learn More) and access dedicated detail drawers to visit official websites.
+- **Persistence** — All sessions and states are saved in `localStorage` across site refreshes.
 
 ### Blog (`/blog`)
 

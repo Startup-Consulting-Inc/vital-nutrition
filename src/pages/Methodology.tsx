@@ -31,6 +31,28 @@ const positiveFactors: Penalty[] = [
   { name: 'No trans fat', trigger: 'Trans fat = 0g', delta: '+3', source: 'WHO REPLACE Action Package' },
 ];
 
+const negativeFactorsKo: Penalty[] = [
+  { name: '트랜스지방 함유', trigger: '1회 제공량당 > 0g', delta: '−22', source: 'WHO REPLACE 실행 패키지, 2018' },
+  { name: '매우 높은 첨가당 함량', trigger: '일일 제한량의 > 50% (>25g)', delta: '−16', source: '미국심장학회(AHA) 2009; 미국 식생활 지침 2020–25' },
+  { name: '매우 높은 포화지방 함량', trigger: '일일 제한량의 > 50% (>6.5g)', delta: '−14', source: '미국 식생활 지침 2020–25 (총 열량의 ≤10%)' },
+  { name: '매우 높은 나트륨 함량', trigger: '일일 권장량(DV)의 > 50% (>1,150mg)', delta: '−14', source: '미국심장협회(AHA) 권장 하루 이상적 제한량 1,500mg' },
+  { name: '1회 제공량당 고칼로리', trigger: '1회 제공량당 > 700 kcal', delta: '−10', source: '미국 의학한림원(IOM) 영양섭취기준' },
+  { name: '높은 순 탄수화물 (키토 / 당뇨 프로필 전용)', trigger: '순 탄수화물 > 25g', delta: '−8', source: '선택 식단 프로필 가중치 적용' },
+  { name: '콜레스테롤 + 포화지방 동시 함유', trigger: '콜레스테롤 DV > 100% 및 포화지방 DV > 25%', delta: '−6', source: '미국 식생활 지침 2015 (300mg 제한은 해제되었으나 동시 섭취 경고)' },
+  { name: '단백질 식품의 비정상적으로 낮은 단백질 함량', trigger: '표기된 단백질 제품에서 단백질 < 5g', delta: '−5', source: 'OCR 오류 방지 장치' },
+];
+
+const positiveFactorsKo: Penalty[] = [
+  { name: '매우 우수한 식이섬유 공급원', trigger: '1회 제공량당 ≥ 5g', delta: '+12', source: 'IOM 충분섭취량: 하루 25–38g' },
+  { name: '고단백 식품', trigger: '1회 제공량당 ≥ 20g', delta: '+10', source: 'WHO/FAO 하루 0.83g/kg' },
+  { name: '첨가당 없음 선언', trigger: '첨가당 = 0g', delta: '+8', source: '미국심장협회(AHA) 및 세계보건기구(WHO) 권장 사항' },
+  { name: '우수한 미량영양소 프로필', trigger: '추적 비타민/미네랄 중 하나라도 DV ≥ 25%', delta: '+8', source: '미국 FDA 라벨링 규정 21 CFR 101.9' },
+  { name: '자연식 / 단일 재료 식품 보너스', trigger: '가공되지 않은 자연 식품군 감지', delta: '+5', source: 'NOVA 식품 분류 체계 (Monteiro et al., 2019)' },
+  { name: '우수한 식이섬유 공급원', trigger: '1회 제공량당 ≥ 3g', delta: '+7', source: 'FDA "식이섬유 우수 공급원" 기준치' },
+  { name: '저나트륨 식품', trigger: '1회 제공량당 ≤ 160mg', delta: '+4', source: 'FDA "저나트륨" 기준치' },
+  { name: '트랜스지방 없음', trigger: '트랜스지방 = 0g', delta: '+3', source: 'WHO REPLACE 실행 패키지' },
+];
+
 export default function Methodology() {
   const t = useT();
   const [locale] = useLocale();
@@ -149,7 +171,7 @@ export default function Methodology() {
                 </tr>
               </thead>
               <tbody>
-                {negativeFactors.map(p => (
+                {(locale === 'ko' ? negativeFactorsKo : negativeFactors).map(p => (
                   <tr key={p.name} className="border-b border-deep/5 last:border-0">
                     <td className="py-3 pr-4 text-deep">{p.name}</td>
                     <td className="py-3 pr-4 text-deep/60 text-xs">{p.trigger}</td>
@@ -176,7 +198,7 @@ export default function Methodology() {
                 </tr>
               </thead>
               <tbody>
-                {positiveFactors.map(p => (
+                {(locale === 'ko' ? positiveFactorsKo : positiveFactors).map(p => (
                   <tr key={p.name} className="border-b border-deep/5 last:border-0">
                     <td className="py-3 pr-4 text-deep">{p.name}</td>
                     <td className="py-3 pr-4 text-deep/60 text-xs">{p.trigger}</td>
@@ -191,37 +213,60 @@ export default function Methodology() {
 
         <div className="bg-white rounded-2xl p-6 sm:p-8 border border-deep/5 mb-8">
           <h2 className="text-2xl text-deep mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{t('mt.notes')}</h2>
-          <ul className="space-y-3 text-sm text-deep/70 list-disc pl-5">
-            <li>
-              <strong className="text-deep">Cholesterol</strong> is not a standalone penalty. The 300mg/day cap was dropped
-              from the US Dietary Guidelines in 2015. We only flag it in combination with high
-              saturated fat — the actually concerning pattern.
-            </li>
-            <li>
-              <strong className="text-deep">Fat ratio</strong> (% of calories from fat) is not the same as calorie density. A
-              high fat ratio on a whole low-carb food (avocado, salmon, ground chicken) is not
-              inherently negative. We only penalize a high fat ratio when paired with high
-              <em> saturated</em> fat.
-            </li>
-            <li>
-              <strong className="text-deep">Atwater check</strong>: scanned macros must roughly reconcile with stated
-              calories. If they don't, we flag the discrepancy and let you correct it before scoring.
-            </li>
-            <li>
-              <strong className="text-deep">Confirmation step</strong> is mandatory: every OCR'd value can be reviewed and
-              edited before the score is generated. Auto-read values are not authoritative.
-            </li>
-            <li>
-              <strong className="text-deep">Profile re-weighting</strong>: the General profile uses neutral 1.0× weights.
-              Heart, Keto, High-Protein, Low-Sodium, and Diabetic profiles scale individual penalties
-              and credits.
-            </li>
-            <li>
-              <strong className="text-deep">Not medical advice.</strong> This tool is a quick label sanity-check, not a
-              substitute for a registered dietitian or physician. Special conditions (CKD, PKU,
-              specific allergies, pregnancy) need professional guidance.
-            </li>
-          </ul>
+          {locale === 'ko' ? (
+            <ul className="space-y-3 text-sm text-deep/70 list-disc pl-5">
+              <li>
+                <strong className="text-deep">콜레스테롤</strong>은 단독 감점 항목이 아닙니다. 하루 300mg 섭취 제한 기준은 2015년 미국 식생활 지침에서 폐지되었습니다. 실제로 건강에 실제로 악영향을 주는 포화지방이 과다한 상황에서 동시에 검출될 때만 감점(조합 위험)이 적용됩니다.
+              </li>
+              <li>
+                <strong className="text-deep">지방 비율</strong>(총 열량 대비 지방 열량 비율)은 칼로리 밀도와 다릅니다. 아보카도, 연어, 다진 닭고기 같은 가공되지 않은 고단백/고지방 식품의 높은 지방 비율 자체를 감점하지 않습니다. 지방 비율에 대한 감점은 포화지방이 과다할 때만 연계되어 부과됩니다.
+              </li>
+              <li>
+                <strong className="text-deep">Atwater 검증</strong>: 자동 판독된 3대 영양소 총합의 환산 칼로리와 라벨상의 칼로리가 대략 일치하는지 비교합니다. 오차가 허용 범위를 넘는 경우 분석 시작 전에 사용자에게 안내 경고를 보냅니다.
+              </li>
+              <li>
+                <strong className="text-deep">검토 및 확인 필수</strong>: OCR 스캔에 오차가 있을 수 있으므로 점수 판정 전 사용자가 모든 인식값을 검토하고 교정할 수 있는 확인 체크 박스와 편집 폼을 제공합니다.
+              </li>
+              <li>
+                <strong className="text-deep">프로필 재가중치 적용</strong>: 기본(General) 프로필은 1.0배 가중치로 평가하지만, 심장 건강(Heart), 키토(Keto), 고단백(High-Protein), 저나트륨(Low-Sodium), 당뇨 관리(Diabetic) 식단 유형에서는 특정 성분의 감점 및 가점 가중치를 최대 1.6배까지 조절하여 나에게 맞춘 점수를 보여줍니다.
+              </li>
+              <li>
+                <strong className="text-deep">의학적 조언이 아닙니다.</strong> 이 도구는 라벨의 영양 균형도를 확인해 주는 교육적 도구일 뿐 의사나 전문 영양사의 개별 진단을 대신할 수 없습니다. 만성 신장질환(CKD, 만성 콩팥병), 페닐케톤뇨증(PKU), 식품 알레르기, 당뇨나 임신 등의 특수 상황은 전문 상담을 받아야 합니다.
+              </li>
+            </ul>
+          ) : (
+            <ul className="space-y-3 text-sm text-deep/70 list-disc pl-5">
+              <li>
+                <strong className="text-deep">Cholesterol</strong> is not a standalone penalty. The 300mg/day cap was dropped
+                from the US Dietary Guidelines in 2015. We only flag it in combination with high
+                saturated fat — the actually concerning pattern.
+              </li>
+              <li>
+                <strong className="text-deep">Fat ratio</strong> (% of calories from fat) is not the same as calorie density. A
+                high fat ratio on a whole low-carb food (avocado, salmon, ground chicken) is not
+                inherently negative. We only penalize a high fat ratio when paired with high
+                <em> saturated</em> fat.
+              </li>
+              <li>
+                <strong className="text-deep">Atwater check</strong>: scanned macros must roughly reconcile with stated
+                calories. If they don't, we flag the discrepancy and let you correct it before scoring.
+              </li>
+              <li>
+                <strong className="text-deep">Confirmation step</strong> is mandatory: every OCR'd value can be reviewed and
+                edited before the score is generated. Auto-read values are not authoritative.
+              </li>
+              <li>
+                <strong className="text-deep">Profile re-weighting</strong>: the General profile uses neutral 1.0× weights.
+                Heart, Keto, High-Protein, Low-Sodium, and Diabetic profiles scale individual penalties
+                and credits.
+              </li>
+              <li>
+                <strong className="text-deep">Not medical advice.</strong> This tool is a quick label sanity-check, not a
+                substitute for a registered dietitian or physician. Special conditions (CKD, PKU,
+                specific allergies, pregnancy) need professional guidance.
+              </li>
+            </ul>
+          )}
         </div>
 
         <p className="text-xs text-deep/40">

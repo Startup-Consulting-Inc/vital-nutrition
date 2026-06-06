@@ -45,10 +45,10 @@ export function useBucketLabel(): (label: IntakeBucket['label']) => string {
   const [locale] = useLocale();
   if (locale !== 'ko') return (l) => l;
   const map: Record<IntakeBucket['label'], string> = {
-    'Eat Most': '많이 먹기',
-    'Eat Some': '적당히 먹기',
-    'Limit': '제한하기',
-    'Avoid': '피하기',
+    'Eat Most': '충분히 섭취',
+    'Eat Some': '적당량 섭취',
+    'Limit': '섭취 제한',
+    'Avoid': '섭취 피하기',
   };
   return (l) => map[l] ?? l;
 }

@@ -116,8 +116,8 @@ export const specialPopulationsKo: Record<string, PopulationKoOverride> = {
     priorities: [
       { name: '제2형 당뇨', target: '통곡물·콩·채소의 탄수화물, 첨가당 최소화', rationale: '지중해·DASH 식단이 A1c 개선. 탄수화물은 단백질·지방과 함께 섭취.' },
       { name: '고혈압', target: 'DASH 패턴, 나트륨 ≤ 2,300mg, 칼륨 3,500–4,700mg', rationale: '나트륨 감소 + DASH는 단일 약물 수준의 수축기 혈압 감소.' },
-      { name: '심혈관 (ASCVD)', target: '포화지방 < 6% / 트랜스지방 0 / 주 2회 등푸른 생선', rationale: '식물 위주·저포화지방 식단은 LDL과 ASCVD 사건을 감소.' },
-      { name: '만성 신장질환 (CKD)', target: '개인화 — 단백질·칼륨·인 모두 조정', rationale: '신장 전문 영양사와 협력. "건강식"(바나나·콩 등)도 제한이 필요할 수 있음.' },
+      { name: '동맥경화성 심혈관 질환(ASCVD)', target: '포화지방 < 6% / 트랜스지방 0 / 주 2회 등푸른 생선', rationale: '식물성 식품 위주의 저포화지방 식단은 LDL 콜레스테롤 수치와 동맥경화성 심혈관 질환(ASCVD)의 발생 위험을 줄이는 데 도움이 됩니다.' },
+      { name: '만성 신장질환(CKD, 만성 콩팥병)', target: '개인별 맞춤형 관리 — 단백질·칼륨·인 함량 조정', rationale: '신장 전문 영양사와 협력하여 관리해야 합니다. 일반적인 "건강식"(바나나, 콩 등)도 환자의 상태에 따라 제한이 필요할 수 있습니다.' },
     ],
     watchOuts: [
       '자몽은 스타틴, 칼슘 채널 차단제 등 다수 약물과 상호작용.',

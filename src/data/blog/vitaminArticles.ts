@@ -144,7 +144,7 @@ export const vitaminArticles: BlogArticle[] = [
             items: [
               { value: '13+', label: '식단에서 필요한 필수 비타민' },
               { value: '2', label: '큰 그룹: 수용성·지용성' },
-              { value: '400mcg DFE', label: '성인 엽산 RDA (NIH)' },
+              { value: '400mcg DFE', label: '성인 엽산 권장섭취량(RDA) (미국 국립보건원 NIH 기준)' },
             ],
           },
         ],
@@ -232,7 +232,7 @@ export const vitaminArticles: BlogArticle[] = [
         heading: 'What helps or blocks absorption',
         paragraphs: [
           'Fat-soluble vitamins need dietary fat in the same meal. A naked salad with fat-free dressing is a weak delivery truck for vitamin D from eggs or vitamin K from greens. A drizzle of olive oil, nuts, or fish changes the picture.',
-          'Iron from plants absorbs far better with vitamin C in the same meal, which indirectly protects the B-vitamin and energy pathways that depend on healthy iron status. Calcium and coffee in huge amounts at the same sitting can compete with iron; spacing helps.',
+          'Iron from plants absorbs far better with vitamin C in the same meal, which indirectly protects the B-vitamin and energy pathways that depend on healthy iron status. Large amounts of calcium and coffee at the same sitting compete with iron, so spacing them out helps.',
           'Alcohol irritates the gut and drains B vitamins over time. Heavy drinking is less "one bad night" and more a slow leak in the assembly line.',
         ],
         blocks: [
@@ -305,7 +305,7 @@ export const vitaminArticles: BlogArticle[] = [
         heading: '흡수를 돕는 것, 막는 것',
         paragraphs: [
           '지용성 비타민은 같은 끼에 지방이 있어야 해요. 무지방 드레싱만 곁들인 샐러드는 달걀의 D나 나물의 K 배달차가 약해요. 올리브유 한 스푼, 견과, 생선이 그림을 바꿔요.',
-          '식물성 철은 같은 끼에 [비타민 C](/nutrients/vitamins)가 있으면 흡수가 훨씬 좋아져요. 철 상태가 무너지면 B군·에너지 경로도 흔들릴 수 있고요. 같은 시간에 칼슘·커피를 과하게면 철과 겹칠 수 있어서, 간격을 두는 게 나아요.',
+          '식물성 철은 같은 끼에 [비타민 C](/nutrients/vitamins)가 있으면 흡수가 훨씬 좋아져요. 철 상태가 무너지면 B군·에너지 경로도 흔들릴 수 있고요. 한 끼에 칼슘이나 커피를 너무 많이 먹으면 철과 겹칠 수 있어서, 시간 간격을 두는 게 나아요.',
           '술은 장을 자극하고 B군을 서서히 빼앗아요. 과음은 "하루 실수"보다 조립 라인에 구멍 내는 쪽에 가까워요.',
         ],
         blocks: [
@@ -323,9 +323,9 @@ export const vitaminArticles: BlogArticle[] = [
         ],
       },
       {
-        heading: '기억할 숫자 (NIH 성인 RDA)',
+        heading: '기억할 숫자 (미국 국립보건원 NIH 권장 성인 RDA)',
         paragraphs: [
-          '표를 외울 필요는 없어요. 기준점이 있으면 고용량 충전을 덜 하게 되거든요. NIH Office of Dietary Supplements 성인 기준 예시예요.',
+          '표를 외울 필요는 없어요. 기준점이 있으면 고용량 영양제를 덜 찾게 되거든요. 미국 국립보건원(NIH) 산하 영양보충제 사무국(Office of Dietary Supplements)이 제시한 성인 기준 예시입니다.',
         ],
         blocks: [
           {
@@ -342,7 +342,7 @@ export const vitaminArticles: BlogArticle[] = [
             tone: 'tip',
             title: '음식 먼저, 빈틈만 겨냥',
             body: [
-              '무작위 종합비타민보다 끼니로 경로를 채우고, 비건·임신·비만 수술 후엔 필요한 것만 골라 보충하는 편이 낫아요.',
+              '무작위 종합비타민보다 끼니로 경로를 채우는 게 먼저예요. 비건·임신·비만 수술 후라면 필요한 것만 골라 보충하는 편이 나아요.',
             ],
           },
         ],
@@ -369,7 +369,7 @@ export const vitaminArticles: BlogArticle[] = [
     },
     description: {
       en: 'What B1, B2, B3, and B6 each do in the energy pathway, NIH RDAs, Korean plate examples, and why "B-complex for energy" marketing oversells the effect.',
-      ko: 'B1·B2·B3·B6가 에너지 경로에서 하는 일, NIH RDA, 김·나물·고등어 같은 한국 식탁 예, "에너지용 B군" 광고가 과한 이유.',
+      ko: 'B1·B2·B3·B6가 에너지 대사 경로에서 하는 일, 미국 국립보건원(NIH) 권장 하루 섭취량(RDA), 김·나물·고등어 같은 한국 식탁 예시, 그리고 "에너지용 B군" 마케팅 광고가 과장된 이유를 설명합니다.',
     },
     readMinutes: 9,
     datePublished: '2026-06-05',
@@ -450,7 +450,7 @@ export const vitaminArticles: BlogArticle[] = [
         heading: '오해: "에너지 비타민"',
         paragraphs: [
           '에너지 드링크·반짝이는 라벨이 B군을 좋아하는 건 화학이 맞아서예요. 세포가 ATP를 만들 때 티아민(B1), 리보플라빈(B2), 나이아신(B3), 피리독신(B6)이 필요해요.',
-          '근데 "경로에 필요"랑 "알약 더 많이 = 에너지 더 많이"는 달라요. 음식으로 RDA를 채우면 추가 B군은 수용성이라 대부분 소변으로 나가고, 자극제처럼 느껴지진 않아요. 오후 무너짐은 보통 잠, 끼니 균형, 카페인 타이밍이 먼저고, B군 고용량이 커피 대체는 아니에요.',
+          '근데 "경로에 필요"랑 "알약 더 많이 = 에너지 더 많이"는 달라요. 음식으로 RDA를 채우면 추가 B군은 수용성이라 대부분 소변으로 나가고, 자극제처럼 느껴지진 않아요. 오후에 처지는 건 보통 잠, 끼니 균형, 카페인 타이밍부터 봐야 하지, B군 고용량이 커피를 대신하진 않아요.',
         ],
         blocks: [
           {
@@ -466,14 +466,14 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '에너지 라인의 B 네 친구',
         paragraphs: [
-          'B1(티아민)은 포도당 분해의 중심이에요. 심한 부족은 다리마비(각기)나 과음 후 뇌병증 쪽으로 가고, "월요병 피곤"만은 아니에요.',
+          'B1(티아민)은 포도당 분해의 중심이에요. 심하게 모자라면 각기병이나 과음 후 뇌병증으로 가는 거지, 그냥 "월요병 피곤" 수준이 아니에요.',
           'B2·B3는 미토콘드리아 전자 운반, ATP를 실제로 찍어내는 구간을 돕죠. B3는 단백질 속 트립토판에서도 만들어져서, 단백질이 너무 적으면 간접으로 나이아신도 빡빡해질 수 있어요.',
           'B6는 아미노산 탈탄산, 신경전달물질 합성 등 반응이 많아요. 도파민 합성에도 나와서 [도파민 시리즈](/blog/dopamine-guide)랑 겹쳐요.',
         ],
         blocks: [
           {
             kind: 'table',
-            caption: '에너지 라인 B군 (성인 RDA, NIH)',
+            caption: '에너지 대사 B군 일일 권장섭취량 (미국 국립보건원 NIH 기준)',
             headers: ['비타민', '라인에서 하는 일', 'RDA (성인)', '한국 식탁 예'],
             rows: [
               ['B1 티아민', '포도당 분해', '1.2mg(남), 1.1mg(여)', '돼지고기, 현미, 깨'],
@@ -488,15 +488,15 @@ export const vitaminArticles: BlogArticle[] = [
         heading: '추가가 통할 때, 안 통할 때',
         paragraphs: [
           '운동량 많음, 임신, 흡수 장애, 만성 과음, 흰쌀·인스턴트만 있는 식단에서 필요량이 올라가요. 강화 곡물, 나물·콩 반찬이 도움이 돼요.',
-          '해당 없으면 음식이 이겨요. 생선·두부 한 그릇, 나물 반찬, 통곡이 라벨에 B12 2000% 적힌 당음료보다 낫죠.',
+          '여기에 해당 안 되면 음식이 이겨요. 생선·두부 한 그릇에 나물 반찬, 통곡이 라벨에 B12 2000% 적힌 단 음료보다 낫죠.',
         ],
         blocks: [
           {
             kind: 'stats',
             items: [
-              { value: '1.2mg', label: '티아민 RDA 남성 (NIH)' },
-              { value: '16mg NE', label: '나이아신 RDA 남성 (NIH)' },
-              { value: '1.7mg', label: 'B6 RDA 성인 19–50세 (NIH)' },
+              { value: '1.2mg', label: '티아민 하루 권장섭취량(RDA) 남성 (미국 국립보건원 NIH 기준)' },
+              { value: '16mg NE', label: '나이아신 하루 권장섭취량(RDA) 남성 (미국 국립보건원 NIH 기준)' },
+              { value: '1.7mg', label: '비타민 B6 하루 권장섭취량(RDA) 성인 19–50세 (미국 국립보건원 NIH 기준)' },
             ],
           },
           {
@@ -531,7 +531,7 @@ export const vitaminArticles: BlogArticle[] = [
     },
     description: {
       en: 'B9 and B12 roles, NIH RDAs, why vegans need fortified B12, alcohol and pregnancy risks, and the folate-masks-B12 problem in plain language.',
-      ko: 'B9·B12 역할, NIH RDA, 비건 강화식 B12, 술·임신 리스크, 엽산이 B12 결핍을 가리는 문제를 쉽게 설명해요.',
+      ko: '비타민 B9(엽산)과 B12의 역할, 미국 국립보건원(NIH) 권장 하루 섭취량(RDA), 비건 식단에서 강화식품을 통한 B12 섭취의 중요성, 알코올 섭취 및 임신 중 위험성, 그리고 고용량 엽산 섭취가 B12 결핍을 가리는 문제를 쉽게 설명합니다.',
     },
     readMinutes: 10,
     datePublished: '2026-06-05',
@@ -587,8 +587,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'The masking trap: folate fixing the lab while B12 still bleeds',
         paragraphs: [
-          'Large folate supplements can correct the anemia that shows up on a standard blood count while neurological damage from B12 deficiency continues. That is why "just take folic acid" is dangerous advice if B12 was never checked.',
-          'Korean tables already carry folate from banchan, which is good. Vegetarians who eat eggs and dairy still need to watch B12; vegans need a deliberate B12 strategy, not hope from kim alone.',
+          'Large folate supplements can fix the anemia that shows up on a standard blood count while nerve damage from a B12 deficiency keeps progressing. That is why "just take folic acid" is dangerous advice when B12 was never checked.',
+          'Korean tables already carry plenty of folate from banchan, which is good. Vegetarians who eat eggs and dairy still need to watch their B12, and vegans need a real B12 plan, not hope pinned on kim alone.',
         ],
         blocks: [
           {
@@ -604,7 +604,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Alcohol and the gut leak',
         paragraphs: [
-          'Alcohol hits the stomach and liver, lowering B12 absorption and draining folate. Chronic use overlaps with low B1 (thiamin), the Wernicke-Korsakoff risk zone. Nutrition support here is medical teamwork, not a shopping-list hack.',
+          'Alcohol hits the stomach and liver, dropping B12 absorption and draining folate. Drink heavily for long enough and low B1 (thiamin) often comes along too, which is the Wernicke-Korsakoff risk zone. Nutrition support here is medical teamwork, not a shopping-list hack.',
         ],
         blocks: [
           {
@@ -645,18 +645,18 @@ export const vitaminArticles: BlogArticle[] = [
         ],
       },
       {
-        heading: 'NIH 숫자, 더 필요한 사람',
+        heading: '미국 국립보건원(NIH) 권장 수치와 추가 섭취가 필요한 사람',
         paragraphs: [
-          '성인 엽산 400mcg DFE, B12 2.4mcg이 하루 기준이에요(NIH). 임신엔 신경관 결손 줄이려 엽산 600mcg DFE로 올라가요. 산전 영양제는 B12 상태 확인이랑 짝이 맞아요.',
+          '성인은 하루에 엽산 400mcg DFE, 비타민 B12 2.4mcg이 기준치입니다(미국 국립보건원 NIH 기준). 임신 중에는 태아 신경관 결손 예방을 위해 엽산 권장량이 600mcg DFE로 상향됩니다. 산전 엽산 영양제를 고를 때는 비타민 B12의 상태도 함께 확인하여 균형을 맞추는 것이 좋습니다.',
           '엄격한 비건은 강화식이나 라벨 있는 B12 보충이 필요해요. 해조류만으로는 부족한 경우가 많고요. 나이 들면 충분히 먹어도 B12 흡수가 떨어질 수 있어서, 검사·주사는 의사 판단이에요.',
         ],
         blocks: [
           {
             kind: 'stats',
             items: [
-              { value: '400mcg DFE', label: '성인 엽산 RDA (NIH)' },
-              { value: '600mcg DFE', label: '임신 엽산 (NIH)' },
-              { value: '2.4mcg', label: '성인 B12 RDA (NIH)' },
+              { value: '400mcg DFE', label: '성인 엽산 하루 권장섭취량(RDA) (미국 국립보건원 NIH 기준)' },
+              { value: '600mcg DFE', label: '임신 중 엽산 하루 권장섭취량 (미국 국립보건원 NIH 기준)' },
+              { value: '2.4mcg', label: '성인 비타민 B12 하루 권장섭취량(RDA) (미국 국립보건원 NIH 기준)' },
             ],
           },
           {
@@ -675,7 +675,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '가려지는 함정: 엽산이 숫자만 예쁘게',
         paragraphs: [
-          '엽산을 많이 먹으면 일반 혈액 검사에서 빈혈 수치는 나아질 수 있어요. 그런데 B12 결핍 신경 손상은 계속될 수 있거든요. "엽산만 챙겨"는 B12 확인 없이 위험해요.',
+          '엽산을 많이 먹으면 일반 혈액 검사에서 빈혈 수치는 나아 보일 수 있어요. 근데 B12 결핍으로 인한 신경 손상은 그대로 진행되거든요. 그래서 B12 확인도 없이 "엽산만 챙겨"는 건 위험해요.',
           '한국 식탁은 반찬 덕에 엽산이 이미 괜찮은 편이에요. 편식 채식은 B12를 봐야 하고, 비건은 김만으로는 부족할 때가 많아요.',
         ],
         blocks: [
@@ -692,7 +692,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '술과 장·간 새는 구멍',
         paragraphs: [
-          '술은 위·간을 두드려 B12 흡수를 떨어뜨리고 엽산을 빼앗아요. 만성 과음은 B1(티아민)까지 겹쳐 뇌병증 위험 구간이에요. 여기 영양 지원은 의료팀이랑 같이 하는 일이지, 장보기 꿀팁만으로 끝나지 않아요.',
+          '술은 위·간을 때려서 B12 흡수를 떨어뜨리고 엽산을 빼앗아요. 만성 과음이면 B1(티아민)까지 같이 모자라는 뇌병증 위험 구간이고요. 이때 영양 관리는 의료팀이랑 같이 하는 일이지, 장보기 꿀팁만으로 끝나지 않아요.',
         ],
         blocks: [
           {
@@ -736,8 +736,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Vitamin C: not a cold shield, still useful',
         paragraphs: [
-          'Vitamin C is an antioxidant and a cofactor for collagen cross-links and carnitine synthesis. Marketing turned it into "take 1000 mg when you feel a tickle." Trials in the general population show modest shortening of colds at best when you already eat enough; megadoses after symptoms start rarely feel dramatic.',
-          'Where C clearly earns its keep: plant iron absorption. Spinach, beans, and fortified grains paired with peppers, citrus, or kimchi in the same meal move non-heme iron up the absorption ladder. That is everyday nutrition, not a pharmacy stunt.',
+          'Vitamin C is an antioxidant and a cofactor for collagen cross-links and carnitine synthesis. Marketing turned it into "take 1000 mg when you feel a tickle." In the general population, trials show colds get a little shorter at best, and only if you were already eating enough. Megadoses once symptoms start rarely do much.',
+          'Where C really earns its keep is plant iron absorption. Eat spinach, beans, or fortified grains with peppers, citrus, or kimchi in the same meal and the non-heme iron absorbs better. That is everyday nutrition, not a pharmacy stunt.',
         ],
         blocks: [
           {
@@ -753,8 +753,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Collagen, skin, and the food-first line',
         paragraphs: [
-          'Collagen supplements are trendy; vitamin C is the wrench your body uses to stabilize collagen you already make. Smoking, sun damage, and very low produce intake hurt skin quality more than a powder without C and protein.',
-          'NIH adult RDAs are 90 mg (men) and 75 mg (women). One orange, a handful of strawberries, or a bowl of kimchi plus peppers often lands you there. See the [vitamin encyclopedia](/nutrients/vitamins) for food lists.',
+          'Collagen supplements are trendy, but vitamin C is the wrench your body uses to stabilize the collagen you already make. Smoking, sun damage, and skimping on produce hurt skin more than any powder without C and protein.',
+          'NIH adult RDAs are 90 mg for men and 75 mg for women. One orange, a handful of strawberries, or a bowl of kimchi with peppers often gets you there. See the [vitamin encyclopedia](/nutrients/vitamins) for food lists.',
         ],
         blocks: [
           {
@@ -780,8 +780,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Vitamin D: sun, fish, and the Korea winter gap',
         paragraphs: [
-          'Vitamin D is a hormone-like fat-soluble nutrient. Skin makes it from UVB, but latitude, sunscreen, indoor jobs, and long winters cut production. Food sources are narrow: fatty fish (고등어, 꽁치), egg yolks, fortified milk.',
-          'In Korea, short winter days and indoor culture push many adults toward low 25(OH)D unless they eat fish regularly or supplement on purpose. Darker skin and older age also lower cutaneous synthesis.',
+          'Vitamin D is a hormone-like fat-soluble nutrient. Your skin makes it from UVB, but latitude, sunscreen, indoor jobs, and long winters all cut production. Food sources are narrow: fatty fish (고등어, 꽁치), egg yolks, fortified milk.',
+          'In Korea, short winter days and a lot of time indoors leave many adults with low 25(OH)D unless they eat fish regularly or supplement on purpose. Darker skin and older age lower what the skin can make, too.',
         ],
         blocks: [
           {
@@ -799,8 +799,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Blood levels: 20 ng/mL, 30 ng/mL, and NIH context',
         paragraphs: [
-          'Labs report 25-hydroxyvitamin D in ng/mL (US) or nmol/L. NIH and Endocrine Society discussions often cite deficiency below roughly 20 ng/mL (50 nmol/L) and insufficiency in the 20–30 ng/mL band for bone health, though optimal targets for every outcome are still debated.',
-          'Do not chase 80 ng/mL because an influencer said so. Excess D from bottles raises calcium problems. Test when risk is high (osteoporosis, malabsorption, very little sun and fish), then dose with medical guidance.',
+          'Labs report 25-hydroxyvitamin D in ng/mL (US) or nmol/L. NIH and Endocrine Society discussions often call below roughly 20 ng/mL (50 nmol/L) deficient and the 20–30 ng/mL band insufficient for bone health, though the ideal target for every outcome is still debated.',
+          'Do not chase 80 ng/mL because an influencer said so. Too much D from bottles can cause calcium problems. Test when your risk is high (osteoporosis, malabsorption, very little sun and fish), then dose with medical guidance.',
         ],
         blocks: [
           {
@@ -824,7 +824,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'What to do with this',
         paragraphs: [
-          'Pair iron-rich plants with C at lunch, keep fatty fish on rotation, and treat D supplements as a targeted fix after context, not a winter multivitamin default. Next: [fat-soluble vitamins A, E, K](/blog/vitamins-fat-soluble) and the [Korean plate map](/blog/vitamins-korean-plate).',
+          'Pair iron-rich plants with C at lunch, keep fatty fish in the rotation, and treat D supplements as a targeted fix once you know your situation, not a default winter multivitamin. Next: [fat-soluble vitamins A, E, K](/blog/vitamins-fat-soluble) and the [Korean plate map](/blog/vitamins-korean-plate).',
         ],
       },
     ],
@@ -832,8 +832,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '비타민 C: 감기 방패 아님, 그래도 쓸모 있음',
         paragraphs: [
-          '비타민 C는 항산화·콜라겐 가교·카르니틴 합성에 쓰여요. 광고는 "목이 칼칼하면 1000mg"으로 바꿨죠. 이미 충분히 먹는 사람에겐 감기 기간이 조금 줄 수준일 뿐, 증상 후 고용량이 극적이진 않아요.',
-          'C가 확실한 곳은 식물성 철 흡수예요. 시금치·콩·강화곡에 고추·귤·김치를 같은 끼에 두면 비헴철 흡수가 올라가요. 약국 쇼가 아니라 일상 영양이에요.',
+          '비타민 C는 항산화·콜라겐 가교·카르니틴 합성에 쓰여요. 광고는 이걸 "목이 칼칼하면 1000mg"으로 바꿔놨죠. 근데 이미 충분히 먹는 사람은 감기 기간이 조금 줄어드는 정도고, 증상 생긴 뒤에 고용량 먹는다고 극적이진 않아요.',
+          'C가 확실히 일하는 곳은 식물성 철 흡수예요. 시금치·콩·강화곡에 고추·귤·김치를 같은 끼에 두면 비헴철 흡수가 올라가요. 약국에서 사 먹는 묘기가 아니라 평범한 일상 영양이에요.',
         ],
         blocks: [
           {
@@ -849,7 +849,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '콜라겐, 피부, 음식 먼저',
         paragraphs: [
-          '콜라겐 파우더가 유행이지만, 몸이 만드는 콜라겐을 안정시키는 렌치가 비타민 C예요. 흡연·자외선·채소 극단 부족이 피부를 더 때리고, C·단백질 없는 가루만으론 한계가 있어요.',
+          '콜라겐 파우더가 유행이지만, 몸이 만드는 콜라겐을 안정시키는 렌치는 비타민 C예요. 사실 피부엔 흡연·자외선·채소 부족이 더 큰 타격이고, C랑 단백질이 빠진 가루만으론 한계가 있어요.',
           'NIH 성인 RDA는 남 90mg, 여 75mg이에요. 귤 하나, 딸기 한 줌, 김치+고추 한 그릇이면 종종 도달해요. 음식 목록은 [비타민 백과](/nutrients/vitamins)에 있어요.',
         ],
         blocks: [
@@ -877,7 +877,7 @@ export const vitaminArticles: BlogArticle[] = [
         heading: '비타민 D: 햇빛, 생선, 한국 겨울',
         paragraphs: [
           '비타민 D는 호르몬처럼 일하는 지용성 영양소예요. 피부가 UVB로 만들지만, 위도·선크림·실내·긴 겨울이 생산을 깎아요. 음식은 좁아요. 등푸른생선(고등어, 꽁치), 달걀 노른자, 강화 우유요.',
-          '한국은 겨울 낮이 짧고 실내 생활이 많아서, 생선을 자주 안 먹고 의도적 보충도 없으면 25(OH)D가 낮아지기 쉬워요. 피부가 어둡거나 나이가 들면 피부 합성도 줄어요.',
+          '한국은 겨울 낮이 짧고 실내에서 보내는 시간이 많아요. 그래서 생선을 자주 안 먹고 따로 보충도 안 하면 25(OH)D가 낮아지기 쉬워요. 피부가 어둡거나 나이가 들면 피부에서 만드는 양도 줄고요.',
         ],
         blocks: [
           {
@@ -895,7 +895,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '혈중 수치: 20·30ng/mL, NIH 맥락',
         paragraphs: [
-          '검사는 25-하이드록시비타민 D를 ng/mL(미국) 또는 nmol/L로 줘요. NIH·내분비 학회 논의에선 대략 20ng/mL(50nmol/L) 미만을 결핍, 20–30ng/mL 구간을 골 건강에서 부족으로 보는 경우가 많아요. 모든 질환에 최적값은 아직 논쟁 중이에요.',
+          '검사는 25-하이드록시비타민 D를 ng/mL(미국)나 nmol/L로 알려줘요. NIH나 내분비 학회 논의를 보면 대략 20ng/mL(50nmol/L) 미만은 결핍, 20–30ng/mL 구간은 골 건강 측면에서 부족으로 보는 경우가 많아요. 다만 질환마다 최적값이 얼마인지는 아직 논쟁 중이에요.',
           '인플루언서 말 듣고 80ng/mL을 쫓지 마세요. 병으로 과하면 칼슘 문제가 생겨요. 해·생선이 거의 없거나 골다공증·흡수 장애면 검사 후 의사와 용량을 정하세요.',
         ],
         blocks: [
@@ -948,8 +948,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Why fat-soluble vitamins stick around',
         paragraphs: [
-          'Unlike B vitamins and C, vitamins A, D, E, and K dissolve in fat droplets, travel with chylomicrons, and can lodge in liver and adipose tissue. That is helpful during lean seasons but dangerous when bottles deliver years of RDA in one week.',
-          'Meals still matter: a carrot salad without fat poorly delivers carotenoids; vitamin K from spinach absorbs better with oil. The [vitamin encyclopedia](/nutrients/vitamins) lists food sources and ULs side by side.',
+          'Unlike B vitamins and C, vitamins A, D, E, and K dissolve in fat droplets, travel with chylomicrons, and can lodge in liver and fat tissue. That helps during lean seasons, but it gets dangerous when a bottle delivers years of RDA in one week.',
+          'Meals still matter. A carrot salad with no fat barely delivers its carotenoids, and vitamin K from spinach absorbs better with a little oil. The [vitamin encyclopedia](/nutrients/vitamins) lists food sources and ULs side by side.',
         ],
         blocks: [
           {
@@ -965,7 +965,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'NIH upper limits you should not blow past',
         paragraphs: [
-          'Tolerable Upper Intake Levels (UL) are the daily max from food plus supplements unlikely to cause harm in healthy adults. They are not targets. They are guardrails.',
+          'Tolerable Upper Intake Levels (UL) are the daily max from food plus supplements that is unlikely to harm a healthy adult. They are not targets to hit. They are guardrails.',
         ],
         blocks: [
           {
@@ -992,8 +992,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Vitamin A and E in real meals',
         paragraphs: [
-          'Preformed vitamin A lives in liver, dairy, and eggs; beta-carotene from carrots and sweet potatoes converts with a ceiling so orange skin is more common than toxicity from plants alone.',
-          'Vitamin E is in nuts, seeds, and vegetable oils. Most people meet needs without 400 IU capsules. High E supplements can interfere with clotting, especially paired with blood thinners.',
+          'Preformed vitamin A lives in liver, dairy, and eggs. Beta-carotene from carrots and sweet potatoes converts only up to a ceiling, so eating a lot of plants is more likely to tint your skin orange than to poison you.',
+          'Vitamin E is in nuts, seeds, and vegetable oils. Most people get enough without 400 IU capsules. High-dose E supplements can interfere with clotting, especially alongside blood thinners.',
         ],
         blocks: [
           {
@@ -1011,7 +1011,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Vitamin K and warfarin: consistency, not fear',
         paragraphs: [
-          'Vitamin K helps clotting factors activate. Warfarin blocks vitamin K recycling, so clinics track INR. The mistake is swinging from zero greens to huge kale smoothies overnight. Keep leafy intake steady and tell your clinician before new supplements.',
+          'Vitamin K helps clotting factors switch on. Warfarin blocks vitamin K recycling, which is why clinics track your INR. The mistake is swinging from no greens to huge kale smoothies overnight. Keep leafy intake steady, and tell your clinician before starting any new supplement.',
         ],
         blocks: [
           {
@@ -1027,7 +1027,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'What to do with this',
         paragraphs: [
-          'Eat colorful plants and fish with some fat, treat retinol and D bottles as serious medicine, and loop clinicians in on K if you anticoagulate. Next: [supplements and labels](/blog/vitamins-supplements) or back to the [series hub](/blog/vitamins-guide).',
+          'Eat colorful plants and fish with some fat, treat retinol and D bottles as serious medicine, and bring your clinician in on vitamin K if you take a blood thinner. Next: [supplements and labels](/blog/vitamins-supplements), or back to the [series hub](/blog/vitamins-guide).',
         ],
       },
     ],
@@ -1035,8 +1035,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '지용성 비타민이 남는 이유',
         paragraphs: [
-          'B군·C와 달리 A·D·E·K는 지방 방울에 녹아 키로미크론을 타고 간·지방에 쌓일 수 있어요. 먹을 게 적을 땐 도움이 되지만, 병이 일주일치 RDA를 넣으면 위험해요.',
-          '끼니도 중요해요. 기름 없는 당근 샐러드는 카로티노이드 배달이 약하고, 시금치의 K는 기름이 있을 때 흡수가 나아요. 음식·UL은 [비타민 백과](/nutrients/vitamins)에 같이 있어요.',
+          'B군·C와 달리 A·D·E·K는 지방 방울에 녹아 키로미크론을 타고 간·지방에 쌓일 수 있어요. 먹을 게 적을 땐 도움이 되지만, 영양제 한 병으로 몇 년치 RDA를 한 주에 털어 넣으면 위험해요.',
+          '끼니도 중요해요. 기름 없는 당근 샐러드는 카로티노이드가 잘 안 넘어가고, 시금치의 K는 기름이 있어야 흡수가 나아요. 음식이랑 UL은 [비타민 백과](/nutrients/vitamins)에 같이 정리돼 있어요.',
         ],
         blocks: [
           {
@@ -1052,7 +1052,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'NIH 상한선(UL), 넘기면 안 되는 숫자',
         paragraphs: [
-          'UL은 건강한 성인이 음식+보충으로 하루에 먹어도 해가 적을 가능성이 큰 최대치예요. 목표가 아니라 가드레일이에요.',
+          'UL은 건강한 성인이 음식이랑 보충제로 하루에 먹어도 해가 적을 최대치예요. 채워야 할 목표가 아니라 가드레일이에요.',
         ],
         blocks: [
           {
@@ -1079,8 +1079,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'A·E는 식탁 vs 병',
         paragraphs: [
-          '레티놀 형태 A는 간·유제품·달걀에, 베타카로틴은 당근·고구마에서 전환돼요. 식물만으로는 독성보다 피부 황색이 먼저 올 때가 많아요.',
-          'E는 견과·씨·식물유에 있어요. 대부분 RDA는 식단으로 되고, 400IU 캡슐+항응고제는 출혈 리스크를 키울 수 있어요.',
+          '레티놀 형태 A는 간·유제품·달걀에 있고, 베타카로틴은 당근·고구마에서 전환돼요. 베타카로틴은 전환에 한계가 있어서, 식물만 많이 먹으면 독성보다 피부가 노래지는 게 먼저 오는 경우가 많아요.',
+          'E는 견과·씨·식물성 기름에 있어요. 대부분 식단만으로 RDA가 채워지고, 400IU 캡슐을 항응고제랑 같이 먹으면 출혈 위험이 커질 수 있어요.',
         ],
         blocks: [
           {
@@ -1098,7 +1098,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '비타민 K와 와파린: 두려움 말고 일관성',
         paragraphs: [
-          'K는 응고 인자를 돕고, 와파린은 K 재활용을 막아 INR을 봐요. 실수는 나물을 끊다가 하루아침에 케일 스무디를 폭주하는 거예요. 잎채소 양을 일정하게, 새 보충제는 처방의와 상의하세요.',
+          'K는 응고 인자를 켜고, 와파린은 K 재활용을 막아요. 그래서 병원에서 INR을 보는 거고요. 흔한 실수가 나물을 아예 안 먹다가 하루아침에 케일 스무디로 폭주하는 거예요. 잎채소 양은 일정하게 유지하고, 새 보충제는 먹기 전에 처방의와 상의하세요.',
         ],
         blocks: [
           {
@@ -1114,7 +1114,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '이걸로 뭘 하면 되나',
         paragraphs: [
-          '채소·생선에 지방 조금, 레티놀·D 병은 약 취급, 항응고 중이면 K 변화는 의사와요. 다음은 [영양제·라벨](/blog/vitamins-supplements), 허브는 [시리즈 1편](/blog/vitamins-guide)이에요.',
+          '채소·생선에 지방 조금 곁들이고, 레티놀·D 병은 약처럼 다루세요. 항응고제를 쓰는 중이면 K 섭취 변화는 의사와 상의하고요. 다음은 [영양제·라벨](/blog/vitamins-supplements), 허브는 [시리즈 1편](/blog/vitamins-guide)이에요.',
         ],
       },
     ],
@@ -1142,8 +1142,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Banchan as a vitamin delivery system',
         paragraphs: [
-          'Korean meals rarely rely on one hero food. They stack small portions: spinach 나물 for folate and K, bean sprouts for folate, kim and pickles for C, eggs and tofu for B2 and B12 (if not vegan), mackerel for B12, D, and niacin.',
-          'White rice plus one fried item is weak; rice plus three vegetable sides and a protein is strong. The pattern mirrors what the [vitamin hub](/blog/vitamins-guide) calls food-first upkeep.',
+          'Korean meals rarely lean on one hero food. They stack small portions: spinach 나물 for folate and K, bean sprouts for folate, kim and pickles for C, eggs and tofu for B2 and B12 (if you are not vegan), mackerel for B12, D, and niacin.',
+          'White rice and one fried item is weak. Rice with three vegetable sides and a protein is strong. That is the same food-first upkeep the [vitamin hub](/blog/vitamins-guide) describes.',
         ],
         blocks: [
           {
@@ -1163,8 +1163,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Symptoms vs diagnosis',
         paragraphs: [
-          'Afternoon slump, dry skin, or catching a cold does not map cleanly to "low vitamin X." Real deficiency clusters need duration, diet pattern, labs, or medical flags: numb hands (B12), night blindness (A), bleeding gums (C severe), or INR swings on warfarin (K).',
-          'Creator content that diagnoses from a selfie is entertainment. If you are vegan, pregnant, malabsorbing, or drinking heavily, ask for targeted tests instead of a shopping-cart full of letters.',
+          'An afternoon slump, dry skin, or a cold does not map cleanly onto "low vitamin X." Real deficiency shows up with duration, a diet pattern, labs, or medical signs behind it: numb hands (B12), night blindness (A), bleeding gums (severe C), or INR swings on warfarin (K).',
+          'Creator content that diagnoses you from a selfie is entertainment. If you are vegan, pregnant, malabsorbing, or drinking heavily, ask for targeted tests instead of a cart full of letters.',
         ],
         blocks: [
           {
@@ -1188,8 +1188,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Use the Analyzer before the pharmacy aisle',
         paragraphs: [
-          'The site [Analyzer](/analyzer) lets you log meals and see whether your week already hits broad vitamin patterns (B spread, folate, C, fat for A/D/E/K). It is a reality check, not a lab replacement.',
-          'If logs show steady fish, eggs, and 나물 but you still feel awful, sleep, iron, thyroid, and mental health deserve attention before another multivitamin. B vitamins tie to dopamine chemistry too ([dopamine guide](/blog/dopamine-guide)) if mood and focus are your worry.',
+          'The site [Analyzer](/analyzer) lets you log meals and see whether your week already covers the broad patterns (a spread of B vitamins, folate, C, and fat for A/D/E/K). It is a reality check, not a stand-in for lab work.',
+          'If your logs show steady fish, eggs, and 나물 and you still feel awful, look at sleep, iron, thyroid, and mental health before reaching for another multivitamin. B vitamins tie into dopamine chemistry too ([dopamine guide](/blog/dopamine-guide)), if mood and focus are what worry you.',
         ],
         blocks: [
           {
@@ -1207,7 +1207,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'What to do with this',
         paragraphs: [
-          'Treat 나물 and fish as weekly non-negotiables, eggs or fortified B12 if vegan, and symptoms as a prompt to log—not panic-buy. Next: [supplements, %DV, and myths](/blog/vitamins-supplements). Full numbers live in [vitamins](/nutrients/vitamins).',
+          'Keep 나물 and fish as weekly non-negotiables, lean on eggs or fortified B12 if you are vegan, and treat symptoms as a reason to log, not to panic-buy. Next: [supplements, %DV, and myths](/blog/vitamins-supplements). Full numbers live in [vitamins](/nutrients/vitamins).',
         ],
       },
     ],
@@ -1221,7 +1221,7 @@ export const vitaminArticles: BlogArticle[] = [
         blocks: [
           {
             kind: 'table',
-            caption: '골목 식재와 담는 비타민',
+            caption: '기본 식재료와 담긴 비타민',
             headers: ['음식', '비타민', '팁'],
             rows: [
               ['나물(시금치, 콩나물)', '엽산, K, C 일부', '김치만 반복 말고 색 돌리기'],
@@ -1236,8 +1236,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '증상 vs 진단',
         paragraphs: [
-          '오후 붕괴, 건조 피부, 감기는 "비타민 X 부족"으로 깔끔히 안 맞아요. 진짜 결핍은 기간·식단·검사·의료 신호가 묶여요. 손발 저림(B12), 야맹(A), 잇몸 출혈(심한 C), 와파린 INR 흔들림(K) 같은 경우요.',
-          '셀카로 진단하는 콘텐츠는 오락에 가까워요. 비건·임신·흡수 장애·과음이면 알파벳 영양제 바구니보다 겨냥 검사를 물어보세요.',
+          '오후에 처지거나, 피부가 건조하거나, 감기 걸리는 게 "비타민 X 부족"으로 깔끔하게 떨어지진 않아요. 진짜 결핍은 기간이나 식단, 검사, 의료 신호가 뒤에 같이 있어요. 손발 저림(B12), 야맹(A), 잇몸 출혈(심한 C), 와파린 쓸 때 INR 흔들림(K) 같은 식으로요.',
+          '셀카 보고 진단해 주는 콘텐츠는 오락이에요. 비건이거나 임신·흡수 장애·과음 중이면, 알파벳 영양제 바구니 말고 겨냥한 검사를 물어보세요.',
         ],
         blocks: [
           {
@@ -1261,8 +1261,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '약국 전에 Analyzer로 확인',
         paragraphs: [
-          '사이트 [Analyzer](/analyzer)에 식단을 넣으면 한 주가 B·엽산·C·지용성용 지방 패턴을 이미 채웠는지 볼 수 있어요. 검사 대체는 아니고 현실 점검이에요.',
-          '로그상 생선·달걀·나물은 괜찮은데 몸이 여전히 무너지면, 잠·철·갑상선·정신건강을 먼저 보세요. 기분·집중이 걱정이면 B군·도파민 경로도 [도파민 가이드](/blog/dopamine-guide)와 겹쳐요.',
+          '사이트 [Analyzer](/analyzer)에 식단을 넣으면 한 주 동안 B군·엽산·C, 지용성용 지방 패턴을 이미 채웠는지 볼 수 있어요. 검사를 대신하는 건 아니고 현실 점검이에요.',
+          '기록을 보니 생선·달걀·나물은 잘 챙기는데도 계속 컨디션이 안 좋다면, 잠·철·갑상선·정신건강을 먼저 살펴보세요. 기분이나 집중이 걱정이면 B군이 도파민 경로와도 얽혀 있어요([도파민 가이드](/blog/dopamine-guide)).',
         ],
         blocks: [
           {
@@ -1294,7 +1294,7 @@ export const vitaminArticles: BlogArticle[] = [
       ko: '영양제: %DV 읽기, 종합비타민 오해, 검사 시점',
     },
     thesis: {
-      en: 'Labels with 500% DV are marketing loudness, not better nutrition; a food-first decision tree beats default multivitamins, and blood tests matter for B12, D, and pregnancy—not for guessing fatigue.',
+      en: 'Labels with 500% DV are marketing noise, not better nutrition. A food-first decision tree beats reaching for a default multivitamin, and blood tests matter for B12, D, and pregnancy, not for guessing at fatigue.',
       ko: '라벨 500% DV는 영양이 아니라 광고 소리예요. 음식 우선 결정 나무가 종합비타민 기본값보다 낫고, B12·D·임신처럼 맥락 있을 때만 혈액 검사가 의미 있어요.',
     },
     description: {
@@ -1308,8 +1308,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '%DV on the label is not a grade',
         paragraphs: [
-          'Percent Daily Value compares one serving to a general 2,000 kcal reference diet. "500% vitamin B12" sounds like winning; it often means the pill is loud, not that your cells use five times more.',
-          'Water-soluble extras usually exit. Fat-soluble extras (A, D, E) can add toward UL. Check retinol versus beta-carotene, D2 versus D3, and whether you already drink fortified milk or take fish oil.',
+          'Percent Daily Value compares one serving to a general 2,000 kcal reference diet. "500% vitamin B12" sounds like winning, but it usually just means the pill is loud, not that your cells use five times more.',
+          'Extra water-soluble vitamins mostly leave in urine. Extra fat-soluble ones (A, D, E) build toward the UL. So check retinol versus beta-carotene, D2 versus D3, and whether you already drink fortified milk or take fish oil.',
         ],
         blocks: [
           {
@@ -1328,8 +1328,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Multivitamin myths',
         paragraphs: [
-          'The "insurance policy" multivitamin rarely fixes a targeted gap. It sprinkles low doses of everything, which can mask B12 deficiency with folate, or push fat-soluble totals if you also take fish liver oil and vitamin D gummies.',
-          'Athletes, pregnancy, vegan diets, and malabsorption need specific nutrients, not alphabet soup. Korean banchan-heavy eaters often already exceed folate and K while still missing winter D or vegan B12.',
+          'The "insurance policy" multivitamin rarely fixes a specific gap. It sprinkles a little of everything, which can mask a B12 deficiency with folate, or push your fat-soluble totals up if you also take fish liver oil and vitamin D gummies.',
+          'Athletes, pregnancy, vegan diets, and malabsorption call for specific nutrients, not alphabet soup. People who eat a lot of Korean banchan often clear folate and K easily while still coming up short on winter D or, for vegans, B12.',
         ],
         blocks: [
           {
@@ -1353,7 +1353,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Food-first decision tree',
         paragraphs: [
-          'Start with a week of real meals—[Analyzer](/analyzer) or a notebook. If fish, eggs, 나물, and fruit show up, hold supplements unless a clinician flagged a lab.',
+          'Start with a week of real meals, logged in the [Analyzer](/analyzer) or a notebook. If fish, eggs, 나물, and fruit keep showing up, hold off on supplements unless a clinician flagged a lab.',
         ],
         blocks: [
           {
@@ -1372,8 +1372,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'When blood tests help',
         paragraphs: [
-          'Useful: B12 with neurological symptoms or vegan diet; 25(OH)D if osteoporosis risk, malabsorption, or chronically low sun and fish; folate plus B12 in pregnancy planning. Not useful: screening every vitamin because marketing said "panel."',
-          'Fatigue alone is a poor trigger. Thyroid, iron, sleep apnea, and depression overlap. If supplements pile up without labs, bring the list to a clinician.',
+          'Worth doing: B12 with neurological symptoms or on a vegan diet; 25(OH)D if you have osteoporosis risk, malabsorption, or rarely get sun and fish; folate plus B12 when planning a pregnancy. Not worth doing: screening every vitamin because an ad said "panel."',
+          'Fatigue on its own is a weak reason to test. Thyroid trouble, low iron, sleep apnea, and depression all overlap with it. If supplements are piling up and you have no labs, take the list to a clinician.',
         ],
         blocks: [
           {
@@ -1389,7 +1389,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: 'Close the loop: back to the hub',
         paragraphs: [
-          'Vitamins are maintenance, not magic. Return to the [series hub](/blog/vitamins-guide) for the map, [Korean plate](/blog/vitamins-korean-plate) for staples, [fat-soluble limits](/blog/vitamins-fat-soluble) for UL guardrails, and [vitamins](/nutrients/vitamins) for food tables. Eat first, supplement on purpose, test when the story warrants it.',
+          'Vitamins are maintenance, not magic. Head back to the [series hub](/blog/vitamins-guide) for the map, the [Korean plate](/blog/vitamins-korean-plate) for staples, [fat-soluble limits](/blog/vitamins-fat-soluble) for the UL guardrails, and [vitamins](/nutrients/vitamins) for food tables. Eat first, supplement on purpose, and test when your situation calls for it.',
         ],
       },
     ],
@@ -1397,8 +1397,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '%DV는 성적표가 아니에요',
         paragraphs: [
-          '일일 섭취율(%DV)은 2,000kcal 기준 식단과 한 서빙을 비교한 거예요. "B12 500%"는 이긴 게 아니라 소리가 큰 거고, 세포가 다섯 배 쓰는 게 아니에요.',
-          '수용성은 대부분 나가고, 지용성(A·D·E)은 UL에 더해져요. 레티놀 vs 베타카로틴, D2 vs D3, 강화 우유·어유를 같이 먹는지 보라고요.',
+          '일일 섭취율(%DV)은 한 서빙을 2,000kcal 기준 식단과 비교한 거예요. "B12 500%"는 이긴 게 아니라 그냥 라벨 소리가 큰 거예요. 세포가 다섯 배 쓰는 게 아니거든요.',
+          '수용성은 남으면 대부분 소변으로 빠지지만, 지용성(A·D·E)은 UL 쪽으로 차곡차곡 쌓여요. 그래서 레티놀인지 베타카로틴인지, D2인지 D3인지, 강화 우유나 어유를 이미 먹고 있는지 확인하세요.',
         ],
         blocks: [
           {
@@ -1417,8 +1417,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '종합비타민 오해',
         paragraphs: [
-          '"보험용" 종합비타민은 빈틈을 잘 안 막아요. 모든 걸 조금씩 넣어서, 엽산이 B12 결핍을 가리거나, 어간기름+D 젤리랑 겹쳐 지용성이 쌓일 수 있어요.',
-          '운동·임신·비건·흡수 장애는 특정 영양소가 필요해요. 반찬 많은 한국 식단은 엽산·K는 넉넉한데 겨울 D나 비건 B12는 비는 경우가 많아요.',
+          '"보험용" 종합비타민은 정작 빈틈을 잘 못 막아요. 모든 걸 조금씩 넣다 보니 엽산이 B12 결핍을 가리거나, 어간기름이랑 D 젤리까지 겹쳐서 지용성이 쌓이기도 하고요.',
+          '운동량 많은 사람, 임신, 비건, 흡수 장애는 특정 영양소가 필요하지 알파벳 모음이 필요한 게 아니에요. 반찬 많이 먹는 한국 식단은 엽산·K는 넉넉한데 겨울 D나 비건의 B12는 비는 경우가 많아요.',
         ],
         blocks: [
           {
@@ -1442,7 +1442,7 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '음식 우선 결정 나무',
         paragraphs: [
-          '일주일 실제 식단부터—[Analyzer](/analyzer)나 수기요. 생선·달걀·나물·과일이 보이면, 클리닉이 검사로 찍어준 게 아니면 보충을 미뤄도 돼요.',
+          '일단 일주일치 실제 식단부터 기록해요. [Analyzer](/analyzer)나 수기로요. 생선·달걀·나물·과일이 계속 보이면, 병원이 검사로 짚어준 게 아닌 한 보충은 미뤄도 돼요.',
         ],
         blocks: [
           {
@@ -1461,8 +1461,8 @@ export const vitaminArticles: BlogArticle[] = [
       {
         heading: '혈액 검사가 통할 때',
         paragraphs: [
-          '의미 있음: 신경 증상·비건의 B12; 골다공증·흡수 장애·해·생선 극단 부족의 25(OH)D; 임신 계획의 엽산+B12. 의미 적음: 마케팅 "패널"로 모든 비타민 스크리닝.',
-          '피로만으로는 트리거가 약해요. 갑상선·철·수면무호흡·우울과 겹쳐요. 검사 없이 영양제가 쌓이면, 라벨 사진 들고 진료 보세요.',
+          '할 만한 경우: 신경 증상이 있거나 비건일 때의 B12, 골다공증·흡수 장애가 있거나 해·생선이 거의 없을 때의 25(OH)D, 임신 계획 중의 엽산+B12. 굳이 안 해도 되는 경우: 광고가 "패널"이라고 해서 모든 비타민을 다 찍어보는 거요.',
+          '피로 하나만으로는 검사 트리거가 약해요. 갑상선·철·수면무호흡·우울이 다 겹치거든요. 검사도 없이 영양제만 쌓이고 있으면, 라벨 사진 챙겨서 진료를 보세요.',
         ],
         blocks: [
           {

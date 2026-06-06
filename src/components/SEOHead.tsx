@@ -10,7 +10,7 @@ export const SITE_NAME = 'VITAL — Nutrition Intelligence';
 export const SITE_DESCRIPTION_EN =
   'Upload any food label, get a Health Index score, and find better alternatives. Nutrient encyclopedia, daily meal logger, and side-by-side compare backed by WHO, NIH, AHA, and Harvard research.';
 export const SITE_DESCRIPTION_KO =
-  '식품 라벨을 업로드하면 건강 점수와 더 나은 대안을 알려드립니다. WHO·NIH·AHA·하버드 연구를 기반으로 한 영양소 백과사전, 하루 식단 기록, 식품 비교 기능을 제공합니다.';
+  '식품 라벨을 업로드하면 건강 점수와 더 나은 대안을 알려드립니다. 세계보건기구(WHO), 미국국립보건원(NIH), 미국심장협회(AHA) 및 하버드 보건대학원 연구를 기반으로 한 영양소 백과사전, 하루 식단 기록, 식품 비교 기능을 제공합니다.';
 
 export interface SEOHeadProps {
   /** Pre-formatted strings (used when keys aren't enough — e.g. nutrient name). */

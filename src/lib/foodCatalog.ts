@@ -299,16 +299,78 @@ export const foodCatalog: CatalogEntry[] = [
   },
 ];
 
+export const catalogNameMap: Record<string, string> = {
+  'Chicken Breast (skinless)': '닭가슴살 (껍질 없음)',
+  'Ground Chicken (93% lean)': '다진 닭고기 (살코기 93%)',
+  'Salmon (Atlantic, baked)': '연어 구이 (아틀란틱)',
+  'Eggs (2 large)': '계란 (대란 2개)',
+  'Greek Yogurt (plain, non-fat)': '그릭 요거트 (플레인, 무지방)',
+  'Oatmeal (rolled, cooked)': '오트밀 (롤드오트, 조리됨)',
+  'Brown Rice (cooked)': '현미밥',
+  'Quinoa (cooked)': '퀴노아 (조리됨)',
+  'Lentils (cooked)': '렌틸콩 (조리됨)',
+  'Black Beans (cooked)': '검은콩 (조리됨)',
+  'Tofu (firm)': '두부 (단단한 두부)',
+  'Avocado': '아보카도',
+  'Banana': '바나나',
+  'Spinach (cooked)': '시금치 (조리됨)',
+  'Broccoli (cooked)': '브로콜리 (조리됨)',
+  'Almonds': '아몬드',
+  'Sugary Breakfast Cereal': '단맛 시리얼 (설탕 첨가)',
+  'Frozen Pepperoni Pizza': '냉동 페퍼로니 피자',
+  'Potato Chips': '감자칩',
+  'Cola Soda (12 oz)': '콜라 (355ml/12oz)',
+  'Diet Cola (12 oz)': '다이어트 콜라 (355ml/12oz)',
+  'Sparkling Water (12 oz)': '탄산수 (355ml/12oz)',
+  'Unsweetened Iced Tea (12 oz)': '무가당 아이스티 (355ml/12oz)',
+};
+
+export const catalogCategoryMap: Record<string, string> = {
+  'Protein': '단백질 식품',
+  'Dairy': '유제품',
+  'Grain': '곡류',
+  'Legume': '두류',
+  'Fruit': '과일',
+  'Vegetable': '채소',
+  'Nut': '견과류',
+  'Processed': '가공식품',
+  'Frozen': '냉동식품',
+  'Snack': '스낵/간식',
+  'Beverage': '음료',
+};
+
+export function translateFoodName(name: string, locale: string): string {
+  if (locale === 'ko') {
+    return catalogNameMap[name] || name;
+  }
+  return name;
+}
+
+export function translateFoodCategory(category: string, locale: string): string {
+  if (locale === 'ko') {
+    return catalogCategoryMap[category] || category;
+  }
+  return category;
+}
+
 export function findCatalogEntry(id: string): CatalogEntry | undefined {
   return foodCatalog.find(f => f.id === id);
 }
 
-export function searchCatalog(q: string): CatalogEntry[] {
+export function searchCatalog(q: string, _locale?: string): CatalogEntry[] {
   const query = q.trim().toLowerCase();
   if (!query) return foodCatalog;
-  return foodCatalog.filter(f =>
-    f.name.toLowerCase().includes(query) ||
-    f.category.toLowerCase().includes(query) ||
-    f.data.productName?.toLowerCase().includes(query),
-  );
+  return foodCatalog.filter(f => {
+    const enName = f.name.toLowerCase();
+    const koName = (catalogNameMap[f.name] || '').toLowerCase();
+    const enCat = f.category.toLowerCase();
+    const koCat = (catalogCategoryMap[f.category] || '').toLowerCase();
+    const prodName = (f.data.productName || '').toLowerCase();
+
+    return enName.includes(query) ||
+           koName.includes(query) ||
+           enCat.includes(query) ||
+           koCat.includes(query) ||
+           prodName.includes(query);
+  });
 }

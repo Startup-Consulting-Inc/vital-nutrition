@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { addEntry, getEntries, removeEntry, sumEntries, todayKey, type MealEntry } from '@/lib/mealLog';
-import { searchCatalog } from '@/lib/foodCatalog';
+import { searchCatalog, translateFoodName } from '@/lib/foodCatalog';
 import { analyzeNutritionLabel } from '@/lib/nutritionAnalyzer';
 import { useUserProfile, personalizedTargets } from '@/hooks/useUserProfile';
 import HealthScoreGauge from '@/components/HealthScoreGauge';
@@ -24,7 +24,7 @@ export default function MealLog() {
 
   const totals = sumEntries(entries);
   const dailyAnalysis = entries.length > 0 ? analyzeNutritionLabel(totals) : null;
-  const search = searchCatalog(query).slice(0, 12);
+  const search = searchCatalog(query, locale).slice(0, 12);
 
   return (
     <section className="w-full py-16 px-6" style={{ backgroundColor: '#f6f5f1' }}>
@@ -65,7 +65,7 @@ export default function MealLog() {
                       {item.emoji}
                     </span>
                     <div className="min-w-0">
-                      <p className="text-xs text-deep truncate">{item.name}</p>
+                      <p className="text-xs text-deep truncate">{translateFoodName(item.name, locale)}</p>
                       <p className="text-[10px] text-deep/40">{item.data.calories} {locale === 'ko' ? 'kcal' : 'cal'} · {item.data.protein}g P</p>
                     </div>
                   </button>
@@ -90,7 +90,7 @@ export default function MealLog() {
                 {entries.map(e => (
                   <div key={e.id} className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#f6f5f1]">
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-deep truncate">{e.name}</p>
+                      <p className="text-sm font-medium text-deep truncate">{translateFoodName(e.name, locale)}</p>
                       <p className="text-xs text-deep/40">
                         {e.servings} × {e.data.servingSize} · {Math.round(e.data.calories * e.servings)} {locale === 'ko' ? 'kcal' : 'cal'}
                       </p>

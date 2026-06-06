@@ -92,7 +92,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '단백질이 하는 일(헬스장 밖에서도)',
         paragraphs: [
-          '단백질은 몸매 재료로만 팔려요. 실제로는 근육·뼈·피부·장기 구조, 소화·대사 효소, 항체, 헤모글로빈 같은 운반까지 넓어요. 세포마다 쓰여요.',
+          '단백질은 흔히 몸매 만드는 재료로만 알려져 있어요. 그런데 실제로는 근육·뼈·피부·장기 구조부터 소화·대사 효소, 항체, 헤모글로빈 같은 운반까지 훨씬 넓게 쓰여요. 세포마다 다 필요해요.',
           '지방처럼 단백질 창고가 있는 건 아니에요. 음식 단백질을 아미노산으로 쪼갠 뒤 필요한 걸 다시 조립해요. 그래서 특정 "슈퍼 단백질"보다 꾸준한 실제 음식이 먼저예요.',
           '[단백질 백과](/nutrients/proteins)에 기능·결핍·음식표가 있어요. 이 시리즈는 순서대로 풀고, 검사·진료를 대신하진 않아요.',
         ],
@@ -111,7 +111,7 @@ export const proteinArticles: BlogArticle[] = [
         heading: '아미노산을 쉽게',
         paragraphs: [
           '단백질은 20종 아미노산 사슬이에요. 9종은 필수라 식단에서 꼭 받아야 해요. 동물성·콩·퀴노아는 완전단백에 가깝고, 곡물+콩(밥+된장, 후무스+빵)은 서로 메꿔 줘요.',
-          '뇌는 티로신으로 도파민을 만들어요. 그 경로는 [도파민 시리즈](/blog/dopamine-guide)에서 다뤄요. 여기선 총 단백질·식탁 패턴에 맞출게요.',
+          '뇌는 아미노산인 티로신으로 도파민을 만들어요. 그 경로는 [도파민 시리즈](/blog/dopamine-guide)에서 다루고, 여기서는 총 단백질과 식탁 패턴에 집중할게요.',
         ],
         blocks: [
           {
@@ -130,7 +130,7 @@ export const proteinArticles: BlogArticle[] = [
             items: [
               { value: '20', label: '인체 단백질 아미노산' },
               { value: '9', label: '필수—식단 필수' },
-              { value: '0.8g/kg', label: '성인 기본 (WHO/FAO)' },
+              { value: '0.8g/kg', label: '성인 기본 권장량 (세계보건기구 WHO/유엔식량농업기구 FAO)' },
             ],
           },
         ],
@@ -163,11 +163,11 @@ export const proteinArticles: BlogArticle[] = [
     episode: 2,
     title: {
       en: 'How much protein per day: g per kg beats generic "56 grams"',
-      ko: '하루 단백질 얼마나: "56g"보다 kg당 g가 실전에 맞아요',
+      ko: '하루 단백질 얼마나: "56g"보다 kg당 그램이 실전에 맞아요',
     },
     thesis: {
-      en: 'Adult baseline is about 0.8 g per kg body weight per day (WHO/FAO). Active people and older adults often benefit from more, but megadoses are not automatic wins.',
-      ko: '성인 기본은 체중 1kg당 하루 약 0.8g(WHO/FAO)이에요. 운동·고령은 더 필요할 수 있지만, 무조건 고단백이 답은 아니에요.',
+      en: 'Adult baseline is about 0.8 g per kg of body weight per day (WHO/FAO). Active people and older adults often need more, but megadoses are not automatic wins.',
+      ko: '성인 기본은 체중 1kg당 하루 약 0.8g(세계보건기구 WHO/유엔식량농업기구 FAO 기준)이에요. 운동·고령은 더 필요할 수 있지만, 무조건 고단백이 답은 아니에요.',
     },
     description: {
       en: 'Daily protein targets by body weight, activity, age, and when very high intakes need medical context.',
@@ -217,8 +217,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'When more is not automatically better',
         paragraphs: [
-          'Athletes and heavy lifters need more building blocks, not infinite protein. Excess beyond what you use does not magically add muscle; calories and training still rule.',
-          'Kidney disease, pregnancy, and some metabolic conditions change the target. Part 8 covers flags; do not self-prescribe 200 g because a podcast said so.',
+          'Athletes and heavy lifters need more building blocks, not infinite protein. Anything past what you use will not add muscle on its own; calories and training still do the work.',
+          'Kidney disease, pregnancy, and some metabolic conditions change the target. Part 8 covers the warning signs, so do not self-prescribe 200 g just because a podcast said to.',
         ],
         blocks: [
           {
@@ -236,8 +236,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '체중부터, 밈 숫자 말고',
         paragraphs: [
-          '"남성 56g, 여성 46g"은 인구 평균이에요. 개인 처방은 아니에요. 체중(kg)×0.8이 대부분 건강한 성인 유지 바닥에 가깝아요.',
-          '예: 60kg×0.8≈48g/일. 70kg≈56g. 저녁에만 몰아 넣기보다 아침·점심·저녁에 나누는 게 낫아요.',
+          '"남성 56g, 여성 46g"은 인구 평균이라 개인 처방은 아니에요. 체중(kg)에 0.8을 곱하면 건강한 성인 대부분의 최소 유지량이 나와요.',
+          '예를 들어 60kg면 60×0.8≈48g, 70kg면 약 56g이에요. 저녁에만 몰아 넣지 말고 아침·점심·저녁에 나눠 먹는 게 좋아요.',
         ],
         blocks: [
           {
@@ -245,7 +245,7 @@ export const proteinArticles: BlogArticle[] = [
             caption: '흔한 하루 구간(일반 정보, 의학 처방 아님)',
             headers: ['상황', 'kg당 g', '메모'],
             rows: [
-              ['일반 성인 유지', '0.8', 'WHO/FAO 기준'],
+              ['일반 성인 유지', '0.8', '세계보건기구(WHO)/유엔식량농업기구(FAO) 기준'],
               ['근력 운동 꾸준', '1.2–1.6', '끼니 분산'],
               ['고령(근감소 위험)', '1.0–1.2', '신장 질환 있으면 진료'],
               ['매우 높음(>2.0)', '—', '[특수 상황](/blog/protein-special-cases) 참고'],
@@ -273,8 +273,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '많다고 항상 좋은 건 아님',
         paragraphs: [
-          '운동 많으면 재료가 더 필요해요. 무한 단백질이 근육을 만드진 않아요. 칼로리·훈련이 여전히 중심이에요.',
-          '신장·임신·대사 질환은 숫자가 달라져요. 8편에서 깃발을 다루고, 팟캐스트가 200g이라 해서 스스로 처방하지 마세요.',
+          '운동을 많이 하면 재료가 더 필요하긴 해요. 그래도 단백질을 무한정 먹는다고 근육이 붙진 않아요. 칼로리와 훈련이 여전히 중심이에요.',
+          '신장·임신·대사 질환이 있으면 숫자가 달라져요. 주의 신호는 8편에서 다루니, 팟캐스트에서 200g이라고 했다고 스스로 처방하지 마세요.',
         ],
         blocks: [
           {
@@ -358,8 +358,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '꼭 먹어야 하는 9종',
         paragraphs: [
-          '나머지 11종은 질소·에너지가 있으면 몸에서 만들어요. 필수 9종(히스티딘, 이소류신, 류신, 라이신, 메티오닌, 페닐알라닌, 트레오닌, 트립토판, 발린)은 단백질 음식에서 와야 해요.',
-          '암기 없이도 잘 먹을 수 있어요. 주간에 단백질 출처만 다양하면 돼요.',
+          '나머지 11종은 질소랑 에너지만 충분하면 몸에서 알아서 만들어요. 그런데 필수 9종(히스티딘, 이소류신, 류신, 라이신, 메티오닌, 페닐알라닌, 트레오닌, 트립토판, 발린)은 음식으로 받아야 해요.',
+          '굳이 외우지 않아도 잘 먹을 수 있어요. 일주일 단위로 단백질 출처만 다양하면 돼요.',
         ],
         blocks: [
           {
@@ -375,7 +375,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '완전 vs 불완전',
         paragraphs: [
-          '완전단백은 9종을 한 번에 충분히 줘요: 달걀, 유제품, 생선, 닭, 쇠고기, 콩, 퀴노아. 불완전은 한두 종이 부족해요. 곡물(라이신 낮음), 콩류(메티오닌 낮음).',
+          '완전단백은 9종을 한 번에 충분히 채워 줘요. 달걀, 유제품, 생선, 닭, 쇠고기, 콩, 퀴노아가 그래요. 반대로 불완전단백은 한두 종이 모자라요. 곡물은 라이신이, 콩류는 메티오닌이 적은 식이에요.',
           '밥+콩, 빵+땅콩버터, 렌틸 수프+빵이 대표예요. 한국 식탁은 밥+된장·두부로 같은 원리를 이름 없이 쓰고 있어요.',
         ],
         blocks: [
@@ -395,7 +395,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '류신·근육 마케팅',
         paragraphs: [
-          '류신은 근단백 합성 신호를 켜서 인플루언서가 집착해요. 대부분은 운동 전 2.5g보다 하루 총 단백질·실제 끼니가 먼저예요.',
+          '류신은 근단백 합성 신호를 켜요. 그래서 인플루언서들이 유독 집착하죠. 근데 대부분한테는 운동 전 류신 2.5g을 맞추는 것보다 하루 총 단백질과 실제 끼니가 먼저예요.',
           '다음: [동물 vs 식물](/blog/protein-animal-vs-plant). 아미노산 표는 사이트 [아미노산](/amino-acids)에도 있어요.',
         ],
       },
@@ -444,8 +444,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'Plant sources: fiber plus pairing',
         paragraphs: [
-          'Lentils, black beans, tofu, tempeh, and nuts add protein with fiber and minerals. Strict vegan diets need fortified B12 and attention to iron and zinc—see [B12 & folate](/blog/vitamins-b12-folate).',
-          'Soy is the most complete plant protein common in US groceries. Combining beans and grains still helps amino acid variety even when soy is in the rotation.',
+          'Lentils, black beans, tofu, tempeh, and nuts add protein along with fiber and minerals. Strict vegan diets need fortified B12 plus some attention to iron and zinc. See [B12 & folate](/blog/vitamins-b12-folate).',
+          'Soy is the most complete plant protein you will find in US groceries. Even with soy in the rotation, mixing beans and grains still widens your amino acid variety.',
         ],
         blocks: [
           {
@@ -453,7 +453,7 @@ export const proteinArticles: BlogArticle[] = [
             tone: 'key',
             title: 'Vegan checklist',
             body: [
-              'B12 fortified foods or supplement, varied legumes, iodine/omega-3 if seafood absent—protein grams alone do not cover the whole board.',
+              'B12 fortified foods or a supplement, varied legumes, and iodine or omega-3 if you skip seafood. Protein grams alone do not cover everything.',
             ],
           },
         ],
@@ -461,7 +461,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'Choosing for your plate',
         paragraphs: [
-          'Mixing fish twice weekly, eggs or yogurt daily anchors, and beans several times covers most US patterns without obsessing over "animal vs plant" teams. Next: [US everyday plate](/blog/protein-everyday-plate) (English) with meal slots.',
+          'Fish twice a week, eggs or yogurt as a daily anchor, and beans a few times covers most US eating without picking an "animal vs plant" side. Next: [US everyday plate](/blog/protein-everyday-plate) (English) with meal slots.',
         ],
       },
     ],
@@ -469,8 +469,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '동물성: 완전하지만 꾸러미를 봐요',
         paragraphs: [
-          '생선·달걀·닭·유제품은 완전단백에 B12, D(등푸른생선·달걀), 헴철이 따라와요. 베이컨·소시지·튀김 쪽으로 가면 포화지방·나트륨이 커져요.',
-          '[단백질 백과](/nutrients/proteins)는 가공육을 "피하기"에 넣어요. WHO 가공육 1군 맥락이지 닭가슴살 공포가 아니에요.',
+          '생선·달걀·닭·유제품은 완전단백이면서 B12, 비타민 D(등푸른생선·달걀), 헴철까지 같이 와요. 다만 베이컨·소시지·튀김으로 가면 포화지방이랑 나트륨이 확 늘어요.',
+          '[단백질 백과](/nutrients/proteins)는 가공육을 "피하기"에 넣어요. 세계보건기구(WHO) 산하 국제암연구소의 가공육 1군 발암물질 분류 맥락이지 닭가슴살 공포가 아니에요.',
         ],
         blocks: [
           {
@@ -489,8 +489,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '식물성: 섬유+짝짓기',
         paragraphs: [
-          '렌틸, 검은콩, 두부, 템페, 견과는 단백질에 섬유·미네랄이 붙어요. 엄격한 비건은 강화 B12·철·아연—[B12·엽산](/blog/vitamins-b12-folate) 참고.',
-          '콩이 한국·미국 식료에서 가장 흔한 완전에 가까운 식물 단백이에요. 콩만 먹어도 되지만 곡물+콩을 돌리면 아미노산 폭이 넓어져요.',
+          '렌틸, 검은콩, 두부, 템페, 견과는 단백질에 섬유랑 미네랄이 같이 붙어요. 엄격한 비건이라면 강화 B12에 철·아연까지 신경 써야 해요([B12·엽산](/blog/vitamins-b12-folate) 참고).',
+          '콩은 한국·미국 식료품점에서 쉽게 구할 수 있는 식물 단백질 중 완전단백에 가장 가까워요. 콩만 먹어도 되지만, 곡물과 콩을 번갈아 먹으면 아미노산 폭이 더 넓어져요.',
         ],
         blocks: [
           {
@@ -498,7 +498,7 @@ export const proteinArticles: BlogArticle[] = [
             tone: 'key',
             title: '비건 체크',
             body: [
-              'B12 강화식·보충, 콩류 다양화, 해산물 없으면 요오드·오메가3도—단백질 g만으로 보드 전체가 안 채워져요.',
+              'B12 강화식이나 보충제, 다양한 콩류, 해산물을 안 먹으면 요오드·오메가3까지 챙기세요. 단백질 그램만으로는 필요한 영양이 다 채워지지 않아요.',
             ],
           },
         ],
@@ -520,7 +520,7 @@ export const proteinArticles: BlogArticle[] = [
       ko: '한국 식탁: 달걀·두부·생선·콩으로 하루 단백질 채우기',
     },
     thesis: {
-      en: 'Typical US eating often under-funds protein at breakfast and lunch, then over-relies on one dinner entree. Spreading eggs, yogurt, fish, and legumes across meals hits grams without shakes.',
+      en: 'Typical US eating often skimps on protein at breakfast and lunch, then leans too hard on one dinner entree. Spreading eggs, yogurt, fish, and legumes across meals hits your grams without shakes.',
       ko: '한국 식탁은 삼겹살 한 접시가 아니라 국·반찬·밥에 단백질이 나뉘어 있어요. 달걀·두부·생선·콩을 끼니에 깔면 쉐이크 없이도 g가 채워져요.',
     },
     description: {
@@ -599,7 +599,7 @@ export const proteinArticles: BlogArticle[] = [
         heading: '한국 식탁에서 단백질이 숨는 곳',
         paragraphs: [
           '단백질은 삼겹살 한 접시만이 아니에요. 된장국·멸치국, 두부·나물 반찬, 밥 위 달걀, 생선구이에 나뉘어 있어요. 아침이 빵·커피만이면 하루가 약해지기 쉬워요.',
-          '밥+국+반찬 2~3+단백질 반찬(생선·닭·두부) 패턴이 [단백질 허브](/blog/protein-guide)가 말한 "끼니 분산"이에요.',
+          '밥에 국, 반찬 두세 가지, 거기에 단백질 반찬(생선·닭·두부)을 더하는 게 바로 [단백질 허브](/blog/protein-guide)에서 말한 "끼니 분산"이에요.',
         ],
         blocks: [
           {
@@ -669,7 +669,7 @@ export const proteinArticles: BlogArticle[] = [
     },
     thesis: {
       en: 'For most people, hitting daily protein across meals beats obsessing over a post-workout stopwatch. Athletes may fine-tune, but beginners should fix breakfast and lunch first.',
-      ko: '대부분은 운동 직후 스톱워치보다 하루 단백질을 끼니에 나누는 게 먼저예요. 선수는 미세 조정해도, 초보면 아침·점심부터 고치는 게 낫아요.',
+      ko: '대부분은 운동 직후 스톱워치보다 하루 단백질을 끼니에 나누는 게 먼저예요. 선수는 미세 조정해도 되지만, 초보라면 아침·점심부터 챙기는 게 먼저예요.',
     },
     description: {
       en: 'Post-workout windows, bedtime casein hype, and spreading protein across meals.',
@@ -682,7 +682,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'The anabolic window, downsized',
         paragraphs: [
-          'Muscle repair runs for hours, not minutes. Eating protein within 30 minutes after lifting helps if you trained fasted, but skipping a shake right away does not erase a workout if the day totals are solid.',
+          'Muscle repair runs for hours, not minutes. Eating protein within 30 minutes after lifting helps if you trained fasted, but skipping a shake right after does not erase the workout as long as your daily total holds up.',
           'Priority order: enough daily grams → protein at each meal → optional post-workout convenience.',
         ],
         blocks: [
@@ -699,8 +699,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'Spreading vs stacking',
         paragraphs: [
-          'Twenty to forty grams per meal is a practical band for many adults—roughly what three US anchors (eggs, chicken, yogurt) provide without math apps.',
-          'Bedtime casein shakes matter mainly when total intake is already low. Sleep and total calories still dominate recovery for hobby lifters.',
+          'Twenty to forty grams per meal is a practical range for many adults, roughly what three US anchors (eggs, chicken, yogurt) give you without a math app.',
+          'Bedtime casein shakes matter mainly when total intake is already low. For hobby lifters, sleep and total calories still drive recovery more than any shake.',
         ],
         blocks: [
           {
@@ -722,9 +722,9 @@ export const proteinArticles: BlogArticle[] = [
     ],
     ko: [
       {
-        heading: '동화 창, 크기 줄이기',
+        heading: '운동 후 30분 창, 생각보다 작아요',
         paragraphs: [
-          '근수리는 몇 분이 아니라 몇 시간 단위예요. 공복에 헬스하면 운동 후 단백질이 도움이 되지만, 바로 쉐이크를 안 마셨다고 운동이 사라지진 않아요. 하루 총량이 맞으면요.',
+          '근육 회복은 몇 분이 아니라 몇 시간에 걸쳐 일어나요. 공복에 운동했다면 끝나고 단백질을 먹는 게 도움이 되지만, 바로 쉐이크를 안 마셨다고 운동이 무효가 되진 않아요. 하루 총량만 채우면요.',
           '순서: 하루 g 충분 → 끼니마다 단백질 → (선택) 운동 후 간편식.',
         ],
         blocks: [
@@ -786,7 +786,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'Front-label protein is not the whole story',
         paragraphs: [
-          'A bar advertising 20 g protein may ship 15 g added sugar and sugar alcohols that upset your gut. Shakes can be thin on fiber and heavy on artificial sweeteners—fine occasionally, weak as a meal pattern.',
+          'A bar advertising 20 g protein may also carry 15 g added sugar plus sugar alcohols that upset your gut. Shakes can be thin on fiber and heavy on artificial sweeteners: fine now and then, weak as a daily meal pattern.',
           'Compare per dollar and per calorie: 3 oz chicken (~26 g, ~128 kcal) vs many bars (~20 g, ~200+ kcal with extras).',
         ],
         blocks: [
@@ -806,8 +806,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'When powder helps',
         paragraphs: [
-          'Travel, shift work, or appetite limits after illness are fair use cases. Use unflavored or low-sugar bases, blend with fruit and yogurt, and keep whole meals when schedule allows.',
-          'Run a week in the [Analyzer](/analyzer) before stacking bar + shake + dinner steak—duplication is common.',
+          'Travel, shift work, or a small appetite after illness are fair reasons to reach for powder. Use unflavored or low-sugar bases, blend with fruit and yogurt, and go back to whole meals when your schedule allows.',
+          'Run a week through the [Analyzer](/analyzer) before stacking a bar, a shake, and a dinner steak on the same day. The overlap is easy to miss.',
         ],
         blocks: [
           {
@@ -823,7 +823,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'Processed "high protein" traps',
         paragraphs: [
-          'Cookies, cereal, and ice cream with protein claims still behave like desserts. The [protein encyclopedia](/nutrients/proteins) warns on processed meats—protein grams do not erase carcinogen and sodium loads.',
+          'Cookies, cereal, and ice cream with protein claims still behave like desserts. The [protein encyclopedia](/nutrients/proteins) flags processed meats too: a few grams of protein do not cancel out the carcinogen and sodium load.',
           'Next: [special cases](/blog/protein-special-cases) for pregnancy, kidneys, and high-protein diets.',
         ],
       },
@@ -832,8 +832,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '앞면 단백질만 믿지 않기',
         paragraphs: [
-          '바에 20g 써 있어도 첨가당 15g·당알코올이 붙을 수 있어요. 쉐이크는 섬유는 약하고 감미료만 강할 때가 있어요. 가끔은 괜찮지만 끼니 패턴으로는 약해요.',
-          '돈·칼로리로 보면 닭가슴살 3oz(~26g, ~128kcal)가 많은 바(~20g, 200kcal+)보다 깔끔한 날이 많아요.',
+          '바에 단백질 20g이라고 써 있어도 뒤에 첨가당 15g에 당알코올이 같이 들어 있을 수 있어요. 쉐이크도 섬유는 적고 인공감미료만 많은 경우가 있고요. 가끔이면 괜찮지만 끼니 대용으로 쭉 가기엔 부족해요.',
+          '가격과 칼로리로 따져 보면 닭가슴살 3oz(~26g, ~128kcal)가 웬만한 바(~20g, 200kcal+)보다 나을 때가 많아요.',
         ],
         blocks: [
           {
@@ -852,7 +852,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '파우더가 맞는 때',
         paragraphs: [
-          '출장·교대·질병 후 식욕 부족은 타당해요. 무가당·저당 베이스에 과일·요거트를 섞고, 일정이 되면 접시로 돌아오세요.',
+          '출장이나 교대 근무, 아프고 난 뒤 입맛이 없을 때는 파우더가 괜찮은 선택이에요. 무가당이나 저당 베이스에 과일·요거트를 섞고, 일정이 풀리면 다시 제대로 된 끼니로 돌아오세요.',
           '바+쉐이크+저녁 고기를 [분석기](/analyzer)로 일주일 찍어 보면 중복이 자주 보여요.',
         ],
         blocks: [
@@ -898,8 +898,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'Pregnancy and breastfeeding',
         paragraphs: [
-          'Protein needs rise during pregnancy and lactation. NIH and obstetric guidelines bump intake above standard adult RDAs; exact grams depend on trimester, weight, and complications.',
-          'Pair protein with folate and iron conversations—see [B12 & folate](/blog/vitamins-b12-folate). Raw fish, unpasteurized dairy, and high-mercury fish have separate safety rules.',
+          'Protein needs rise during pregnancy and lactation. NIH and obstetric guidelines push intake above the standard adult RDA, and the exact grams depend on trimester, weight, and any complications.',
+          'Talk through protein alongside folate and iron. See [B12 & folate](/blog/vitamins-b12-folate). Raw fish, unpasteurized dairy, and high-mercury fish each come with their own safety rules.',
         ],
         blocks: [
           {
@@ -915,8 +915,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'Kidney and liver disease',
         paragraphs: [
-          'Healthy kidneys handle normal protein. Chronic kidney disease often requires moderated protein with medical supervision—sometimes lower, sometimes dialysis-specific higher. Liver disease varies by stage.',
-          'Very high protein diets (>2 g/kg) marketed for weight loss can stress susceptible kidneys when hydration and medical history are ignored.',
+          'Healthy kidneys handle normal protein fine. Chronic kidney disease usually calls for adjusting protein under medical supervision: sometimes lower, sometimes higher once dialysis is involved. Liver disease varies by stage.',
+          'Very high protein diets (>2 g/kg) sold for weight loss can stress vulnerable kidneys, especially when hydration and medical history get ignored.',
         ],
         blocks: [
           {
@@ -932,7 +932,7 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: 'Closing the series',
         paragraphs: [
-          'Protein is maintenance and repair, not a hack. Return to the [series hub](/blog/protein-guide), [US or Korean plate](/blog/protein-everyday-plate) by language, [encyclopedia](/nutrients/proteins), and [amino acids](/amino-acids). Eat food first, supplement on purpose, and escalate to clinicians when the story is medical.',
+          'Protein is maintenance and repair, not a hack. Head back to the [series hub](/blog/protein-guide), the [US or Korean plate](/blog/protein-everyday-plate) by language, the [encyclopedia](/nutrients/proteins), and [amino acids](/amino-acids). Eat food first, supplement on purpose, and bring in a clinician when the story turns medical.',
         ],
         blocks: [
           {
@@ -952,8 +952,8 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '임신·수유',
         paragraphs: [
-          '임신·수유 때 단백질 필요는 올라가요. NIH·산부 지침이 성인 RDA보다 높게 잡아요. 분기·체중·합병증에 따라 달라져요.',
-          '엽산·철 얘기와 짝지어요—[B12·엽산](/blog/vitamins-b12-folate). 회·비살규 유제품·고수은 생선은 별도 안전 규칙이 있어요.',
+          '임신·수유 때는 단백질 필요량이 올라가요. NIH랑 산부인과 지침도 성인 RDA보다 높게 잡고요. 정확한 양은 임신 분기, 체중, 합병증에 따라 달라져요.',
+          '엽산·철 섭취도 같이 챙기세요([B12·엽산](/blog/vitamins-b12-folate)). 회, 비살균 유제품, 수은 많은 생선은 별도의 안전 규칙이 있고요.',
         ],
         blocks: [
           {
@@ -969,15 +969,15 @@ export const proteinArticles: BlogArticle[] = [
       {
         heading: '신장·간',
         paragraphs: [
-          '건강한 신장은 보통 단백질을 처리해요. 만성 신장은 의료 감독 하에 조절—낮추거나, 투석 때는 다르게 올리기도 해요. 간도 단계마다 달라요.',
-          '다이어트용 >2g/kg 고단백은 수분·병력 무시하면 취약한 신장에 부담일 수 있어요.',
+          '건강한 신장은 보통 단백질을 잘 처리해요. 만성 신장병은 의료진 감독 아래 양을 조절하는데, 낮추기도 하고 투석 중이라면 오히려 더 올리기도 해요. 간 질환도 단계마다 달라요.',
+          '다이어트용으로 미는 >2g/kg 고단백은 수분이나 병력을 무시하면 약한 신장에 부담이 될 수 있어요.',
         ],
         blocks: [
           {
             kind: 'stats',
             items: [
-              { value: '>2g/kg', label: '고구간—CKD 위험이면 진료' },
-              { value: 'CKD', label: '개인별 단백질 처방' },
+              { value: '>2g/kg', label: '고섭취량 구간—만성 신장질환(CKD) 위험군인 경우 전문의 진료 필요' },
+              { value: '만성 신장질환(CKD)', label: '개인별 맞춤형 단백질 처방 필요' },
               { value: '0.8g/kg', label: '여기엔 기본값 해당 없음' },
             ],
           },
@@ -996,7 +996,7 @@ export const proteinArticles: BlogArticle[] = [
               { label: 'g 추정', note: '0.8g/kg 바닥' },
               { label: '식탁', note: '하루 앵커 3개' },
               { label: '일주일 기록', note: '분석기' },
-              { label: '의료 깃발', note: '임신·CKD·신경 증상' },
+              { label: '의료 주의 신호', note: '임신·만성 신장질환(CKD)·신경 증상' },
             ],
           },
         ],

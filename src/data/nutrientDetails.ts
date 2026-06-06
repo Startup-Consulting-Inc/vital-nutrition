@@ -52,6 +52,17 @@ export interface UpperLimit {
   symptoms: string;
 }
 
+export interface NutrientTopicDetail {
+  name: string;
+  tone: 'good' | 'caution' | 'avoid' | 'neutral';
+  toneLabel: string;
+  oneLiner: string;
+  whatItIs: string;
+  nutritionFacts: string;
+  isHealthyChoice: string;
+  practicalAdvice: string;
+}
+
 export interface NutrientDetail {
   slug: string;
   name: string;
@@ -70,6 +81,7 @@ export interface NutrientDetail {
   tips: string[];
   warning?: string;
   fatTypes?: FatTypeDetail[];
+  featuredTopics?: NutrientTopicDetail[];
   /** Generic Eat-Most/Limit/Avoid framing for non-fat macronutrients. */
   intakeBuckets?: IntakeBucket[];
   /** Tolerable upper intake levels (used on Vitamins + Minerals pages). */
@@ -130,6 +142,9 @@ export const nutrients: NutrientDetail[] = [
       { name: 'Chickpeas', serving: '1/2 cup cooked', amount: '22g carbs', calories: 135, keyBenefit: '6.2g fiber, 7.3g protein', dailyValue: '8%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
       { name: 'Apple', serving: '1 medium (182g)', amount: '25g carbs', calories: 95, keyBenefit: '4.4g fiber, polyphenol antioxidants', dailyValue: '9%', category: 'good', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
       { name: 'Lentils', serving: '1 cup cooked', amount: '40g carbs', calories: 230, keyBenefit: '15.6g fiber, 17.9g protein', dailyValue: '15%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
+      { name: 'Kabocha Squash', serving: '1 cup cooked (140g)', amount: '22g carbs', calories: 82, keyBenefit: '6g fiber, rich in vitamins A and C', dailyValue: '8%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
+      { name: 'Barley', serving: '1 cup cooked', amount: '44g carbs', calories: 193, keyBenefit: '6g fiber, beta-glucan lowers cholesterol', dailyValue: '16%', category: 'excellent', dietaryTags: ['VG', 'V', 'NF', 'DF'] },
+      { name: 'Buckwheat', serving: '1 cup cooked', amount: '33g carbs', calories: 155, keyBenefit: '4.5g fiber, rutin supports vascular health', dailyValue: '12%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
     ],
     intakeBuckets: [
       {
@@ -194,6 +209,9 @@ export const nutrients: NutrientDetail[] = [
       { name: 'Almonds', serving: '1/4 cup (35g)', amount: '8g protein', calories: 207, keyBenefit: 'Healthy fats, vitamin E, magnesium', dailyValue: '16%', category: 'good', dietaryTags: ['VG', 'V', 'GF', 'K', 'DF'] },
       { name: 'Tuna (Canned in Water)', serving: '3 oz (85g)', amount: '20g protein', calories: 109, keyBenefit: 'Omega-3s, selenium, low calorie', dailyValue: '40%', category: 'excellent', dietaryTags: ['GF', 'K', 'NF', 'DF'] },
       { name: 'Cottage Cheese (Low-Fat)', serving: '1/2 cup (113g)', amount: '14g protein', calories: 90, keyBenefit: 'Casein protein, slow digesting, calcium', dailyValue: '28%', category: 'excellent', dietaryTags: ['V', 'GF', 'K', 'NF'] },
+      { name: 'Tempeh', serving: '3 oz (85g)', amount: '16g protein', calories: 162, keyBenefit: 'Probiotic-rich, fermented soy, high fiber', dailyValue: '32%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
+      { name: 'Pumpkin Seeds', serving: '1/4 cup (30g)', amount: '9g protein', calories: 180, keyBenefit: 'Zinc, magnesium, healthy fats', dailyValue: '18%', category: 'good', dietaryTags: ['VG', 'V', 'GF', 'K', 'DF'] },
+      { name: 'Seitan', serving: '3 oz (85g)', amount: '21g protein', calories: 120, keyBenefit: 'Extremely high protein, low carb, wheat-based', dailyValue: '42%', category: 'excellent', dietaryTags: ['VG', 'V', 'NF', 'DF'] },
     ],
     intakeBuckets: [
       {
@@ -222,6 +240,28 @@ export const nutrients: NutrientDetail[] = [
       'Space protein intake throughout the day for better absorption',
     ],
     warning: 'Very high protein diets (over 2g/kg body weight) may strain kidneys in susceptible individuals. Choose lean sources to limit saturated fat.',
+    featuredTopics: [
+      {
+        name: 'Protein Powder (Whey, Soy, Pea, etc.)',
+        tone: 'neutral',
+        toneLabel: 'Supplemental / Neutral',
+        oneLiner: 'Dehydrated protein extracted from animal or plant sources processed into a powder.',
+        whatItIs: 'Protein powder is a dietary supplement made from condensed protein sources like milk (whey or casein), soy, peas, hemp, or rice. It is commonly mixed with water, milk, or blended into smoothies.',
+        nutritionFacts: 'A typical scoop provides 20-30g of protein, 100-150 calories, 1-3g of carbohydrates, and very little fat.',
+        isHealthyChoice: 'Yes, it is a safe and highly convenient way to meet daily protein targets, especially for athletes or older adults. However, it lacks the broader micronutrient profile of whole protein foods like fish, eggs, or legumes, so it should supplement rather than replace natural meals.',
+        practicalAdvice: 'Choose whey isolate for fast absorption, or a pea-rice blend for a complete plant-based amino acid profile. Read labels to avoid products loaded with added sugars or artificial fillers.'
+      },
+      {
+        name: 'Ready-to-Drink (RTD) Protein Shakes',
+        tone: 'caution',
+        toneLabel: 'Use for Convenience',
+        oneLiner: 'Pre-mixed, liquid protein beverages packaged for on-the-go consumption.',
+        whatItIs: 'RTD shakes are convenient pre-formulated liquid drinks. They are typically water or milk-based and flavored, using dairy proteins (milk protein concentrate, calcium caseinate) or plant protein blends.',
+        nutritionFacts: 'Typically contain 20-40g of protein, 150-250 calories, 1-10g of carbohydrates, and 1-5g of fat, and are often fortified with vitamins and minerals.',
+        isHealthyChoice: 'While very convenient for quick post-workout recovery or busy travel, many commercial brands contain high amounts of added sugars, artificial sweeteners, sodium, and emulsifiers (like carrageenan) that can cause bloating or digestive issues in some people.',
+        practicalAdvice: 'Read the ingredient list. Favor brands with lower sodium and minimal thickeners/additives. Rely on whole foods or raw powders as your daily standard, keeping RTDs for travel or emergencies.'
+      }
+    ],
   },
   {
     slug: 'fats',
@@ -258,6 +298,9 @@ export const nutrients: NutrientDetail[] = [
       { name: 'Dark Chocolate (70%)', serving: '1 oz (28g)', amount: '15g fat', calories: 170, keyBenefit: '9g saturated, flavonoid antioxidants', dailyValue: '19%', category: 'moderate', dietaryTags: ['V', 'GF', 'NF'] },
       { name: 'Peanut Butter (Natural)', serving: '2 tbsp (32g)', amount: '16g fat', calories: 190, keyBenefit: '8g monounsaturated, 7g protein', dailyValue: '21%', category: 'good', dietaryTags: ['VG', 'V', 'GF', 'K', 'DF'] },
       { name: 'Sardines (Canned)', serving: '3 oz (85g)', amount: '11g fat', calories: 177, keyBenefit: '1.5g omega-3s, calcium, vitamin D', dailyValue: '14%', category: 'excellent', dietaryTags: ['GF', 'K', 'NF', 'DF'] },
+      { name: 'Pumpkin Seeds', serving: '1/4 cup (30g)', amount: '14g fat', calories: 180, keyBenefit: '4g monounsaturated, 6g polyunsaturated', dailyValue: '18%', category: 'good', dietaryTags: ['VG', 'V', 'GF', 'K', 'DF'] },
+      { name: 'Macadamia Nuts', serving: '1 oz (28g)', amount: '21g fat', calories: 204, keyBenefit: '17g monounsaturated, very low carb', dailyValue: '27%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'DF'] },
+      { name: 'Hemp Seeds', serving: '3 tbsp (30g)', amount: '15g fat', calories: 166, keyBenefit: 'Omega-3 and Omega-6 in ideal ratio, 10g protein', dailyValue: '19%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
     ],
     tips: [
       'Use olive oil as your primary cooking fat',
@@ -385,6 +428,9 @@ export const nutrients: NutrientDetail[] = [
       { name: 'Eggs', serving: '2 large', amount: '1.2mcg vitamin B12', calories: 143, keyBenefit: '50% DV B12, complete protein, choline', dailyValue: '50%', category: 'excellent', dietaryTags: ['V', 'GF', 'K', 'NF', 'DF'] },
       { name: 'Fortified Cereals', serving: '1 cup', amount: 'Varies (B vitamins)', calories: 150, keyBenefit: 'Often 100% DV for B vitamins', dailyValue: '100%', category: 'good', dietaryTags: ['VG', 'V', 'NF', 'DF'] },
       { name: 'Kiwi', serving: '1 medium', amount: '64mg vitamin C', calories: 42, keyBenefit: '71% DV vitamin C, vitamin K, fiber', dailyValue: '71%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
+      { name: 'Avocado', serving: '1 medium', amount: '2.7mg vitamin E', calories: 240, keyBenefit: '18% DV vitamin E, B vitamins, folate', dailyValue: '18%', category: 'good', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
+      { name: 'Carrots', serving: '1 cup chopped', amount: '1069mcg vitamin A', calories: 52, keyBenefit: '119% DV vitamin A (beta-carotene), fiber', dailyValue: '119%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
+      { name: 'Shiitake Mushrooms', serving: '1 cup cooked', amount: 'Varies (vitamin D/B)', calories: 81, keyBenefit: 'Natural source of vitamin D2, B vitamins', dailyValue: 'Varies', category: 'good', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
     ],
     intakeBuckets: [
       {
@@ -459,6 +505,9 @@ export const nutrients: NutrientDetail[] = [
       { name: 'Brazil Nuts', serving: '1 nut (5g)', amount: '96mcg selenium', calories: 33, keyBenefit: '175% DV selenium (1 nut = full day)', dailyValue: '175%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'DF'] },
       { name: 'Lentils', serving: '1 cup cooked', amount: '6.6mg iron', calories: 230, keyBenefit: '37% DV iron, 15.6g fiber, folate', dailyValue: '37%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
       { name: 'Tofu (Calcium-set)', serving: '1/2 cup', amount: '434mg calcium', calories: 94, keyBenefit: '33% DV calcium, 10g protein, iron', dailyValue: '33%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
+      { name: 'Chia Seeds', serving: '2 tbsp (28g)', amount: '179mg calcium', calories: 138, keyBenefit: '18% DV calcium, 95mg magnesium', dailyValue: '18%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
+      { name: 'Quinoa', serving: '1 cup cooked', amount: '118mg magnesium', calories: 222, keyBenefit: '28% DV magnesium, iron, zinc', dailyValue: '28%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
+      { name: 'Potatoes', serving: '1 medium baked', amount: '926mg potassium', calories: 161, keyBenefit: '20% DV potassium, vitamin C, B6', dailyValue: '20%', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
     ],
     intakeBuckets: [
       {
@@ -532,6 +581,9 @@ export const nutrients: NutrientDetail[] = [
       { name: 'Broth (Low-Sodium)', serving: '1 cup (240ml)', amount: '98% water', calories: 10, keyBenefit: 'Warm, comforting, minerals', dailyValue: 'High', category: 'excellent', dietaryTags: ['GF', 'K', 'NF', 'DF'] },
       { name: 'Zucchini', serving: '1 cup sliced (113g)', amount: '95% water', calories: 19, keyBenefit: 'Vitamin C, potassium, versatile', dailyValue: 'High', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
       { name: 'Grapefruit', serving: '1/2 medium', amount: '88% water', calories: 52, keyBenefit: 'Vitamin C, vitamin A, fiber', dailyValue: 'High', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
+      { name: 'Celery', serving: '1 cup chopped (101g)', amount: '95% water', calories: 16, keyBenefit: 'Vitamin K, potassium, extremely low calorie', dailyValue: 'High', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
+      { name: 'Peaches', serving: '1 medium (150g)', amount: '89% water', calories: 59, keyBenefit: 'Vitamin A, C, potassium, soluble fiber', dailyValue: 'High', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'NF', 'DF'] },
+      { name: 'Bell Peppers', serving: '1 cup chopped (149g)', amount: '92% water', calories: 46, keyBenefit: 'Extremely rich in vitamin C, vitamin A', dailyValue: 'High', category: 'excellent', dietaryTags: ['VG', 'V', 'GF', 'K', 'NF', 'DF'] },
     ],
     tips: [
       'Drink a glass of water upon waking to rehydrate after sleep',
@@ -540,6 +592,38 @@ export const nutrients: NutrientDetail[] = [
       'Replace sugary beverages with water or infused water (lemon, cucumber)',
     ],
     warning: 'Thirst is a late indicator of dehydration. Drink water regularly throughout the day, especially during exercise and in hot weather. Older adults may have a diminished thirst response.',
+    featuredTopics: [
+      {
+        name: 'No-Sugar Drinks (Zero-Calorie)',
+        tone: 'neutral',
+        toneLabel: 'Neutral / Option',
+        oneLiner: 'Beverages containing zero added sugars, often flavored or carbonated.',
+        whatItIs: 'Zero-sugar drinks are beverages formulated without sucrose or high-fructose corn syrup. They range from flavored water to diet sodas, and are sweetened with artificial or natural non-nutritive sweeteners.',
+        nutritionFacts: 'Typically contain 0 calories, 0g carbohydrates, 0g sugars, and a small amount of sodium or citric acid depending on the brand.',
+        isHealthyChoice: 'Generally healthy as a tool to cut sugar and calorie intake. However, they should not completely replace plain water as they can maintain a psychological preference for sweet tastes.',
+        practicalAdvice: 'Great for transitioning away from sugary sodas, but choose versions with minimal preservatives and natural flavors when possible.'
+      },
+      {
+        name: 'Artificial Sweeteners',
+        tone: 'caution',
+        toneLabel: 'Use with Caution',
+        oneLiner: 'Synthetic sugar substitutes used to sweeten foods and drinks without adding calories.',
+        whatItIs: 'Common artificial sweeteners include aspartame, sucralose, saccharin, and acesulfame potassium (Ace-K). They are hundreds of times sweeter than sugar, requiring only tiny amounts.',
+        nutritionFacts: 'Virtually 0 calories and 0g sugars. They do not spike blood sugar levels or contribute to tooth decay.',
+        isHealthyChoice: 'Considered safe by major health organizations (FDA, EFSA) within acceptable daily intake levels. They help manage calorie intake and diabetes, but some research suggests potential effects on gut microbiome and sweet cravings.',
+        practicalAdvice: 'Consume in moderation. If you prefer natural alternatives, look for beverages sweetened with stevia, monk fruit, or erythritol, but keep plain water as your primary beverage.'
+      },
+      {
+        name: 'Carbonated Water',
+        tone: 'good',
+        toneLabel: 'Good Choice',
+        oneLiner: 'Water infused with carbon dioxide gas under pressure, creating bubbles.',
+        whatItIs: 'Also known as sparkling water, club soda, seltzer, or carbonated spring water. It can be plain or lightly flavored with natural fruit extracts.',
+        nutritionFacts: 'Zero calories, zero sugar, and zero carbs. Mineral-rich carbonated waters (like sparkling mineral water) may contain calcium, magnesium, and sodium.',
+        isHealthyChoice: 'Yes, plain carbonated water is just as hydrating as regular water. It is a fantastic, healthy alternative to sugary soft drinks. It is slightly acidic, but not enough to harm bone health or significantly erode tooth enamel under normal consumption.',
+        practicalAdvice: 'Check labels to ensure there are no added sugars or sodium. Avoid sparkling "beverages" that contain hidden syrups or high amounts of artificial additives.'
+      }
+    ],
   },
 ];
 
